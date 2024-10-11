@@ -1,20 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqu6nj5klwbg8"]
+[gd_scene load_steps=6 format=3 uid="uid://dqu6nj5klwbg8"]
 
 [ext_resource type="Texture2D" uid="uid://bqj1yyrqfsuu5" path="res://icon.svg" id="1_au6mj"]
 [ext_resource type="Script" path="res://scenes/base/base.gd" id="2_h72af"]
+[ext_resource type="Shader" path="res://shaders/hit_flash.gdshader" id="2_wuc8y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3ckvi"]
 radius = 64.1249
 
-[node name="Base" type="Sprite2D" groups=["base"]]
-position = Vector2(540, 348)
-texture = ExtResource("1_au6mj")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ht33g"]
+resource_local_to_scene = true
+shader = ExtResource("2_wuc8y")
+shader_parameter/active = false
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+
+[node name="Base" type="Area2D"]
 script = ExtResource("2_h72af")
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_3ckvi")
+
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["base"]]
+material = SubResource("ShaderMaterial_ht33g")
+texture = ExtResource("1_au6mj")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

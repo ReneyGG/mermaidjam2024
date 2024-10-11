@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://ck505600pjj44"]
+
+[ext_resource type="PackedScene" uid="uid://d4hia2tutqsev" path="res://scenes/plant_base/plant_base.tscn" id="1_dncpy"]
+[ext_resource type="Script" path="res://scenes/plants/shooting_flower.gd" id="2_1cpvh"]
+[ext_resource type="Texture2D" uid="uid://bqj1yyrqfsuu5" path="res://icon.svg" id="2_2l4vg"]
+[ext_resource type="PackedScene" uid="uid://kevxggnqglel" path="res://scenes/projectiles/basic_projectile.tscn" id="3_3nfon"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wvryq"]
+radius = 335.121
+
+[node name="ShootingFlower" instance=ExtResource("1_dncpy")]
+modulate = Color(1, 0.176471, 1, 1)
+script = ExtResource("2_1cpvh")
+projectile_scene = ExtResource("3_3nfon")
+texture = ExtResource("2_2l4vg")
+
+[node name="ShootingTimer" type="Timer" parent="." index="0"]
+autostart = true
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_2l4vg")
+
+[node name="Area2D" type="Area2D" parent="." index="3"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource("CircleShape2D_wvryq")
+
+[connection signal="timeout" from="ShootingTimer" to="." method="shoot"]

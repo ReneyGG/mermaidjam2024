@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cj3jlrqjytf4o"]
 
 [ext_resource type="PackedScene" uid="uid://drux0gpbnnyue" path="res://scenes/player/player.tscn" id="1_6067s"]
-[ext_resource type="PackedScene" uid="uid://ck505600pjj44" path="res://scenes/plants/flower.tscn" id="2_jqooq"]
+[ext_resource type="PackedScene" uid="uid://ck505600pjj44" path="res://scenes/plants/shooting_flower.tscn" id="2_jqooq"]
 
 [node name="PlantTest" type="Node2D"]
 

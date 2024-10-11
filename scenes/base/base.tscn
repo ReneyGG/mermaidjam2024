@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqu6nj5klwbg8"]
+
+[ext_resource type="Texture2D" uid="uid://bqj1yyrqfsuu5" path="res://icon.svg" id="1_au6mj"]
+[ext_resource type="Script" path="res://scenes/base/base.gd" id="2_h72af"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3ckvi"]
+radius = 64.1249
+
+[node name="Base" type="Sprite2D" groups=["base"]]
+position = Vector2(540, 348)
+texture = ExtResource("1_au6mj")
+script = ExtResource("2_h72af")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_3ckvi")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Base health:"
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2

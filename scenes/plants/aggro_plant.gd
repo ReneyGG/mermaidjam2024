@@ -13,7 +13,6 @@ func _on_aggro_area_body_entered(body):
 		body.target = self
 		print(body)
 
-
 func _on_aggro_area_body_exited(body):
 	if body.is_in_group("enemy"):
 		body.target = get_tree().get_first_node_in_group("base")

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://drux0gpbnnyue" path="res://scenes/player/player.tscn" id="1_tq124"]
 [ext_resource type="PackedScene" uid="uid://dqu6nj5klwbg8" path="res://scenes/base/base.tscn" id="2_f6grg"]
 [ext_resource type="PackedScene" uid="uid://blor77xon5pyw" path="res://scenes/enemy_spawner/EnemySpawner.tscn" id="3_g468s"]
-[ext_resource type="PackedScene" uid="uid://ck505600pjj44" path="res://scenes/plants/shooting_flower.tscn" id="4_6uwb0"]
+[ext_resource type="PackedScene" uid="uid://c33074g0o5thl" path="res://scenes/plants/explosive_plant.tscn" id="4_y4x4d"]
 
 [node name="Level" type="Node2D"]
 
@@ -17,6 +17,5 @@ rotation = 0.698132
 position = Vector2(540, 348)
 rotation = 0.698132
 
-[node name="ShootingFlower" parent="." instance=ExtResource("4_6uwb0")]
-modulate = Color(1, 0.176471, 1, 1)
-position = Vector2(425, 238)
+[node name="ExplosivePlant" parent="." instance=ExtResource("4_y4x4d")]
+position = Vector2(37, 356)

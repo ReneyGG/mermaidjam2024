@@ -8,6 +8,7 @@ extends CharacterBody2D
 var dead := false
 var interact = null
 var hold = null
+var plant_in_range = null
 
 func _ready():
 	#$Camera2D.zoom = Vector2(1,1)
@@ -16,6 +17,7 @@ func _ready():
 
 func get_input():
 	var input = Vector2()
+	
 	if Input.is_action_pressed('right'):
 		input.x += 1
 		$Sprite2D.scale.x = -1
@@ -26,6 +28,30 @@ func get_input():
 		input.y += 1
 	if Input.is_action_pressed('up'):
 		input.y -= 1
+	
+	if Input.is_action_just_pressed("pick"):
+		if plant_in_range and not hold:
+			plant_in_range.pick()
+			hold = plant_in_range
+			$PlantArea.monitoring = false
+			plant_in_range = null
+		elif hold:
+			hold.drop()
+			hold = null
+			$PlantArea.monitoring = true
+	if Input.is_action_just_pressed("harvest"):
+		if plant_in_range and not hold:
+			plant_in_range.harvest()
+			plant_in_range = null
+			hold = null
+			$PlantArea.monitoring = false
+			await get_tree().physics_frame
+			$PlantArea.monitoring = true
+		elif hold:
+			hold.harvest()
+			hold = null
+			plant_in_range = null
+			$PlantArea.monitoring = true
 	return input
 
 func _physics_process(delta):
@@ -37,7 +63,10 @@ func _physics_process(delta):
 	#else:
 		#$Node2D/AnimatedSprite2D.frame = 0
 	
-	var direction = get_input()
+	if hold:
+		hold.global_position = self.global_position
+	
+	var direction = await get_input()
 	#if direction != Vector2(0,0):
 		#$DustTrail.emitting = true
 	#else:
@@ -92,3 +121,10 @@ func die(screen):
 	#await $AnimationPlayer.animation_finished
 	#get_parent().get_parent().over(screen)
 	#get_tree().paused = true
+
+func _on_plant_area_area_entered(area):
+	plant_in_range = area
+
+func _on_plant_area_area_exited(area):
+	if area == plant_in_range:
+		plant_in_range = null

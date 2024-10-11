@@ -1,10 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://drux0gpbnnyue"]
+[gd_scene load_steps=5 format=3 uid="uid://drux0gpbnnyue"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_go15t"]
 [ext_resource type="Texture2D" uid="uid://bqj1yyrqfsuu5" path="res://icon.svg" id="2_r40nf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rr23o"]
+radius = 59.5399
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0vjnu"]
+radius = 176.071
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_go15t")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_r40nf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rr23o")
+
+[node name="PlantArea" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlantArea"]
+shape = SubResource("CircleShape2D_0vjnu")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+
+[connection signal="area_entered" from="PlantArea" to="." method="_on_plant_area_area_entered"]
+[connection signal="area_exited" from="PlantArea" to="." method="_on_plant_area_area_exited"]

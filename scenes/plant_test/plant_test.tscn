@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cj3jlrqjytf4o"]
+
+[ext_resource type="PackedScene" uid="uid://drux0gpbnnyue" path="res://scenes/player/player.tscn" id="1_6067s"]
+[ext_resource type="PackedScene" uid="uid://d4hia2tutqsev" path="res://scenes/plant_base/plant_base.tscn" id="2_dlivh"]
+
+[node name="PlantTest" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_6067s")]
+position = Vector2(289, 220)
+
+[node name="PlantBase" parent="." instance=ExtResource("2_dlivh")]
+position = Vector2(603, 239)
+
+[node name="PlantBase2" parent="." instance=ExtResource("2_dlivh")]
+position = Vector2(520, 384)

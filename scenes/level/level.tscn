@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://drux0gpbnnyue" path="res://scenes/player/player.tscn" id="1_tq124"]
 [ext_resource type="PackedScene" uid="uid://dqu6nj5klwbg8" path="res://scenes/base/base.tscn" id="2_f6grg"]
-[ext_resource type="PackedScene" uid="uid://b42485no0ghjw" path="res://scenes/enemy/enemy.tscn" id="3_xpgnq"]
+[ext_resource type="PackedScene" uid="uid://blor77xon5pyw" path="res://scenes/enemy_spawner/EnemySpawner.tscn" id="3_g468s"]
 
 [node name="Level" type="Node2D"]
 
@@ -11,8 +11,7 @@
 [node name="Base" parent="." instance=ExtResource("2_f6grg")]
 rotation = 0.698132
 
-[node name="Enemy" parent="." instance=ExtResource("3_xpgnq")]
-position = Vector2(963, 65)
-
-[node name="Enemy2" parent="." instance=ExtResource("3_xpgnq")]
-position = Vector2(806, 539)
+[node name="EnemySpawner" parent="." instance=ExtResource("3_g468s")]
+position = Vector2(540, 348)
+rotation = 0.698132
+scale = Vector2(1, 1)

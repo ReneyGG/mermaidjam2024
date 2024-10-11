@@ -6,15 +6,14 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_3ckvi"]
 radius = 64.1249
 
-[node name="Base" type="Sprite2D" groups=["base"]]
-position = Vector2(540, 348)
-texture = ExtResource("1_au6mj")
+[node name="Base" type="Area2D"]
 script = ExtResource("2_h72af")
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_3ckvi")
+
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["base"]]
+texture = ExtResource("1_au6mj")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

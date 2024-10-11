@@ -29,8 +29,8 @@ func take_damage(damage):
 func attack():
 	#print("attack")
 	for area in $AttackArea.get_overlapping_areas():
-		if area.get_parent().has_method("take_damage"):
-			area.get_parent().take_damage(attack_damage)
+		if area.has_method("take_damage"):
+			area.take_damage(attack_damage)
 
 func _on_attack_timer_timeout():
 	attack()

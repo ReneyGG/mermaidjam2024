@@ -1,4 +1,4 @@
-extends Sprite2D
+extends Area2D
 
 @export var health: int = 10
 var max_health = health

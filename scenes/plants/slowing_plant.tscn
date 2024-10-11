@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgshx1ob7jky5"]
+
+[ext_resource type="PackedScene" uid="uid://d4hia2tutqsev" path="res://scenes/plant_base/plant_base.tscn" id="1_ojbsy"]
+[ext_resource type="Script" path="res://scenes/plants/slowing_plant.gd" id="2_c0bw0"]
+[ext_resource type="Texture2D" uid="uid://bqj1yyrqfsuu5" path="res://icon.svg" id="2_u2ok8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_44235"]
+radius = 373.936
+
+[node name="SlowingPlant" instance=ExtResource("1_ojbsy")]
+script = ExtResource("2_c0bw0")
+texture = ExtResource("2_u2ok8")
+
+[node name="Sprite2D" parent="." index="0"]
+self_modulate = Color(0.218354, 0.179767, 0.236336, 1)
+
+[node name="SlowingArea" type="Area2D" parent="." index="2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SlowingArea" index="0"]
+shape = SubResource("CircleShape2D_44235")
+
+[connection signal="body_entered" from="SlowingArea" to="." method="_on_slowing_area_body_entered"]
+[connection signal="body_exited" from="SlowingArea" to="." method="_on_slowing_area_body_exited"]

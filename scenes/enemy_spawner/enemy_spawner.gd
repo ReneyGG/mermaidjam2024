@@ -22,6 +22,4 @@ func pick_random_position(center, distance):
 	# Wyznaczamy nową pozycję na podstawie środka i przesunięcia
 	var new_position = center + Vector2(offset_x, offset_y)
 	
-	# Wyświetlamy pozycję
-	print("Nowa pozycja: ", new_position)
 	return new_position

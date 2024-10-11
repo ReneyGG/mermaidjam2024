@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/plant_base/plant_base.gd" id="1_23wbr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6yntm"]
-radius = 79.2275
+radius = 40.0125
 
 [node name="PlantBase" type="Area2D" groups=["plant"]]
 collision_layer = 16

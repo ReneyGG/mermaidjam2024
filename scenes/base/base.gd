@@ -10,5 +10,5 @@ func _process(delta):
 func take_damage(damage):
 	health = max(0, health - damage)
 	if health == 0:
-		print("BASE DESTROYED")
+		#print("BASE DESTROYED")
 		queue_free()

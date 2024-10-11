@@ -1,7 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://ck505600pjj44"]
-
-[ext_resource type="PackedScene" uid="uid://d4hia2tutqsev" path="res://scenes/plant_base/plant_base.tscn" id="1_j5dxi"]
-[ext_resource type="Texture2D" uid="uid://bqj1yyrqfsuu5" path="res://icon.svg" id="2_glham"]
-
-[node name="Flower" instance=ExtResource("1_j5dxi")]
-texture = ExtResource("2_glham")

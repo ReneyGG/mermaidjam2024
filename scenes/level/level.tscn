@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://d11qa8vw8txpx"]
+
+[ext_resource type="PackedScene" uid="uid://drux0gpbnnyue" path="res://scenes/player/player.tscn" id="1_tq124"]
+[ext_resource type="PackedScene" uid="uid://dqu6nj5klwbg8" path="res://scenes/base/base.tscn" id="2_f6grg"]
+[ext_resource type="PackedScene" uid="uid://b42485no0ghjw" path="res://scenes/enemy/enemy.tscn" id="3_xpgnq"]
+
+[node name="Level" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_tq124")]
+
+[node name="Base" parent="." instance=ExtResource("2_f6grg")]
+rotation = 0.698132
+
+[node name="Enemy" parent="." instance=ExtResource("3_xpgnq")]
+position = Vector2(963, 65)
+
+[node name="Enemy2" parent="." instance=ExtResource("3_xpgnq")]
+position = Vector2(806, 539)

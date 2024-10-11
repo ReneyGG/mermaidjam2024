@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://b42485no0ghjw"]
+
+[ext_resource type="Texture2D" uid="uid://bqj1yyrqfsuu5" path="res://icon.svg" id="1_butkw"]
+[ext_resource type="Script" path="res://scenes/enemy/enemy.gd" id="1_rlkf2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jhyxo"]
+radius = 76.37
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5uw3s"]
+radius = 77.7817
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_rlkf2")
+
+[node name="AttackCooldown" type="Timer" parent="."]
+autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_butkw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jhyxo")
+disabled = true
+
+[node name="AttackArea" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource("CircleShape2D_5uw3s")
+
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_timer_timeout"]

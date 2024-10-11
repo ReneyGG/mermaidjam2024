@@ -1,8 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cj3jlrqjytf4o"]
 
 [ext_resource type="PackedScene" uid="uid://drux0gpbnnyue" path="res://scenes/player/player.tscn" id="1_6067s"]
-[ext_resource type="PackedScene" uid="uid://cnywlyjx1hjy4" path="res://scenes/craft_test/blue.tscn" id="2_n7qyh"]
-[ext_resource type="PackedScene" uid="uid://cta0xi30x37sj" path="res://scenes/craft_test/red.tscn" id="3_0cbom"]
+[ext_resource type="PackedScene" uid="uid://ck505600pjj44" path="res://scenes/plants/shooting_flower.tscn" id="2_jqooq"]
 
 [node name="PlantTest" type="Node2D"]
 

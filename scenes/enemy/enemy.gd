@@ -25,12 +25,15 @@ func take_damage(damage):
 	health = max(0, health - damage)
 	if health == 0:
 		queue_free()
+	$Sprite2D.material.set_shader_parameter("active",true)
+	await get_tree().create_timer(.1).timeout
+	$Sprite2D.material.set_shader_parameter("active",false)
 
 func attack():
 	#print("attack")
 	for area in $AttackArea.get_overlapping_areas():
-		if area.get_parent().has_method("take_damage"):
-			area.get_parent().take_damage(attack_damage)
+		if area.has_method("take_damage"):
+			area.take_damage(attack_damage)
 
 func _on_attack_timer_timeout():
 	attack()

@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var base
+var target
 
 @export var health: int = 2
 @export var speed: float = 60.0
@@ -11,13 +11,13 @@ var base
 var can_move: bool = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	base = get_tree().get_first_node_in_group("base")
+	target = get_tree().get_first_node_in_group("base")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if !base:
+	if !target:
 		return
-	var direction = global_position.direction_to(base.global_position)
+	var direction = global_position.direction_to(target.global_position)
 	#print(direction)
 	if can_move:
 		velocity = direction * speed
@@ -42,10 +42,8 @@ func knockback(direction):
 	var tween = get_tree().create_tween()
 	velocity = direction * 750
 	tween.tween_property(self, "velocity", Vector2.ZERO, 1)
-	#await get_tree().create_timer(.2).timeout
 	await tween.finished
 	can_move = true
-	#move_and_slide()
 
 func _on_attack_timer_timeout():
 	attack()

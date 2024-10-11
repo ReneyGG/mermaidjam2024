@@ -27,11 +27,17 @@ func take_damage(damage):
 		queue_free()
 
 func attack():
-	print("attack")
+	#print("attack")
 	for area in $AttackArea.get_overlapping_areas():
 		if area.get_parent().has_method("take_damage"):
 			area.get_parent().take_damage(attack_damage)
-			attack_timer.start()
 
 func _on_attack_timer_timeout():
 	attack()
+
+
+func _on_attack_area_body_entered(body):
+	if body.is_in_group("player"):
+		var direction = global_position.direction_to(body.global_position)
+		body.velocity = direction * 1000
+		body.move_and_slide()

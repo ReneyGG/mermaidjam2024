@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpveu5fht0y8i"]
+
+[ext_resource type="PackedScene" uid="uid://d4hia2tutqsev" path="res://scenes/plant_base/plant_base.tscn" id="1_3p85x"]
+[ext_resource type="Texture2D" uid="uid://dp1ykgvwaumf2" path="res://assets/icons/rose.png" id="2_mxxni"]
+
+[node name="Rose" instance=ExtResource("1_3p85x")]
+texture = ExtResource("2_mxxni")
+type = "pink"

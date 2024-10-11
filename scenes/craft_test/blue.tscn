@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnywlyjx1hjy4"]
+
+[ext_resource type="PackedScene" uid="uid://d4hia2tutqsev" path="res://scenes/plant_base/plant_base.tscn" id="1_fcq5w"]
+[ext_resource type="Texture2D" uid="uid://byeyr4hgspm7t" path="res://assets/icons/blue.png" id="2_v5tt4"]
+
+[node name="Blue" instance=ExtResource("1_fcq5w")]
+texture = ExtResource("2_v5tt4")
+type = "blue"

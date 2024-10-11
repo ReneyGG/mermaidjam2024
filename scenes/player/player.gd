@@ -9,10 +9,12 @@ var dead := false
 var interact = null
 var hold = null
 var plant_in_range = null
+var storage : Array
 
 func _ready():
 	#$Camera2D.zoom = Vector2(1,1)
 	#$AnimationPlayer.play("idle")
+	$Sprite2D.play("idle")
 	attacking = false
 
 func get_input():
@@ -20,10 +22,10 @@ func get_input():
 	
 	if Input.is_action_pressed('right'):
 		input.x += 1
-		$Sprite2D.scale.x = -1
+		$Sprite2D.scale.x = 1
 	if Input.is_action_pressed('left'):
 		input.x -= 1
-		$Sprite2D.scale.x = 1
+		$Sprite2D.scale.x = -1
 	if Input.is_action_pressed('down'):
 		input.y += 1
 	if Input.is_action_pressed('up'):
@@ -35,23 +37,36 @@ func get_input():
 			hold = plant_in_range
 			$PlantArea.monitoring = false
 			plant_in_range = null
+			$CanvasLayer/Control/Hold.texture = load(get_icon(hold.type))
 		elif hold:
+			if storage.size() == 2:
+				storage.clear()
+				$CanvasLayer/Control/Slot1.texture = null
+				$CanvasLayer/Control/Slot2.texture = null
 			hold.drop()
 			hold = null
 			$PlantArea.monitoring = true
+			$CanvasLayer/Control/Hold.texture = null
 	if Input.is_action_just_pressed("harvest"):
 		if plant_in_range and not hold:
 			plant_in_range.harvest()
+			add_storage(plant_in_range.type)
 			plant_in_range = null
-			hold = null
 			$PlantArea.monitoring = false
 			await get_tree().physics_frame
 			$PlantArea.monitoring = true
 		elif hold:
 			hold.harvest()
-			hold = null
+			if storage.size() == 2:
+				storage.clear()
+				$CanvasLayer/Control/Slot1.texture = null
+				$CanvasLayer/Control/Slot2.texture = null
+			add_storage(hold.type)
+			if storage.size() != 2:
+				hold = null
 			plant_in_range = null
 			$PlantArea.monitoring = true
+			$CanvasLayer/Control/Hold.texture = null
 	return input
 
 func _physics_process(delta):
@@ -109,6 +124,52 @@ func frame_freeze(timeScale, duration):
 func _on_freeze_timeout():
 	Engine.time_scale = 1.0
 
+func add_storage(type):
+	if storage.size() == 0:
+		storage.append(type)
+		$CanvasLayer/Control/Slot1.texture = load(get_icon(type))
+	elif storage.size() == 1:
+		storage.append(type)
+		$CanvasLayer/Control/Slot2.texture = load(get_icon(type))
+		craft()
+
+func craft():
+	var plant_scene
+	if storage == ["red","red"]:
+		$CanvasLayer/Control/Hold.texture = load(get_icon("pink"))
+		plant_scene = load("res://scenes/craft_test/rose.tscn")
+	elif storage == ["blue","blue"]:
+		$CanvasLayer/Control/Hold.texture = load(get_icon("black"))
+		plant_scene = load("res://scenes/craft_test/black.tscn")
+	elif storage == ["red","blue"] or  storage == ["blue","red"]:
+		$CanvasLayer/Control/Hold.texture = load(get_icon("purple"))
+		plant_scene = load("res://scenes/craft_test/purple.tscn")
+	
+	if plant_scene:
+		var plant_inst = plant_scene.instantiate()
+		get_parent().get_node("Plants").add_child(plant_inst)
+		plant_inst.global_position = self.global_position
+		hold = plant_inst
+		$PlantArea.monitoring = false
+		plant_in_range = null
+	else:
+		hold = null
+		$PlantArea.monitoring = true
+		plant_in_range = null
+
+func get_icon(type):
+	match type:
+		"red":
+			return "res://assets/icons/red.png"
+		"blue":
+			return "res://assets/icons/blue.png"
+		"purple":
+			return "res://assets/icons/purple.png"
+		"pink":
+			return "res://assets/icons/rose.png"
+		"black":
+			return "res://assets/icons/black.png"
+
 func die(screen):
 	if dead:
 		return
@@ -124,7 +185,9 @@ func die(screen):
 
 func _on_plant_area_area_entered(area):
 	plant_in_range = area
+	plant_in_range.get_node("Sprite2D").material.set("shader_paramater/width",10.0)
 
 func _on_plant_area_area_exited(area):
 	if area == plant_in_range:
+		plant_in_range.get_node("Sprite2D").material.set("shader_paramater/width",0.0)
 		plant_in_range = null

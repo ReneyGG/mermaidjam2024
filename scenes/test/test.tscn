@@ -1,0 +1,75 @@
+[gd_scene load_steps=7 format=3 uid="uid://yegr62uiylw4"]
+
+[ext_resource type="Script" path="res://scenes/test/test.gd" id="1_fnpx1"]
+[ext_resource type="Texture2D" uid="uid://e2x5jwr5jk2s" path="res://assets/tileset_cave.png" id="2_m1rxw"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_64jy1"]
+texture = ExtResource("2_m1rxw")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+10:3/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_cidr5"]
+sources/0 = SubResource("TileSetAtlasSource_64jy1")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_a5cwr"]
+frequency = 0.05
+fractal_type = 2
+fractal_octaves = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kuiin"]
+noise = SubResource("FastNoiseLite_a5cwr")
+
+[node name="Test" type="Node2D"]
+script = ExtResource("1_fnpx1")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_cidr5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = SubResource("NoiseTexture2D_kuiin")

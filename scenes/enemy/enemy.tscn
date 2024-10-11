@@ -1,7 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://b42485no0ghjw"]
+[gd_scene load_steps=7 format=3 uid="uid://b42485no0ghjw"]
 
 [ext_resource type="Texture2D" uid="uid://bqj1yyrqfsuu5" path="res://icon.svg" id="1_butkw"]
 [ext_resource type="Script" path="res://scenes/enemy/enemy.gd" id="1_rlkf2"]
+[ext_resource type="Shader" path="res://shaders/hit_flash.gdshader" id="2_3ihvw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ht33g"]
+resource_local_to_scene = true
+shader = ExtResource("2_3ihvw")
+shader_parameter/active = false
+shader_parameter/flash_color = Color(1, 1, 1, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jhyxo"]
 radius = 57.0351
@@ -16,6 +23,7 @@ script = ExtResource("1_rlkf2")
 autostart = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ht33g")
 texture = ExtResource("1_butkw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

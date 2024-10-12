@@ -45,7 +45,6 @@ func LaunchProjectile(initial_pos: Vector2, direction: Vector2, desired_distance
 
 
 func explode():
-	print("Boom")
 	for enemy in $Projectile/ExplosionArea.get_overlapping_bodies():
 		if enemy.is_in_group("enemy"):
 			var direction = global_position.direction_to(enemy.global_position)

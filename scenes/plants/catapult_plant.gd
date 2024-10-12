@@ -20,7 +20,6 @@ func shoot(target_position):
 func _on_shooting_timer_timeout():
 	var others = $RangeArea.get_overlapping_bodies()
 	others.erase(get_tree().get_first_node_in_group("player"))
-	target = others.pick_random()
-	if !target:
-		return
-	shoot(target.global_position)
+	if others:
+		target = others.pick_random()
+		shoot(target.global_position)

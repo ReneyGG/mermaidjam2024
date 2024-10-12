@@ -204,6 +204,8 @@ func get_icon(type):
 			return "res://assets/icons/catapult.png"
 		"multishoot":
 			return "res://assets/icons/multishoot.png"
+		"healing":
+			return "res://assets/icons/multishoot.png"
 
 func die(screen):
 	if dead:

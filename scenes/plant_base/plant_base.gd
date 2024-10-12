@@ -46,9 +46,13 @@ func harvest():
 	hide()
 	
 func take_damage(damage):
-	health = max(0, health - damage)
-	if health == 0:
+	current_health = max(0, current_health - damage)
+	if current_health == 0:
 		die()
+		
+func take_heal(heal):
+	#print(current_health)
+	current_health = min(health, current_health + heal)
 
 #gdzie są te dzieci
 func die():

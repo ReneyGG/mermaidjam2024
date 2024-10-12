@@ -11,12 +11,12 @@ func spawn_enemies():
 	var group_spawn_position = pick_random_position(global_position, 700)
 	for i in range(3):
 		var enemy = load(weighted_random_choice(enemies)).instantiate()
-		var new_scale = randf_range(1, 2)
-		var new_speed = enemy.speed / new_scale
+		#var new_scale = randf_range(1, 2)
+		#var new_speed = enemy.speed / new_scale
 		enemy.global_position = pick_random_position(group_spawn_position, 100)
-		enemy.scale = Vector2(new_scale, new_scale)
-		enemy.speed = new_speed
-		enemy.health += int(new_scale * 5)
+		#enemy.scale = Vector2(new_scale, new_scale)
+		#enemy.speed = new_speed
+		#enemy.health += int(new_scale * 5)
 		add_child(enemy)
 		
 

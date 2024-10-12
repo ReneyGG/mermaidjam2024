@@ -1,15 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://d11qa8vw8txpx"]
+[gd_scene load_steps=7 format=3 uid="uid://d11qa8vw8txpx"]
 
 [ext_resource type="PackedScene" uid="uid://blor77xon5pyw" path="res://scenes/enemy_spawner/EnemySpawner.tscn" id="1_7ogwc"]
-[ext_resource type="PackedScene" uid="uid://c5uiiy7ebuvvo" path="res://scenes/plant_spawner/PlantSpawner.tscn" id="1_s7ylh"]
 [ext_resource type="PackedScene" uid="uid://drux0gpbnnyue" path="res://scenes/player/player.tscn" id="1_tq124"]
 [ext_resource type="PackedScene" uid="uid://dqu6nj5klwbg8" path="res://scenes/base/base.tscn" id="2_f6grg"]
+[ext_resource type="Texture2D" uid="uid://c4q887qjh3i6k" path="res://assets/bg.png" id="5_6uyqu"]
+[ext_resource type="PackedScene" uid="uid://ck505600pjj44" path="res://scenes/plants/shooting_flower.tscn" id="6_jwsia"]
+[ext_resource type="PackedScene" uid="uid://ds6km1jjcctwl" path="res://scenes/plants/healing_plant.tscn" id="6_nmxn4"]
 
 [node name="Level" type="Node2D"]
 
-[node name="EnemySpawner" parent="." instance=ExtResource("1_7ogwc")]
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(628, 377)
+blend_mode = 2
+texture = ExtResource("5_6uyqu")
 
-[node name="PlantSpawner" parent="." instance=ExtResource("1_s7ylh")]
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_left = -855.0
+offset_top = -553.0
+offset_right = 2042.0
+offset_bottom = 1241.0
+
+[node name="EnemySpawner" parent="." instance=ExtResource("1_7ogwc")]
 
 [node name="Player" parent="." instance=ExtResource("1_tq124")]
 position = Vector2(619, 468)
@@ -18,3 +31,9 @@ speed = 500
 [node name="Base" parent="." instance=ExtResource("2_f6grg")]
 position = Vector2(307, 373)
 rotation = 0.698132
+
+[node name="HealingPlant" parent="." instance=ExtResource("6_nmxn4")]
+position = Vector2(59, 533)
+
+[node name="ShootingFlower" parent="." instance=ExtResource("6_jwsia")]
+position = Vector2(199, 238)

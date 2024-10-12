@@ -10,6 +10,7 @@ radius = 373.936
 [node name="SlowingPlant" instance=ExtResource("1_ojbsy")]
 script = ExtResource("2_c0bw0")
 texture = ExtResource("2_u2ok8")
+type = "slowing"
 
 [node name="Sprite2D" parent="." index="0"]
 self_modulate = Color(0.218354, 0.179767, 0.236336, 1)

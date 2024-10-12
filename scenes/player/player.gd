@@ -159,13 +159,13 @@ func craft():
 
 func get_icon(type):
 	match type:
-		"red":
+		"explosive":
 			return "res://assets/icons/red.png"
-		"blue":
+		"shooting":
 			return "res://assets/icons/blue.png"
-		"purple":
+		"slowing":
 			return "res://assets/icons/purple.png"
-		"pink":
+		"aggro":
 			return "res://assets/icons/rose.png"
 		"black":
 			return "res://assets/icons/black.png"

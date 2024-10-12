@@ -13,12 +13,10 @@ modulate = Color(1, 0.176471, 1, 1)
 script = ExtResource("2_1cpvh")
 projectile_scene = ExtResource("3_3nfon")
 texture = ExtResource("2_2l4vg")
+type = "shooting"
 
 [node name="ShootingTimer" type="Timer" parent="." index="0"]
 autostart = true
-
-[node name="Sprite2D" parent="." index="1"]
-texture = ExtResource("2_2l4vg")
 
 [node name="Area2D" type="Area2D" parent="." index="3"]
 collision_layer = 0

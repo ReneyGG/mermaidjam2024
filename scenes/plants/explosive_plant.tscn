@@ -10,6 +10,7 @@ radius = 258.985
 [node name="ExplosivePlant" instance=ExtResource("1_7qo68")]
 script = ExtResource("2_cw6xn")
 texture = ExtResource("3_t8mfb")
+type = "explosive"
 health = 1
 
 [node name="Sprite2D" parent="." index="0"]

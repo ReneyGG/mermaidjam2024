@@ -10,6 +10,7 @@ radius = 307.366
 [node name="AggroPlant" instance=ExtResource("1_7q5st")]
 script = ExtResource("2_pl3b2")
 texture = ExtResource("3_31uja")
+type = "aggro"
 
 [node name="Sprite2D" parent="." index="0"]
 self_modulate = Color(0.93184, 0.825393, 0, 1)

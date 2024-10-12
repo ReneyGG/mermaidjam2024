@@ -3,13 +3,16 @@ extends Node2D
 @export var enemy_scene: PackedScene
 
 var enemies = {
-	"res://scenes/enemy/enemy.tscn": 80,
-	"res://scenes/enemy/enemy_big.tscn": 80
+	"res://scenes/enemy/enemy.tscn": 70,
+	"res://scenes/enemy/enemy_big.tscn": 30
 }
 
+func _ready():
+	randomize()
+
 func spawn_enemies():
-	var group_spawn_position = pick_random_position(global_position, 700)
-	for i in range(3):
+	var group_spawn_position = pick_random_position(global_position, 2255)
+	for i in range(randi_range(1,3)):
 		var enemy = load(weighted_random_choice(enemies)).instantiate()
 		#var new_scale = randf_range(1, 2)
 		#var new_speed = enemy.speed / new_scale
@@ -18,8 +21,6 @@ func spawn_enemies():
 		#enemy.speed = new_speed
 		#enemy.health += int(new_scale * 5)
 		add_sibling(enemy)
-		
-
 
 func pick_random_position(center, distance):	
 	# Losujemy kąt w radianach (od 0 do 2 * PI)

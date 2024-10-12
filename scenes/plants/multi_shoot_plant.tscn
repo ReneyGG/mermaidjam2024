@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://c31tt5lluqkyu"]
+
+[ext_resource type="PackedScene" uid="uid://d4hia2tutqsev" path="res://scenes/plant_base/plant_base.tscn" id="1_tjwfa"]
+[ext_resource type="Script" path="res://scenes/plants/multi_shoot_plant.gd" id="2_ivwbu"]
+[ext_resource type="PackedScene" uid="uid://kevxggnqglel" path="res://scenes/projectiles/basic_projectile.tscn" id="3_o5fmj"]
+[ext_resource type="Texture2D" uid="uid://bqj1yyrqfsuu5" path="res://icon.svg" id="4_dsx64"]
+
+[node name="MultiShootPlant" instance=ExtResource("1_tjwfa")]
+script = ExtResource("2_ivwbu")
+projectile_scene = ExtResource("3_o5fmj")
+projectile_count = 12
+texture = ExtResource("4_dsx64")
+type = "multishoot"
+
+[node name="ShootingTimer" type="Timer" parent="." index="0"]
+wait_time = 4.0
+autostart = true
+
+[connection signal="timeout" from="ShootingTimer" to="." method="_on_shooting_timer_timeout"]

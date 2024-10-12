@@ -160,7 +160,13 @@ func get_icon(type):
 		"slowing":
 			return "res://assets/icons/slowing.png"
 		"aggro":
-			return "res://assets/icons/aggro.png"
+			return "res://assets/icons/rose.png"
+		"melee":
+			return "res://assets/icons/black.png"
+		"catapult":
+			return "res://assets/icons/black.png"
+		"multishoot":
+			return "res://assets/icons/black.png"
 
 func die(screen):
 	if dead:

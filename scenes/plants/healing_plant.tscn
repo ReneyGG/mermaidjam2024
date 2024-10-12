@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://ds6km1jjcctwl"]
+
+[ext_resource type="PackedScene" uid="uid://d4hia2tutqsev" path="res://scenes/plant_base/plant_base.tscn" id="1_tisd6"]
+[ext_resource type="Script" path="res://scenes/plants/healing_plant.gd" id="2_f56q6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1ruou"]
+radius = 285.296
+
+[node name="HealingPlant" instance=ExtResource("1_tisd6")]
+script = ExtResource("2_f56q6")
+
+[node name="HealingArea" type="Area2D" parent="." index="2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealingArea" index="0"]
+shape = SubResource("CircleShape2D_1ruou")
+
+[connection signal="area_entered" from="HealingArea" to="." method="_on_healing_area_area_entered"]

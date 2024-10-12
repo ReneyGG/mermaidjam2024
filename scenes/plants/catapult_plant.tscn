@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://bg4rxpbeg8auw"]
+
+[ext_resource type="PackedScene" uid="uid://d4hia2tutqsev" path="res://scenes/plant_base/plant_base.tscn" id="1_d16aa"]
+[ext_resource type="Script" path="res://scenes/plants/catapult_plant.gd" id="2_rsdhh"]
+[ext_resource type="Texture2D" uid="uid://bqj1yyrqfsuu5" path="res://icon.svg" id="3_0t8sm"]
+[ext_resource type="PackedScene" uid="uid://c0jyp7bwg7lv1" path="res://scenes/projectiles/catapult_projectile.tscn" id="3_xwnt3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k026c"]
+radius = 787.966
+
+[node name="CatapultPlant" instance=ExtResource("1_d16aa")]
+script = ExtResource("2_rsdhh")
+projectile_scene = ExtResource("3_xwnt3")
+texture = ExtResource("3_0t8sm")
+type = "catapult"
+
+[node name="ShootingTimer" type="Timer" parent="." index="0"]
+wait_time = 2.0
+autostart = true
+
+[node name="RangeArea" type="Area2D" parent="." index="3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RangeArea" index="0"]
+shape = SubResource("CircleShape2D_k026c")
+
+[connection signal="timeout" from="ShootingTimer" to="." method="_on_shooting_timer_timeout"]
+[connection signal="body_entered" from="RangeArea" to="." method="_on_range_area_body_entered"]

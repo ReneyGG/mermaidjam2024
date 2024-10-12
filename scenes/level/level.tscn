@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://drux0gpbnnyue" path="res://scenes/player/player.tscn" id="1_tq124"]
 [ext_resource type="PackedScene" uid="uid://dqu6nj5klwbg8" path="res://scenes/base/base.tscn" id="2_f6grg"]
 [ext_resource type="PackedScene" uid="uid://blor77xon5pyw" path="res://scenes/enemy_spawner/EnemySpawner.tscn" id="3_g468s"]
-[ext_resource type="PackedScene" uid="uid://bg4rxpbeg8auw" path="res://scenes/plants/catapult_plant.tscn" id="4_rpwfy"]
+[ext_resource type="PackedScene" uid="uid://c31tt5lluqkyu" path="res://scenes/plants/multi_shoot_plant.tscn" id="4_r6h7s"]
 
 [node name="Level" type="Node2D"]
 
@@ -17,5 +17,5 @@ rotation = 0.698132
 position = Vector2(540, 348)
 rotation = 0.698132
 
-[node name="CatapultPlant" parent="." instance=ExtResource("4_rpwfy")]
-position = Vector2(132, 424)
+[node name="MultiShootPlant" parent="." instance=ExtResource("4_r6h7s")]
+position = Vector2(81, 345)

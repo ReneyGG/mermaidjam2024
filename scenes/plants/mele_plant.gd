@@ -5,4 +5,5 @@ extends "res://scenes/plant_base/plant_base.gd"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	bee.rotation += delta * bee_speed
+	super(delta)
+	bee.rotation -= delta * bee_speed

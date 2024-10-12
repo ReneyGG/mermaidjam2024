@@ -8,13 +8,17 @@ var target
 @export var attack_damage: int = 2 
 @onready var attack_timer = $AttackCooldown
 
+var death_effect_scene = preload("res://scenes/effects/death_effect.tscn")
+
 var can_move: bool = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	target = get_tree().get_first_node_in_group("base")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+@warning_ignore("unused_parameter")
 func _process(delta):
+	$Sprite2D.flip_h = velocity.x < 0;
 	if !target:
 		return
 	var direction = global_position.direction_to(target.global_position)
@@ -26,6 +30,10 @@ func _process(delta):
 func take_damage(damage):
 	health = max(0, health - damage)
 	if health == 0:
+		var death_effect = death_effect_scene.instantiate()
+		add_sibling(death_effect)
+		death_effect.global_position = global_position
+		death_effect.emitting = true
 		queue_free()
 	$Sprite2D.material.set_shader_parameter("active",true)
 	await get_tree().create_timer(.1).timeout

@@ -4,8 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://c5uiiy7ebuvvo" path="res://scenes/plant_spawner/PlantSpawner.tscn" id="1_s7ylh"]
 [ext_resource type="PackedScene" uid="uid://drux0gpbnnyue" path="res://scenes/player/player.tscn" id="1_tq124"]
 [ext_resource type="PackedScene" uid="uid://dqu6nj5klwbg8" path="res://scenes/base/base.tscn" id="2_f6grg"]
-[ext_resource type="PackedScene" uid="uid://fp8msuibuiyt" path="res://scenes/plants/red_plant.tscn" id="4_2pljm"]
-[ext_resource type="PackedScene" uid="uid://divkvupn6jl4d" path="res://scenes/plants/blue_plant.tscn" id="5_fdv72"]
+[ext_resource type="PackedScene" uid="uid://blor77xon5pyw" path="res://scenes/enemy_spawner/EnemySpawner.tscn" id="3_g468s"]
+[ext_resource type="PackedScene" uid="uid://ds6km1jjcctwl" path="res://scenes/plants/healing_plant.tscn" id="4_wxswv"]
+[ext_resource type="PackedScene" uid="uid://ca7yclfrohu88" path="res://scenes/plants/mele_plant.tscn" id="5_eljt0"]
+[ext_resource type="PackedScene" uid="uid://ck505600pjj44" path="res://scenes/plants/shooting_flower.tscn" id="5_ixwpg"]
 
 [node name="Level" type="Node2D"]
 
@@ -32,3 +34,15 @@ speed = 500
 [node name="Base" parent="." instance=ExtResource("2_f6grg")]
 position = Vector2(307, 373)
 rotation = 0.698132
+
+[node name="EnemySpawner" parent="." instance=ExtResource("3_g468s")]
+position = Vector2(540, 348)
+
+[node name="HealingPlant" parent="." instance=ExtResource("4_wxswv")]
+position = Vector2(72, 294)
+
+[node name="MeleePlant" parent="." instance=ExtResource("5_eljt0")]
+position = Vector2(-191, 297)
+
+[node name="ShootingFlower" parent="." instance=ExtResource("5_ixwpg")]
+position = Vector2(510, 225)

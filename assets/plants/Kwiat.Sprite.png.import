@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://boyituf00s31o"
-path="res://.godot/imported/DuszekSprite.png-e2577701bc8f5d7ee090db9e809c08a7.ctex"
+uid="uid://8cro55absq84"
+path="res://.godot/imported/Kwiat.Sprite.png-323971f722b957871802310166d5b6d5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/DuszekSprite.png"
-dest_files=["res://.godot/imported/DuszekSprite.png-e2577701bc8f5d7ee090db9e809c08a7.ctex"]
+source_file="res://assets/plants/Kwiat.Sprite.png"
+dest_files=["res://.godot/imported/Kwiat.Sprite.png-323971f722b957871802310166d5b6d5.ctex"]
 
 [params]
 

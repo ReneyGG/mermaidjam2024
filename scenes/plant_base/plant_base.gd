@@ -3,19 +3,25 @@ extends Node2D
 @export var type : String
 @export var health : int = 5
 @export var color : Color
-
 @export var selected := false
 @export var adopted_children : Array
 
 var adopted := false
 var parent
 
+@export var current_health = health
+
 func _ready():
+	$ProgressBar.max_value = health
 	$Sprite2D.modulate = color
 
 func _physics_process(_delta):
 	if parent and adopted:
 		self.global_position = parent.global_position
+
+func _process(delta):
+	#print(name, ": ", current_health)
+	$ProgressBar.value = current_health
 
 func switch_select():
 	if selected:

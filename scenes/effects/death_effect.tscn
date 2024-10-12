@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://cxww52i12d67h"]
+
+[ext_resource type="Texture2D" uid="uid://bqj1yyrqfsuu5" path="res://icon.svg" id="1_1hf4h"]
+[ext_resource type="Script" path="res://scenes/effects/death_effect.gd" id="2_h1kfy"]
+
+[sub_resource type="Curve" id="Curve_5cog1"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_jik7v"]
+curve = SubResource("Curve_5cog1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xbjmk"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 100.0
+angle_min = -90.0
+angle_max = 90.0
+direction = Vector3(0, 1, 0)
+spread = 180.0
+initial_velocity_min = 416.31
+initial_velocity_max = 450.64
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 35.74
+linear_accel_max = 90.97
+scale_curve = SubResource("CurveTexture_jik7v")
+
+[node name="DeathEffect" type="GPUParticles2D"]
+emitting = false
+amount = 9
+process_material = SubResource("ParticleProcessMaterial_xbjmk")
+texture = ExtResource("1_1hf4h")
+lifetime = 0.75
+one_shot = true
+explosiveness = 1.0
+script = ExtResource("2_h1kfy")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

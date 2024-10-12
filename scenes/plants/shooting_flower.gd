@@ -6,6 +6,7 @@ var target
 func shoot():
 	var others = $Area2D.get_overlapping_bodies()
 	others.erase(get_tree().get_first_node_in_group("player"))
+	others.erase(get_tree().get_first_node_in_group("base"))
 	target = get_nearest_node(others)
 	if !target:
 		return

@@ -37,10 +37,10 @@ func attack():
 		if area.has_method("take_damage"):
 			area.take_damage(attack_damage)
 
-func knockback(direction):
+func knockback(direction, power):
 	can_move = false
 	var tween = get_tree().create_tween()
-	velocity = direction * 750
+	velocity = direction * power
 	tween.tween_property(self, "velocity", Vector2.ZERO, 1)
 	await tween.finished
 	can_move = true

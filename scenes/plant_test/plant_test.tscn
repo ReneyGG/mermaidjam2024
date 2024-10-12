@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://cj3jlrqjytf4o"]
+[gd_scene load_steps=4 format=3 uid="uid://cj3jlrqjytf4o"]
 
 [ext_resource type="PackedScene" uid="uid://drux0gpbnnyue" path="res://scenes/player/player.tscn" id="1_6067s"]
 [ext_resource type="PackedScene" uid="uid://ck505600pjj44" path="res://scenes/plants/shooting_flower.tscn" id="2_jqooq"]
@@ -8,5 +8,16 @@
 [node name="Player" parent="." instance=ExtResource("1_6067s")]
 position = Vector2(289, 220)
 
-[node name="Flower" parent="." instance=ExtResource("2_jqooq")]
-position = Vector2(696, 148)
+[node name="Plants" type="Node2D" parent="."]
+
+[node name="Blue" parent="Plants" instance=ExtResource("2_n7qyh")]
+position = Vector2(640, 91)
+
+[node name="Blue2" parent="Plants" instance=ExtResource("2_n7qyh")]
+position = Vector2(773, 350)
+
+[node name="Red" parent="Plants" instance=ExtResource("3_0cbom")]
+position = Vector2(527, 446)
+
+[node name="Red2" parent="Plants" instance=ExtResource("3_0cbom")]
+position = Vector2(702, 563)

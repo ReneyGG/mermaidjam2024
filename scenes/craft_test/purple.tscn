@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnnf2obti88ny"]
+
+[ext_resource type="PackedScene" uid="uid://d4hia2tutqsev" path="res://scenes/plant_base/plant_base.tscn" id="1_6lh1j"]
+[ext_resource type="Texture2D" uid="uid://42qbyl7j8fit" path="res://assets/icons/purple.png" id="2_66tsp"]
+
+[node name="Rose" instance=ExtResource("1_6lh1j")]
+texture = ExtResource("2_66tsp")
+type = "purple"

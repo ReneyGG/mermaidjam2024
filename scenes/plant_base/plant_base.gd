@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var texture : Texture
+@export var type : String
 @export var health : int = 5
 
 func _ready():
@@ -9,7 +10,7 @@ func _ready():
 func pick():
 	$CollisionShape2D.disabled = true
 	pass
-
+ 
 func drop():
 	$CollisionShape2D.disabled = false
 	pass

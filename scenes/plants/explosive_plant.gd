@@ -7,7 +7,7 @@ func explode():
 			enemy.take_damage(2)
 			var direction = global_position.direction_to(enemy.global_position)
 			enemy.knockback(direction, 750)
-	queue_free()
+	die()
 
 func take_damage(damage):
 	health = max(0, health - damage)

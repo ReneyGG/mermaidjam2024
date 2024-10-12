@@ -59,17 +59,21 @@ func get_input():
 			await get_tree().physics_frame
 			$PlantArea.monitoring = true
 		elif hold:
-			hold.harvest()
 			if storage.size() == 2:
 				storage.clear()
 				$CanvasLayer/Control/Slot1.texture = null
 				$CanvasLayer/Control/Slot2.texture = null
+			hold.harvest()
 			add_storage(hold)
 			if storage.size() != 2:
 				hold = null
-			plant_in_range = null
-			$PlantArea.monitoring = true
-			$CanvasLayer/Control/Hold.texture = null
+				plant_in_range = null
+				$CanvasLayer/Control/Hold.texture = null
+				$PlantArea.monitoring = false
+				await get_tree().physics_frame
+				$PlantArea.monitoring = true
+			else:
+				$PlantArea.monitoring = false
 	return input
 
 func _physics_process(delta):
@@ -105,42 +109,66 @@ func _on_freeze_timeout():
 
 func add_storage(plant):
 	if storage.size() == 0:
-		storage.append([plant.type,plant.color])
+		storage.append(plant)
 		$CanvasLayer/Control/Slot1.texture = load(get_icon(plant.type))
 		$CanvasLayer/Control/Slot1.modulate = plant.color
 	elif storage.size() == 1:
-		storage.append([plant.type,plant.color])
+		storage.append(plant)
 		$CanvasLayer/Control/Slot2.texture = load(get_icon(plant.type))
 		$CanvasLayer/Control/Slot2.modulate = plant.color
 		craft()
 
 func craft():
 	var plant_scene
-	if storage[0][0] == "red" and storage[1][0] == "red":
-		$CanvasLayer/Control/Hold.texture = load(get_icon("explosive"))
-		$CanvasLayer/Control/Hold.modulate = Color(1.0, 1.0, 0.0, 1.0)
-		plant_scene = load("res://scenes/plants/explosive_plant.tscn")
+	
+	
+	if storage[0].type == "red" or storage[0].type == "blue" or storage[1].type == "red" or storage[1].type == "blue":
+		if storage[0].type == "red" and storage[1].type == "red":
+			$CanvasLayer/Control/Hold.texture = load(get_icon("explosive"))
+			$CanvasLayer/Control/Hold.modulate = Color(1.0, 1.0, 0.0, 1.0)
+			plant_scene = load("res://scenes/plants/explosive_plant.tscn")
+			
+		elif storage[0].type == "blue" and storage[1].type == "blue":
+			$CanvasLayer/Control/Hold.texture = load(get_icon("slowing"))
+			$CanvasLayer/Control/Hold.modulate = Color(0.0, 1.0, 1.0, 1.0)
+			plant_scene = load("res://scenes/plants/slowing_plant.tscn")
+			
+		elif (storage[0].type == "red" and storage[1].type == "blue") or (storage[0].type == "blue" and storage[1].type == "red"):
+			$CanvasLayer/Control/Hold.texture = load(get_icon("shooting"))
+			$CanvasLayer/Control/Hold.modulate = Color(1.0, 0.0, 1.0, 1.0)
+			plant_scene = load("res://scenes/plants/shooting_flower.tscn")
 		
-	elif storage[0][0] == "blue" and storage[1][0] == "blue":
-		$CanvasLayer/Control/Hold.texture = load(get_icon("slowing"))
-		$CanvasLayer/Control/Hold.modulate = Color(0.0, 1.0, 1.0, 1.0)
-		plant_scene = load("res://scenes/plants/slowing_plant.tscn")
+		elif (storage[0].type == "red" and storage[1].type == "shooting") or (storage[0].type == "shooting" and storage[1].type == "red"):
+			$CanvasLayer/Control/Hold.texture = load(get_icon("multishoot"))
+			$CanvasLayer/Control/Hold.modulate = Color(1.0, 0.0, 1.0, 1.0)
+			plant_scene = load("res://scenes/plants/multi_shoot_plant.tscn")
 		
-	elif (storage[0][0] == "red" and storage[1][0] == "blue") or (storage[0][0] == "blue" and storage[1][0] == "red"):
-		$CanvasLayer/Control/Hold.texture = load(get_icon("shooting"))
-		$CanvasLayer/Control/Hold.modulate = Color(1.0, 0.0, 1.0, 1.0)
-		plant_scene = load("res://scenes/plants/shooting_flower.tscn")
+		elif (storage[0].type == "red" and storage[1].type == "slowing") or (storage[0].type == "slowing" and storage[1].type == "red"):
+			$CanvasLayer/Control/Hold.texture = load(get_icon("aggro"))
+			$CanvasLayer/Control/Hold.modulate = Color(1.0, 0.0, 1.0, 1.0)
+			plant_scene = load("res://scenes/plants/aggro_plant.tscn")
+		
+		elif (storage[0].type == "red" and storage[1].type == "explosive") or (storage[0].type == "explosive" and storage[1].type == "red"):
+			$CanvasLayer/Control/Hold.texture = load(get_icon("catapult"))
+			$CanvasLayer/Control/Hold.modulate = Color(1.0, 0.0, 1.0, 1.0)
+			plant_scene = load("res://scenes/plants/catapult_plant.tscn")
+		
+		elif (storage[0].type == "blue" and storage[1].type == "shooting") or (storage[0].type == "shooting" and storage[1].type == "blue"):
+			$CanvasLayer/Control/Hold.texture = load(get_icon("melee"))
+			$CanvasLayer/Control/Hold.modulate = Color(1.0, 0.0, 1.0, 1.0)
+			plant_scene = load("res://scenes/plants/mele_plant.tscn")
+		
+		elif (storage[0].type == "blue" and storage[1].type == "slowing") or (storage[0].type == "slowing" and storage[1].type == "blue"):
+			$CanvasLayer/Control/Hold.texture = load(get_icon("healing"))
+			$CanvasLayer/Control/Hold.modulate = Color(1.0, 0.0, 1.0, 1.0)
+			plant_scene = load("res://scenes/plants/healing_plant.tscn")
+		
+		elif (storage[0].type == "blue" and storage[1].type == "explosive") or (storage[0].type == "explosive" and storage[1].type == "blue"):
+			pass #ściana???
+	else:
+		storage[1].adopt_by(storage[0])
+		storage[0].adopted_children.append(storage[1])
 	
-	elif storage[0][0] == "shooting" and storage[1][0] == "shooting":
-		$CanvasLayer/Control/Hold.texture = load(get_icon("shooting"))
-		$CanvasLayer/Control/Hold.modulate = storage[0][1].blend
-		plant_scene = load("res://scenes/plants/shooting_flower.tscn")
-	
-	elif (storage[0][0] == "red" and storage[1][0] == "slowing") or (storage[0][0] == "slowing" and storage[1][0] == "red"):
-		pass
-	
-	elif (storage[0][0] == "red" and storage[1][0] == "explosive") or (storage[0][0] == "explosive" and storage[1][0] == "red"):
-		pass
 	
 	if plant_scene:
 		var plant_inst = plant_scene.instantiate()
@@ -150,8 +178,10 @@ func craft():
 		$PlantArea.monitoring = false
 		plant_in_range = null
 	else:
-		hold = null
-		$PlantArea.monitoring = true
+		storage[0].global_position = self.global_position
+		hold = storage[0]
+		storage[0].show()
+		$PlantArea.monitoring = false
 		plant_in_range = null
 
 func get_icon(type):
@@ -167,15 +197,13 @@ func get_icon(type):
 		"slowing":
 			return "res://assets/icons/slowing.png"
 		"aggro":
-			return "res://assets/icons/rose.png"
+			return "res://assets/icons/aggro.png"
 		"melee":
-			return "res://assets/icons/black.png"
+			return "res://assets/icons/melee.png"
 		"catapult":
-			return "res://assets/icons/black.png"
+			return "res://assets/icons/catapult.png"
 		"multishoot":
-			return "res://assets/icons/black.png"
-		"healing":
-			return "res://assets/icons/black.png"
+			return "res://assets/icons/multishoot.png"
 
 func die(screen):
 	if dead:

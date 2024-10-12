@@ -19,6 +19,7 @@ y_sort_enabled = true
 position = Vector2(628, 377)
 blend_mode = 2
 texture = ExtResource("5_6uyqu")
+texture_scale = 2.0
 
 [node name="ColorRect" type="ColorRect" parent="TileMapLayer"]
 offset_left = -855.0

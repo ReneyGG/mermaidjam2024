@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjnlalg6l6ieu"]
+
+[ext_resource type="PackedScene" uid="uid://c5uiiy7ebuvvo" path="res://scenes/plant_spawner/PlantSpawner.tscn" id="1_hfxpo"]
+[ext_resource type="PackedScene" uid="uid://blor77xon5pyw" path="res://scenes/enemy_spawner/EnemySpawner.tscn" id="2_t7v2q"]
+[ext_resource type="PackedScene" uid="uid://dqu6nj5klwbg8" path="res://scenes/base/base.tscn" id="3_ttf7j"]
+[ext_resource type="PackedScene" uid="uid://drux0gpbnnyue" path="res://scenes/player/player.tscn" id="4_cvow2"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="PlantSpawner" parent="." instance=ExtResource("1_hfxpo")]
+
+[node name="EnemySpawner" parent="." instance=ExtResource("2_t7v2q")]
+
+[node name="Base" parent="." instance=ExtResource("3_ttf7j")]
+
+[node name="Player" parent="." instance=ExtResource("4_cvow2")]
+position = Vector2(-382, 135)

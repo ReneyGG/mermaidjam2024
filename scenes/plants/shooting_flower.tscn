@@ -198,7 +198,7 @@ radius = 335.121
 script = ExtResource("2_1cpvh")
 projectile_scene = ExtResource("3_3nfon")
 type = "shooting"
-color = Color(1, 0, 1, 1)
+color = Color(0.898039, 0.74902, 0.47451, 1)
 
 [node name="ShootingTimer" type="Timer" parent="." index="0"]
 autostart = true
@@ -206,7 +206,6 @@ autostart = true
 [node name="Sprite2D" parent="." index="1"]
 material = SubResource("ShaderMaterial_fse8f")
 sprite_frames = SubResource("SpriteFrames_yt1a7")
-autoplay = "default"
 
 [node name="Area2D" type="Area2D" parent="." index="3"]
 collision_layer = 0

@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dgshx1ob7jky5"]
+[gd_scene load_steps=6 format=3 uid="uid://dgshx1ob7jky5"]
 
 [ext_resource type="PackedScene" uid="uid://d4hia2tutqsev" path="res://scenes/plant_base/plant_base.tscn" id="1_ojbsy"]
 [ext_resource type="Script" path="res://scenes/plants/slowing_plant.gd" id="2_c0bw0"]
-[ext_resource type="Texture2D" uid="uid://b75cxxdt8vfbd" path="res://assets/icons/slowing.png" id="3_2u7ho"]
 [ext_resource type="Shader" path="res://scenes/plant_base/plant_base.gdshader" id="3_s8g4a"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iuq4r"]
@@ -20,11 +19,10 @@ radius = 373.936
 [node name="SlowingPlant" instance=ExtResource("1_ojbsy")]
 script = ExtResource("2_c0bw0")
 type = "slowing"
-color = Color(0, 1, 1, 1)
+color = Color(0.447059, 0.364706, 0.333333, 1)
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_iuq4r")
-texture = ExtResource("3_2u7ho")
 
 [node name="SlowingArea" type="Area2D" parent="." index="2"]
 

@@ -7,6 +7,7 @@ var direction
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if direction:
+		rotation += delta * 2
 		global_position += direction * speed * delta
 
 

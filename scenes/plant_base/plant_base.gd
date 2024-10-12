@@ -14,8 +14,12 @@ var parent
 @export var current_health = health
 
 func _ready():
+	randomize()
 	$ProgressBar.max_value = health
 	$Sprite2D.modulate = color
+	$Sprite2D.frame = randi_range(0,3)
+	$Sprite2D.play("default")
+	$Aurora.hide()
 
 func _physics_process(_delta):
 	if parent and adopted:
@@ -25,12 +29,18 @@ func _process(delta):
 	#print(name, ": ", current_health)
 	$ProgressBar.value = current_health
 
+func change_color(c):
+	color = c
+	$Sprite2D.modulate = c
+
 func switch_select(on):
 	selected = on
 	if selected:
-		get_node("Sprite2D").material.set_shader_parameter("width", 4.0)
+		#get_node("Sprite2D").material.set_shader_parameter("width", 6.0)
+		$Aurora.show()
 	else:
-		get_node("Sprite2D").material.set_shader_parameter("width", 0.0)
+		#get_node("Sprite2D").material.set_shader_parameter("width", 0.0)
+		$Aurora.hide()
 
 func adopt_by(new_parent):
 	adopted = true

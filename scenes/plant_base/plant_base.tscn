@@ -1,17 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://d4hia2tutqsev"]
+[gd_scene load_steps=27 format=3 uid="uid://d4hia2tutqsev"]
 
 [ext_resource type="Script" path="res://scenes/plant_base/plant_base.gd" id="1_23wbr"]
-[ext_resource type="Shader" path="res://scenes/plant_base/plant_base.gdshader" id="2_qf23b"]
+[ext_resource type="Texture2D" uid="uid://cvo2chm63mf7k" path="res://assets/otoczka_sprite.png" id="3_br1nv"]
 [ext_resource type="Texture2D" uid="uid://cc4hi82wrsvs8" path="res://assets/heal.12perframe.png" id="3_k3ffu"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jwihc"]
-resource_local_to_scene = true
-shader = ExtResource("2_qf23b")
-shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/width = 0.0
-shader_parameter/pattern = 1
-shader_parameter/inside = false
-shader_parameter/add_margins = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_564p6"]
 atlas = ExtResource("3_k3ffu")
@@ -133,6 +124,42 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8louf"]
+atlas = ExtResource("3_br1nv")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgx6f"]
+atlas = ExtResource("3_br1nv")
+region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ts0tm"]
+atlas = ExtResource("3_br1nv")
+region = Rect2(400, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ng3hh"]
+atlas = ExtResource("3_br1nv")
+region = Rect2(600, 0, 200, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6x0dk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8louf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgx6f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ts0tm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ng3hh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 24.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_6yntm"]
 radius = 60.0333
 
@@ -143,12 +170,15 @@ script = ExtResource("1_23wbr")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 light_mask = 0
-material = SubResource("ShaderMaterial_jwihc")
 
 [node name="HealEffect" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -129.24)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_1bmda")
+
+[node name="Aurora" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6x0dk")
+autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_6yntm")

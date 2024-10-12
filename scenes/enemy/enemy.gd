@@ -7,14 +7,19 @@ var target
 @export var attack_cooldown: float = 1.0
 @export var attack_damage: int = 2 
 @onready var attack_timer = $AttackCooldown
+@export var points_amount: int = 1
 
 var death_effect_scene = preload("res://scenes/effects/death_effect.tscn")
 
 var can_move: bool = true
+
+signal death(points)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Sprite2D.set_frame(randf_range(0, 23))
 	target = get_tree().get_first_node_in_group("base")
+	connect("death", get_parent().get_parent().get_parent().update_score)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 @warning_ignore("unused_parameter")
@@ -38,6 +43,7 @@ func take_damage(damage):
 		add_sibling(death_effect)
 		death_effect.global_position = global_position
 		death_effect.emitting = true
+		death.emit(points_amount)
 		queue_free()
 	$Sprite2D.material.set_shader_parameter("active",true)
 	await get_tree().create_timer(.1).timeout

@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://d11qa8vw8txpx"]
+[gd_scene load_steps=9 format=3 uid="uid://d11qa8vw8txpx"]
 
 [ext_resource type="PackedScene" uid="uid://blor77xon5pyw" path="res://scenes/enemy_spawner/EnemySpawner.tscn" id="1_7ogwc"]
+[ext_resource type="Script" path="res://scenes/level/level.gd" id="1_ptr4r"]
 [ext_resource type="PackedScene" uid="uid://drux0gpbnnyue" path="res://scenes/player/player.tscn" id="1_tq124"]
 [ext_resource type="PackedScene" uid="uid://dqu6nj5klwbg8" path="res://scenes/base/base.tscn" id="2_f6grg"]
 [ext_resource type="Texture2D" uid="uid://c4q887qjh3i6k" path="res://assets/bg.png" id="5_6uyqu"]
@@ -9,18 +10,17 @@
 [ext_resource type="PackedScene" uid="uid://c33074g0o5thl" path="res://scenes/plants/explosive_plant.tscn" id="8_g7jhe"]
 
 [node name="Level" type="Node2D"]
+script = ExtResource("1_ptr4r")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 y_sort_enabled = true
 
 [node name="PointLight2D" type="PointLight2D" parent="TileMapLayer"]
-visible = false
 position = Vector2(628, 377)
 blend_mode = 2
 texture = ExtResource("5_6uyqu")
 
 [node name="ColorRect" type="ColorRect" parent="TileMapLayer"]
-visible = false
 offset_left = -855.0
 offset_top = -553.0
 offset_right = 2042.0

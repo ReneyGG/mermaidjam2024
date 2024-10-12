@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var health: int = 10
+@export var health: int = 20
 var max_health = health
 
 signal base_destroyed

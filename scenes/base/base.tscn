@@ -15,6 +15,7 @@ shader_parameter/flash_color = Color(1, 1, 1, 1)
 
 [node name="Base" type="Area2D"]
 script = ExtResource("2_h72af")
+health = 1000000
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_3ckvi")

@@ -4,7 +4,10 @@ const WIDTH = 2500
 const HEIGHT = 1500
 
 var plant_limit = 5
-var plants = [preload("res://scenes/plants/shooting_flower.tscn")]
+var plants = [preload("res://scenes/plants/shooting_flower.tscn"),
+preload("res://scenes/plants/aggro_plant.tscn"),
+preload("res://scenes/plants/explosive_plant.tscn"),
+preload("res://scenes/plants/slowing_plant.tscn")]
 
 func _on_spawn_timer_timeout():
 	if get_tree().get_node_count_in_group("plant") > plant_limit:

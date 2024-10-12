@@ -4,6 +4,7 @@ extends Area2D
 var max_health = health
 
 func _process(delta):
+	print(health)
 	$CanvasLayer/VBoxContainer/ProgressBar.max_value = max_health
 	$CanvasLayer/VBoxContainer/ProgressBar.value = health
 

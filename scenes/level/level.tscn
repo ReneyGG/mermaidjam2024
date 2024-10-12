@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dqu6nj5klwbg8" path="res://scenes/base/base.tscn" id="2_f6grg"]
 [ext_resource type="PackedScene" uid="uid://c5uiiy7ebuvvo" path="res://scenes/plant_spawner/PlantSpawner.tscn" id="4_eo7tn"]
 [ext_resource type="Texture2D" uid="uid://c4q887qjh3i6k" path="res://assets/bg.png" id="5_6uyqu"]
+[ext_resource type="PackedScene" uid="uid://divkvupn6jl4d" path="res://scenes/plants/blue_plant.tscn" id="5_ipei1"]
 [ext_resource type="PackedScene" uid="uid://cq5kexi1t0rcl" path="res://scenes/game_over_menu/GameOverMenu.tscn" id="7_y0ikq"]
-[ext_resource type="PackedScene" uid="uid://dcix2stiu1aeb" path="res://scenes/visual_novel/visual_novel.tscn" id="10_coqiw"]
 
 [sub_resource type="Animation" id="Animation_3clrl"]
 length = 0.001
@@ -74,6 +74,9 @@ offset_bottom = 1241.0
 position = Vector2(285, 213)
 speed = 500
 
+[node name="BluePlant" parent="TileMapLayer" instance=ExtResource("5_ipei1")]
+position = Vector2(83, 352)
+
 [node name="Interface" type="CanvasLayer" parent="."]
 
 [node name="GameOverMenu" parent="Interface" instance=ExtResource("7_y0ikq")]
@@ -112,5 +115,3 @@ vertical_alignment = 1
 libraries = {
 "": SubResource("AnimationLibrary_aoojh")
 }
-
-[node name="VisualNovel" parent="Interface" instance=ExtResource("10_coqiw")]

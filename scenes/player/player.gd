@@ -37,6 +37,10 @@ func get_input():
 		if plant_in_range and not hold:
 			plant_in_range.pick()
 			hold = plant_in_range
+			if $Sprite2D.scale.x == -1:
+				hold.get_node("Sprite2D").flip_h = false
+			else:
+				hold.get_node("Sprite2D").flip_h = true
 			$PlantArea.monitoring = false
 			plant_in_range = null
 			$CanvasLayer/Control/Hold.texture = load(get_icon(hold.type))
@@ -82,7 +86,7 @@ func _physics_process(delta):
 	
 	if hold:
 		$Sprite2D/pot.visible = true
-		hold.global_position = $Sprite2D/pot.global_position + Vector2(7,-100)
+		hold.global_position = $Sprite2D/pot.global_position + Vector2(11*sign($Sprite2D.scale.x),-100)
 	else:
 		$Sprite2D/pot.visible = false
 		

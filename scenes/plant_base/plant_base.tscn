@@ -146,6 +146,7 @@ material = SubResource("ShaderMaterial_jwihc")
 scale = Vector2(0.6, 0.6)
 
 [node name="HealEffect" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(0, -129.24)
 sprite_frames = SubResource("SpriteFrames_1bmda")
 

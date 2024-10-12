@@ -18,6 +18,7 @@ texture = ExtResource("1_wxpl4")
 texture = ExtResource("2_h2bwe")
 
 [node name="ExplosionArea" type="Area2D" parent="Projectile"]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Projectile/ExplosionArea"]
 shape = SubResource("CircleShape2D_7rc81")

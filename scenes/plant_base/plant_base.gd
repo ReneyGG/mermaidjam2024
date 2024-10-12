@@ -9,6 +9,8 @@ extends Node2D
 var adopted := false
 var parent
 
+@export var available := true
+
 @export var current_health = health
 
 func _ready():
@@ -23,13 +25,12 @@ func _process(delta):
 	#print(name, ": ", current_health)
 	$ProgressBar.value = current_health
 
-func switch_select():
+func switch_select(on):
+	selected = on
 	if selected:
-		selected = false
-		get_node("Sprite2D").material.set_shader_parameter("width", 0.0)
-	else:
-		selected = true
 		get_node("Sprite2D").material.set_shader_parameter("width", 4.0)
+	else:
+		get_node("Sprite2D").material.set_shader_parameter("width", 0.0)
 
 func adopt_by(new_parent):
 	adopted = true
@@ -42,6 +43,7 @@ func drop():
 	$CollisionShape2D.disabled = false
 
 func harvest():
+	available = false
 	$CollisionShape2D.disabled = true
 	hide()
 	

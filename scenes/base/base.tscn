@@ -47,7 +47,6 @@ size = Vector2(302.89, 212.265)
 
 [node name="Base" type="Area2D" groups=["base"]]
 script = ExtResource("2_h72af")
-health = 5
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." groups=["base"]]
 material = SubResource("ShaderMaterial_ht33g")

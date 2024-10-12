@@ -355,8 +355,8 @@ sprite_frames = SubResource("SpriteFrames_sqmep")
 autoplay = "default"
 
 [node name="HealEffect" type="AnimatedSprite2D" parent="."]
-visible = false
 position = Vector2(0, -129.24)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_1bmda")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

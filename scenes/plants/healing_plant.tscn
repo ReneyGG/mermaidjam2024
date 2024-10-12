@@ -1,8 +1,9 @@
-[gd_scene load_steps=30 format=3 uid="uid://ds6km1jjcctwl"]
+[gd_scene load_steps=38 format=3 uid="uid://ds6km1jjcctwl"]
 
 [ext_resource type="PackedScene" uid="uid://d4hia2tutqsev" path="res://scenes/plant_base/plant_base.tscn" id="1_tisd6"]
 [ext_resource type="Script" path="res://scenes/plants/healing_plant.gd" id="2_f56q6"]
 [ext_resource type="Texture2D" uid="uid://cnpa4mf26t0av" path="res://assets/Kwiat.Sprite.png" id="4_hd6lf"]
+[ext_resource type="Texture2D" uid="uid://dkwp64ni5af7d" path="res://assets/okrag.sprite.png" id="5_ndfg7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2tku3"]
 atlas = ExtResource("4_hd6lf")
@@ -181,7 +182,43 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1ruou"]
-radius = 285.296
+radius = 300.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ax4t3"]
+atlas = ExtResource("5_ndfg7")
+region = Rect2(0, 0, 600, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqjb4"]
+atlas = ExtResource("5_ndfg7")
+region = Rect2(600, 0, 600, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ichqw"]
+atlas = ExtResource("5_ndfg7")
+region = Rect2(1200, 0, 600, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7i14"]
+atlas = ExtResource("5_ndfg7")
+region = Rect2(1800, 0, 600, 300)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4j5nt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ax4t3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eqjb4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ichqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7i14")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
 
 [node name="HealingPlant" instance=ExtResource("1_tisd6")]
 script = ExtResource("2_f56q6")
@@ -192,6 +229,8 @@ color = Color(0.411765, 0.560784, 0.568627, 1)
 autostart = true
 
 [node name="Sprite2D" parent="." index="1"]
+light_mask = 1
+material = SubResource("ShaderMaterial_jkr6m")
 sprite_frames = SubResource("SpriteFrames_yt1a7")
 
 [node name="HealingArea" type="Area2D" parent="." index="3"]
@@ -199,7 +238,13 @@ collision_layer = 0
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HealingArea" index="0"]
+scale = Vector2(1, 0.5)
 shape = SubResource("CircleShape2D_1ruou")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="HealingArea" index="1"]
+z_index = -1
+sprite_frames = SubResource("SpriteFrames_4j5nt")
+autoplay = "default"
 
 [node name="Line2D" type="Line2D" parent="." index="6"]
 visible = false

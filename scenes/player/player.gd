@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed = 180
+@export var speed = 300
 @export var friction = 0.15
 @export var acceleration = 0.1
 @export var attacking := false
@@ -36,6 +36,7 @@ func get_input():
 			$PlantArea.monitoring = false
 			plant_in_range = null
 			$CanvasLayer/Control/Hold.texture = load(get_icon(hold.type))
+			$CanvasLayer/Control/Hold.modulate = hold.color
 		elif hold:
 			if storage.size() == 2:
 				storage.clear()
@@ -48,7 +49,7 @@ func get_input():
 	if Input.is_action_just_pressed("harvest"):
 		if plant_in_range and not hold:
 			plant_in_range.harvest()
-			add_storage(plant_in_range.type)
+			add_storage(plant_in_range)
 			plant_in_range = null
 			$PlantArea.monitoring = false
 			await get_tree().physics_frame
@@ -59,7 +60,7 @@ func get_input():
 				storage.clear()
 				$CanvasLayer/Control/Slot1.texture = null
 				$CanvasLayer/Control/Slot2.texture = null
-			add_storage(hold.type)
+			add_storage(hold)
 			if storage.size() != 2:
 				hold = null
 			plant_in_range = null
@@ -95,30 +96,48 @@ func frame_freeze(timeScale, duration):
 func _on_freeze_timeout():
 	Engine.time_scale = 1.0
 
-func add_storage(type):
+func add_storage(plant):
 	if storage.size() == 0:
-		storage.append(type)
-		$CanvasLayer/Control/Slot1.texture = load(get_icon(type))
+		storage.append([plant.type,plant.color])
+		$CanvasLayer/Control/Slot1.texture = load(get_icon(plant.type))
+		$CanvasLayer/Control/Slot1.modulate = plant.color
 	elif storage.size() == 1:
-		storage.append(type)
-		$CanvasLayer/Control/Slot2.texture = load(get_icon(type))
+		storage.append([plant.type,plant.color])
+		$CanvasLayer/Control/Slot2.texture = load(get_icon(plant.type))
+		$CanvasLayer/Control/Slot2.modulate = plant.color
 		craft()
 
 func craft():
 	var plant_scene
-	if storage == ["red","red"]:
-		$CanvasLayer/Control/Hold.texture = load(get_icon("pink"))
-		plant_scene = load("res://scenes/craft_test/rose.tscn")
-	elif storage == ["blue","blue"]:
-		$CanvasLayer/Control/Hold.texture = load(get_icon("black"))
-		plant_scene = load("res://scenes/craft_test/black.tscn")
-	elif storage == ["red","blue"] or  storage == ["blue","red"]:
-		$CanvasLayer/Control/Hold.texture = load(get_icon("purple"))
-		plant_scene = load("res://scenes/craft_test/purple.tscn")
+	if storage[0][0] == "red" and storage[1][0] == "red":
+		$CanvasLayer/Control/Hold.texture = load(get_icon("explosive"))
+		$CanvasLayer/Control/Hold.modulate = Color(1.0, 1.0, 0.0, 1.0)
+		plant_scene = load("res://scenes/plants/explosive_plant.tscn")
+		
+	elif storage[0][0] == "blue" and storage[1][0] == "blue":
+		$CanvasLayer/Control/Hold.texture = load(get_icon("slowing"))
+		$CanvasLayer/Control/Hold.modulate = Color(0.0, 1.0, 1.0, 1.0)
+		plant_scene = load("res://scenes/plants/slowing_plant.tscn")
+		
+	elif (storage[0][0] == "red" and storage[1][0] == "blue") or (storage[0][0] == "blue" and storage[1][0] == "red"):
+		$CanvasLayer/Control/Hold.texture = load(get_icon("shooting"))
+		$CanvasLayer/Control/Hold.modulate = Color(1.0, 0.0, 1.0, 1.0)
+		plant_scene = load("res://scenes/plants/shooting_flower.tscn")
+	
+	elif storage[0][0] == "shooting" and storage[1][0] == "shooting":
+		$CanvasLayer/Control/Hold.texture = load(get_icon("shooting"))
+		$CanvasLayer/Control/Hold.modulate = storage[0][1].blend
+		plant_scene = load("res://scenes/plants/shooting_flower.tscn")
+	
+	elif (storage[0][0] == "red" and storage[1][0] == "slowing") or (storage[0][0] == "slowing" and storage[1][0] == "red"):
+		pass
+	
+	elif (storage[0][0] == "red" and storage[1][0] == "explosive") or (storage[0][0] == "explosive" and storage[1][0] == "red"):
+		pass
 	
 	if plant_scene:
 		var plant_inst = plant_scene.instantiate()
-		get_parent().get_node("Plants").add_child(plant_inst)
+		get_parent().get_node("PlantSpawner").add_child(plant_inst)
 		plant_inst.global_position = self.global_position
 		hold = plant_inst
 		$PlantArea.monitoring = false
@@ -130,12 +149,16 @@ func craft():
 
 func get_icon(type):
 	match type:
-		"explosive":
+		"red":
 			return "res://assets/icons/red.png"
-		"shooting":
+		"blue":
 			return "res://assets/icons/blue.png"
+		"explosive":
+			return "res://assets/icons/explosive.png"
+		"shooting":
+			return "res://assets/icons/shooting.png"
 		"slowing":
-			return "res://assets/icons/purple.png"
+			return "res://assets/icons/slowing.png"
 		"aggro":
 			return "res://assets/icons/rose.png"
 		"melee":
@@ -159,10 +182,12 @@ func die(screen):
 	#get_tree().paused = true
 
 func _on_plant_area_area_entered(area):
+	if plant_in_range:
+		plant_in_range.switch_select()
+	area.switch_select()
 	plant_in_range = area
-	plant_in_range.get_node("Sprite2D").material.set("shader_paramater/width",10.0)
 
 func _on_plant_area_area_exited(area):
 	if area == plant_in_range:
-		plant_in_range.get_node("Sprite2D").material.set("shader_paramater/width",0.0)
+		plant_in_range.switch_select()
 		plant_in_range = null

@@ -1,22 +1,35 @@
-[gd_scene load_steps=6 format=3 uid="uid://ck505600pjj44"]
+[gd_scene load_steps=8 format=3 uid="uid://ck505600pjj44"]
 
 [ext_resource type="PackedScene" uid="uid://d4hia2tutqsev" path="res://scenes/plant_base/plant_base.tscn" id="1_dncpy"]
 [ext_resource type="Script" path="res://scenes/plants/shooting_flower.gd" id="2_1cpvh"]
-[ext_resource type="Texture2D" uid="uid://bqj1yyrqfsuu5" path="res://icon.svg" id="2_2l4vg"]
 [ext_resource type="PackedScene" uid="uid://kevxggnqglel" path="res://scenes/projectiles/basic_projectile.tscn" id="3_3nfon"]
+[ext_resource type="Texture2D" uid="uid://csd6s7ghprmkw" path="res://assets/icons/shooting.png" id="4_8dbx7"]
+[ext_resource type="Shader" path="res://scenes/plant_base/plant_base.gdshader" id="5_2rppo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fse8f"]
+resource_local_to_scene = true
+shader = ExtResource("5_2rppo")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 1
+shader_parameter/inside = false
+shader_parameter/add_margins = true
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wvryq"]
 radius = 335.121
 
 [node name="ShootingFlower" instance=ExtResource("1_dncpy")]
-modulate = Color(1, 0.176471, 1, 1)
 script = ExtResource("2_1cpvh")
 projectile_scene = ExtResource("3_3nfon")
-texture = ExtResource("2_2l4vg")
 type = "shooting"
+color = Color(1, 0, 1, 1)
 
 [node name="ShootingTimer" type="Timer" parent="." index="0"]
 autostart = true
+
+[node name="Sprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_fse8f")
+texture = ExtResource("4_8dbx7")
 
 [node name="Area2D" type="Area2D" parent="." index="3"]
 collision_layer = 0

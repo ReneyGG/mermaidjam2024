@@ -7,7 +7,7 @@ func spawn_enemies():
 	var group_spawn_position = pick_random_position(global_position, 700)
 	for i in range(3):
 		var enemy = enemy_scene.instantiate()
-		get_parent().add_child(enemy)
+		add_child(enemy)
 		enemy.global_position = pick_random_position(group_spawn_position, 100)
 
 

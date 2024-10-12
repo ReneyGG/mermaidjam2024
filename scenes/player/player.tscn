@@ -351,7 +351,7 @@ animations = [{
 radius = 59.5399
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0vjnu"]
-radius = 176.071
+radius = 107.075
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_go15t")

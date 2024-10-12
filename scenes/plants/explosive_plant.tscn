@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://c33074g0o5thl"]
+
+[ext_resource type="PackedScene" uid="uid://d4hia2tutqsev" path="res://scenes/plant_base/plant_base.tscn" id="1_7qo68"]
+[ext_resource type="Script" path="res://scenes/plants/explosive_plant.gd" id="2_cw6xn"]
+[ext_resource type="Texture2D" uid="uid://bqj1yyrqfsuu5" path="res://icon.svg" id="3_t8mfb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_efe22"]
+radius = 258.985
+
+[node name="ExplosivePlant" instance=ExtResource("1_7qo68")]
+script = ExtResource("2_cw6xn")
+texture = ExtResource("3_t8mfb")
+health = 1
+
+[node name="Sprite2D" parent="." index="0"]
+self_modulate = Color(1, 0.0147522, 0.361357, 1)
+
+[node name="ExplodeArea" type="Area2D" parent="." index="2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplodeArea" index="0"]
+shape = SubResource("CircleShape2D_efe22")

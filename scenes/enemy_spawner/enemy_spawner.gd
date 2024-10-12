@@ -5,7 +5,7 @@ extends Node2D
 
 func spawn_enemies():
 	var group_spawn_position = pick_random_position(global_position, 700)
-	for i in range(1):
+	for i in range(3):
 		var enemy = enemy_scene.instantiate()
 		get_parent().add_child(enemy)
 		enemy.global_position = pick_random_position(group_spawn_position, 100)
@@ -22,6 +22,4 @@ func pick_random_position(center, distance):
 	# Wyznaczamy nową pozycję na podstawie środka i przesunięcia
 	var new_position = center + Vector2(offset_x, offset_y)
 	
-	# Wyświetlamy pozycję
-	print("Nowa pozycja: ", new_position)
 	return new_position

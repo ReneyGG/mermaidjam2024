@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var base
+var target
 
 @export var health: int = 2
 @export var speed: float = 60.0
@@ -8,17 +8,19 @@ var base
 @export var attack_damage: int = 2 
 @onready var attack_timer = $AttackCooldown
 
+var can_move: bool = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	base = get_tree().get_first_node_in_group("base")
+	target = get_tree().get_first_node_in_group("base")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if !base:
+	if !target:
 		return
-	var direction = global_position.direction_to(base.global_position)
+	var direction = global_position.direction_to(target.global_position)
 	#print(direction)
-	velocity = direction * speed
+	if can_move:
+		velocity = direction * speed
 	move_and_slide()
 
 func take_damage(damage):
@@ -34,6 +36,14 @@ func attack():
 	for area in $AttackArea.get_overlapping_areas():
 		if area.has_method("take_damage"):
 			area.take_damage(attack_damage)
+
+func knockback(direction):
+	can_move = false
+	var tween = get_tree().create_tween()
+	velocity = direction * 750
+	tween.tween_property(self, "velocity", Vector2.ZERO, 1)
+	await tween.finished
+	can_move = true
 
 func _on_attack_timer_timeout():
 	attack()

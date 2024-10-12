@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://b70ov0dqtgr8f"]
+
+[ext_resource type="PackedScene" uid="uid://d4hia2tutqsev" path="res://scenes/plant_base/plant_base.tscn" id="1_7q5st"]
+[ext_resource type="Script" path="res://scenes/plants/aggro_plant.gd" id="2_pl3b2"]
+[ext_resource type="Texture2D" uid="uid://bqj1yyrqfsuu5" path="res://icon.svg" id="3_31uja"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c3i2s"]
+radius = 307.366
+
+[node name="AggroPlant" instance=ExtResource("1_7q5st")]
+script = ExtResource("2_pl3b2")
+texture = ExtResource("3_31uja")
+
+[node name="Sprite2D" parent="." index="0"]
+self_modulate = Color(0.93184, 0.825393, 0, 1)
+
+[node name="AggroArea" type="Area2D" parent="." index="2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AggroArea" index="0"]
+shape = SubResource("CircleShape2D_c3i2s")
+
+[connection signal="body_entered" from="AggroArea" to="." method="_on_aggro_area_body_entered"]
+[connection signal="body_exited" from="AggroArea" to="." method="_on_aggro_area_body_exited"]

@@ -19,7 +19,6 @@ func harvest():
 	queue_free()
 	
 func take_damage(damage):
-	print("taken damage: ", damage)
 	health = max(0, health - damage)
 	if health == 0:
 		queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d11qa8vw8txpx"]
+[gd_scene load_steps=5 format=3 uid="uid://d11qa8vw8txpx"]
 
 [ext_resource type="PackedScene" uid="uid://blor77xon5pyw" path="res://scenes/enemy_spawner/EnemySpawner.tscn" id="1_7ogwc"]
 [ext_resource type="PackedScene" uid="uid://c5uiiy7ebuvvo" path="res://scenes/plant_spawner/PlantSpawner.tscn" id="1_s7ylh"]

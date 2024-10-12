@@ -13,17 +13,21 @@ var death_effect_scene = preload("res://scenes/effects/death_effect.tscn")
 var can_move: bool = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Sprite2D.set_frame(randf_range(0, 23))
 	target = get_tree().get_first_node_in_group("base")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 @warning_ignore("unused_parameter")
 func _process(delta):
-	$Sprite2D.flip_h = velocity.x < 0;
+	if velocity.x < 0 and velocity.length() > 5:
+		$Sprite2D.flip_h = true
+	elif velocity.x > 0 and velocity.length() > 5:
+		$Sprite2D.flip_h = false
 	if !target:
 		return
 	var direction = global_position.direction_to(target.global_position)
 	#print(direction)
-	if can_move:
+	if can_move and global_position.distance_to(target.global_position) > 10:
 		velocity = direction * speed
 	move_and_slide()
 

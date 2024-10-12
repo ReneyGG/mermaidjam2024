@@ -3,7 +3,7 @@ extends Node2D
 const WIDTH = 2500
 const HEIGHT = 1500
 
-var plant_limit = 5
+var plant_limit = INF
 #var plants = [preload("res://scenes/plants/shooting_flower.tscn"),
 #preload("res://scenes/plants/aggro_plant.tscn"),
 #preload("res://scenes/plants/explosive_plant.tscn"),

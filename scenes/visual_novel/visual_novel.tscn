@@ -11,7 +11,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cecue")
-dialog_lines = Array[String](["Hejka", "Lorem Ipsum is simply dummy text of the printing", "dasdas"])
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 1

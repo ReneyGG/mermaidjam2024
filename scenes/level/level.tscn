@@ -1,11 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://d11qa8vw8txpx"]
+[gd_scene load_steps=14 format=3 uid="uid://d11qa8vw8txpx"]
 
 [ext_resource type="PackedScene" uid="uid://drux0gpbnnyue" path="res://scenes/player/player.tscn" id="1_tq124"]
 [ext_resource type="PackedScene" uid="uid://dqu6nj5klwbg8" path="res://scenes/base/base.tscn" id="2_f6grg"]
 [ext_resource type="PackedScene" uid="uid://blor77xon5pyw" path="res://scenes/enemy_spawner/EnemySpawner.tscn" id="3_g468s"]
+[ext_resource type="PackedScene" uid="uid://b70ov0dqtgr8f" path="res://scenes/plants/aggro_plant.tscn" id="4_4jwm6"]
 [ext_resource type="PackedScene" uid="uid://ds6km1jjcctwl" path="res://scenes/plants/healing_plant.tscn" id="4_wxswv"]
 [ext_resource type="PackedScene" uid="uid://ca7yclfrohu88" path="res://scenes/plants/mele_plant.tscn" id="5_eljt0"]
 [ext_resource type="PackedScene" uid="uid://ck505600pjj44" path="res://scenes/plants/shooting_flower.tscn" id="5_ixwpg"]
+[ext_resource type="PackedScene" uid="uid://divkvupn6jl4d" path="res://scenes/plants/blue_plant.tscn" id="5_yv6a1"]
+[ext_resource type="PackedScene" uid="uid://bg4rxpbeg8auw" path="res://scenes/plants/catapult_plant.tscn" id="6_7luxe"]
+[ext_resource type="PackedScene" uid="uid://c33074g0o5thl" path="res://scenes/plants/explosive_plant.tscn" id="7_hk0am"]
+[ext_resource type="PackedScene" uid="uid://c31tt5lluqkyu" path="res://scenes/plants/multi_shoot_plant.tscn" id="10_wb3ef"]
+[ext_resource type="PackedScene" uid="uid://fp8msuibuiyt" path="res://scenes/plants/red_plant.tscn" id="11_2phwg"]
+[ext_resource type="PackedScene" uid="uid://dgshx1ob7jky5" path="res://scenes/plants/slowing_plant.tscn" id="13_mdt1t"]
 
 [node name="Level" type="Node2D"]
 
@@ -18,11 +25,32 @@ rotation = 0.698132
 [node name="EnemySpawner" parent="." instance=ExtResource("3_g468s")]
 position = Vector2(540, 348)
 
+[node name="AggroPlant" parent="." instance=ExtResource("4_4jwm6")]
+position = Vector2(-665, -214)
+
+[node name="BluePlant" parent="." instance=ExtResource("5_yv6a1")]
+position = Vector2(-111, -234)
+
+[node name="CatapultPlant" parent="." instance=ExtResource("6_7luxe")]
+position = Vector2(660, -311)
+
+[node name="ExplosivePlant" parent="." instance=ExtResource("7_hk0am")]
+position = Vector2(1022, 785)
+
 [node name="HealingPlant" parent="." instance=ExtResource("4_wxswv")]
-position = Vector2(72, 294)
+position = Vector2(525, 1199)
 
 [node name="MeleePlant" parent="." instance=ExtResource("5_eljt0")]
-position = Vector2(-191, 297)
+position = Vector2(-78, 1250)
+
+[node name="MultiShootPlant" parent="." instance=ExtResource("10_wb3ef")]
+position = Vector2(-431, 971)
+
+[node name="RedPlant" parent="." instance=ExtResource("11_2phwg")]
+position = Vector2(-632, 803)
 
 [node name="ShootingFlower" parent="." instance=ExtResource("5_ixwpg")]
-position = Vector2(510, 225)
+position = Vector2(-437, 450)
+
+[node name="SlowingPlant" parent="." instance=ExtResource("13_mdt1t")]
+position = Vector2(219, 597)

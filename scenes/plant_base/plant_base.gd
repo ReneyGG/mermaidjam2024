@@ -51,8 +51,13 @@ func take_damage(damage):
 		die()
 		
 func take_heal(heal):
-	#print(current_health)
+	if health == current_health:
+		return
 	current_health = min(health, current_health + heal)
+	$HealEffect.visible = true
+	$HealEffect.play("default")
+	await $HealEffect.animation_finished
+	$HealEffect.visible = false
 
 #gdzie są te dzieci
 func die():

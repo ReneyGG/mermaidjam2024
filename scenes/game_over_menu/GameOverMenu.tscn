@@ -1,16 +1,14 @@
-[gd_scene format=3 uid="uid://cq5kexi1t0rcl"]
+[gd_scene load_steps=3 format=3 uid="uid://cq5kexi1t0rcl"]
 
-[node name="GameOverMenu" type="CanvasLayer"]
+[ext_resource type="Script" path="res://scenes/game_over_menu/game_over_menu.gd" id="1_dclo7"]
+[ext_resource type="Texture2D" uid="uid://bqj1yyrqfsuu5" path="res://icon.svg" id="2_b5vhs"]
 
-[node name="Control" type="Control" parent="."]
+[node name="GameOverMenu" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+script = ExtResource("1_dclo7")
 
-[node name="ColorRect" type="ColorRect" parent="Control"]
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,14 +17,47 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.458824)
 
-[node name="GameOver" type="Label" parent="Control/ColorRect"]
+[node name="BestScores" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -160.5
 offset_right = 160.5
-offset_bottom = 88.0
+offset_bottom = 115.0
 grow_horizontal = 2
+
+[node name="GameOver" type="Label" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "Koniec gry"
+
+[node name="TimeLabel" type="Label" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Czas: 00:00:00"
+
+[node name="Pointslabel" type="Label" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Punkty: 00:00:00"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="RestartButton" type="TextureButton" parent="ColorRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_b5vhs")
+texture_pressed = ExtResource("2_b5vhs")
+
+[node name="ExitButton" type="TextureButton" parent="ColorRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_b5vhs")
+texture_pressed = ExtResource("2_b5vhs")
+
+[connection signal="pressed" from="ColorRect/VBoxContainer/HBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]

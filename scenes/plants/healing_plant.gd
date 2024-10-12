@@ -7,8 +7,6 @@ func _on_heal_timer_timeout():
 		return
 	for plant in healing_area.get_overlapping_areas():
 		if plant.is_in_group("plant") and plant != self:
-			if plant.health == plant.current_health:
-				return
 			plant.take_heal(1)
 			#var heal_line = Line2D.new()
 			#add_sibling(heal_line)

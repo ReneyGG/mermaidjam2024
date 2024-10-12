@@ -37,6 +37,7 @@ scale_curve = SubResource("CurveTexture_jik7v")
 
 [node name="DeathEffect" type="GPUParticles2D"]
 material = SubResource("CanvasItemMaterial_suiwj")
+position = Vector2(-30, 0)
 emitting = false
 amount = 9
 process_material = SubResource("ParticleProcessMaterial_xbjmk")

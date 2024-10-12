@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d11qa8vw8txpx"]
+[gd_scene load_steps=13 format=3 uid="uid://d11qa8vw8txpx"]
 
 [ext_resource type="PackedScene" uid="uid://blor77xon5pyw" path="res://scenes/enemy_spawner/EnemySpawner.tscn" id="1_7ogwc"]
 [ext_resource type="Script" path="res://scenes/level/level.gd" id="1_ptr4r"]
@@ -6,8 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://dqu6nj5klwbg8" path="res://scenes/base/base.tscn" id="2_f6grg"]
 [ext_resource type="PackedScene" uid="uid://c5uiiy7ebuvvo" path="res://scenes/plant_spawner/PlantSpawner.tscn" id="4_eo7tn"]
 [ext_resource type="Texture2D" uid="uid://c4q887qjh3i6k" path="res://assets/bg.png" id="5_6uyqu"]
-[ext_resource type="PackedScene" uid="uid://divkvupn6jl4d" path="res://scenes/plants/blue_plant.tscn" id="5_ipei1"]
+[ext_resource type="PackedScene" uid="uid://ds6km1jjcctwl" path="res://scenes/plants/healing_plant.tscn" id="7_dfdhe"]
 [ext_resource type="PackedScene" uid="uid://cq5kexi1t0rcl" path="res://scenes/game_over_menu/GameOverMenu.tscn" id="7_y0ikq"]
+[ext_resource type="PackedScene" uid="uid://bg4rxpbeg8auw" path="res://scenes/plants/catapult_plant.tscn" id="9_onywc"]
 
 [sub_resource type="Animation" id="Animation_3clrl"]
 length = 0.001
@@ -69,13 +70,17 @@ offset_bottom = 1241.0
 [node name="PlantSpawner" parent="TileMapLayer" instance=ExtResource("4_eo7tn")]
 
 [node name="Base" parent="TileMapLayer" instance=ExtResource("2_f6grg")]
+position = Vector2(307, 373)
 
 [node name="Player" parent="TileMapLayer" instance=ExtResource("1_tq124")]
-position = Vector2(285, 213)
+position = Vector2(619, 468)
 speed = 500
 
-[node name="BluePlant" parent="TileMapLayer" instance=ExtResource("5_ipei1")]
-position = Vector2(83, 352)
+[node name="CatapultPlant" parent="TileMapLayer" instance=ExtResource("9_onywc")]
+position = Vector2(110, 150)
+
+[node name="HealingPlant" parent="TileMapLayer" instance=ExtResource("7_dfdhe")]
+position = Vector2(555, -157)
 
 [node name="Interface" type="CanvasLayer" parent="."]
 

@@ -4,6 +4,8 @@ extends "res://scenes/plant_base/plant_base.gd"
 var target
 
 func shoot():
+	if not available:
+		return
 	var others = $Area2D.get_overlapping_bodies()
 	others.erase(get_tree().get_first_node_in_group("player"))
 	others.erase(get_tree().get_first_node_in_group("base"))

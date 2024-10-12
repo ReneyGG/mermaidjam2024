@@ -27,6 +27,7 @@ func drop():
 
 func harvest():
 	queue_free()
+	hide
 	
 func take_damage(damage):
 	health = max(0, health - damage)

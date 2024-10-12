@@ -124,6 +124,17 @@ func craft():
 		$CanvasLayer/Control/Hold.modulate = Color(1.0, 0.0, 1.0, 1.0)
 		plant_scene = load("res://scenes/plants/shooting_flower.tscn")
 	
+	elif storage[0][0] == "shooting" and storage[1][0] == "shooting":
+		$CanvasLayer/Control/Hold.texture = load(get_icon("shooting"))
+		$CanvasLayer/Control/Hold.modulate = storage[0][1].blend
+		plant_scene = load("res://scenes/plants/shooting_flower.tscn")
+	
+	elif (storage[0][0] == "red" and storage[1][0] == "slowing") or (storage[0][0] == "slowing" and storage[1][0] == "red"):
+		pass
+	
+	elif (storage[0][0] == "red" and storage[1][0] == "explosive") or (storage[0][0] == "explosive" and storage[1][0] == "red"):
+		pass
+	
 	if plant_scene:
 		var plant_inst = plant_scene.instantiate()
 		get_parent().get_node("PlantSpawner").add_child(plant_inst)

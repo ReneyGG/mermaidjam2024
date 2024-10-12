@@ -140,6 +140,8 @@ func get_icon(type):
 			return "res://assets/icons/rose.png"
 		"melee":
 			return "res://assets/icons/black.png"
+		"catapult":
+			return "res://assets/icons/black.png"
 
 func die(screen):
 	if dead:

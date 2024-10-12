@@ -21,9 +21,13 @@ func get_input():
 	if Input.is_action_pressed('right'):
 		input.x += 1
 		$Sprite2D.scale.x = 1
+		if hold:
+			hold.get_node("Sprite2D").flip_h = true
 	if Input.is_action_pressed('left'):
 		input.x -= 1
 		$Sprite2D.scale.x = -1
+		if hold:
+			hold.get_node("Sprite2D").flip_h = false
 	if Input.is_action_pressed('down'):
 		input.y += 1
 	if Input.is_action_pressed('up'):
@@ -73,8 +77,11 @@ func _physics_process(delta):
 		return
 	
 	if hold:
-		hold.global_position = self.global_position
-	
+		$Sprite2D/pot.visible = true
+		hold.global_position = $Sprite2D/pot.global_position + Vector2(0,-70)
+	else:
+		$Sprite2D/pot.visible = false
+		
 	var direction = await get_input()
 	#if direction != Vector2(0,0):
 		#$DustTrail.emitting = true

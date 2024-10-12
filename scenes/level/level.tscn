@@ -21,8 +21,8 @@ position = Vector2(540, 348)
 [node name="HealingPlant" parent="." instance=ExtResource("4_wxswv")]
 position = Vector2(72, 294)
 
-[node name="ShootingFlower" parent="." instance=ExtResource("5_ixwpg")]
-position = Vector2(784, 229)
-
 [node name="MeleePlant" parent="." instance=ExtResource("5_eljt0")]
-position = Vector2(-128, 464)
+position = Vector2(-191, 297)
+
+[node name="ShootingFlower" parent="." instance=ExtResource("5_ixwpg")]
+position = Vector2(510, 225)

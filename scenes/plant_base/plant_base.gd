@@ -5,10 +5,15 @@ extends Node2D
 @export var color : Color
 @export var selected := false
 
-var current_health = health
+@export var current_health = health
 
 func _ready():
+	$ProgressBar.max_value = health
 	$Sprite2D.modulate = color
+
+func _process(delta):
+	#print(name, ": ", current_health)
+	$ProgressBar.value = current_health
 
 func switch_select():
 	if selected:

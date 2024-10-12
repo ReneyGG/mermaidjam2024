@@ -16,6 +16,7 @@ func _ready():
 	target = get_tree().get_first_node_in_group("base")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+@warning_ignore("unused_parameter")
 func _process(delta):
 	$Sprite2D.flip_h = velocity.x < 0;
 	if !target:

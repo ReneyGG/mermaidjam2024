@@ -3,9 +3,6 @@ extends "res://scenes/plant_base/plant_base.gd"
 @export var projectile_scene: PackedScene
 var target
 
-func _process(delta):
-	print(current_health)
-
 func shoot():
 	var others = $Area2D.get_overlapping_bodies()
 	others.erase(get_tree().get_first_node_in_group("player"))

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mnjdgrwg7bw"
-path="res://.godot/imported/red.png-95059e24421e9f0eb1821439cc2d1c59.ctex"
+uid="uid://b75cxxdt8vfbd"
+path="res://.godot/imported/slowing.png-f8b731a50f4a4ff254a05a888cf315bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/red.png"
-dest_files=["res://.godot/imported/red.png-95059e24421e9f0eb1821439cc2d1c59.ctex"]
+source_file="res://assets/icons/slowing.png"
+dest_files=["res://.godot/imported/slowing.png-f8b731a50f4a4ff254a05a888cf315bb.ctex"]
 
 [params]
 

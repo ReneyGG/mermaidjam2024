@@ -1,17 +1,37 @@
-[gd_scene load_steps=4 format=3 uid="uid://ds6km1jjcctwl"]
+[gd_scene load_steps=6 format=3 uid="uid://ds6km1jjcctwl"]
 
 [ext_resource type="PackedScene" uid="uid://d4hia2tutqsev" path="res://scenes/plant_base/plant_base.tscn" id="1_tisd6"]
 [ext_resource type="Script" path="res://scenes/plants/healing_plant.gd" id="2_f56q6"]
+[ext_resource type="Shader" path="res://scenes/plant_base/plant_base.gdshader" id="3_swa5b"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jkr6m"]
+resource_local_to_scene = true
+shader = ExtResource("3_swa5b")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 1
+shader_parameter/inside = false
+shader_parameter/add_margins = true
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1ruou"]
 radius = 285.296
 
 [node name="HealingPlant" instance=ExtResource("1_tisd6")]
 script = ExtResource("2_f56q6")
+type = "healing"
 
-[node name="HealingArea" type="Area2D" parent="." index="2"]
+[node name="HealTimer" type="Timer" parent="." index="0"]
+autostart = true
+
+[node name="Sprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_jkr6m")
+
+[node name="HealingArea" type="Area2D" parent="." index="3"]
+collision_layer = 0
+collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HealingArea" index="0"]
 shape = SubResource("CircleShape2D_1ruou")
 
+[connection signal="timeout" from="HealTimer" to="." method="_on_heal_timer_timeout"]
 [connection signal="area_entered" from="HealingArea" to="." method="_on_healing_area_area_entered"]

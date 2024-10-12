@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://d11qa8vw8txpx"]
+[gd_scene load_steps=7 format=3 uid="uid://d11qa8vw8txpx"]
 
 [ext_resource type="PackedScene" uid="uid://drux0gpbnnyue" path="res://scenes/player/player.tscn" id="1_tq124"]
 [ext_resource type="PackedScene" uid="uid://dqu6nj5klwbg8" path="res://scenes/base/base.tscn" id="2_f6grg"]
 [ext_resource type="PackedScene" uid="uid://blor77xon5pyw" path="res://scenes/enemy_spawner/EnemySpawner.tscn" id="3_g468s"]
-[ext_resource type="PackedScene" uid="uid://c31tt5lluqkyu" path="res://scenes/plants/multi_shoot_plant.tscn" id="4_r6h7s"]
+[ext_resource type="PackedScene" uid="uid://ds6km1jjcctwl" path="res://scenes/plants/healing_plant.tscn" id="4_wxswv"]
+[ext_resource type="PackedScene" uid="uid://ca7yclfrohu88" path="res://scenes/plants/mele_plant.tscn" id="5_eljt0"]
+[ext_resource type="PackedScene" uid="uid://ck505600pjj44" path="res://scenes/plants/shooting_flower.tscn" id="5_ixwpg"]
 
 [node name="Level" type="Node2D"]
 
@@ -15,7 +17,12 @@ rotation = 0.698132
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_g468s")]
 position = Vector2(540, 348)
-rotation = 0.698132
 
-[node name="MultiShootPlant" parent="." instance=ExtResource("4_r6h7s")]
-position = Vector2(81, 345)
+[node name="HealingPlant" parent="." instance=ExtResource("4_wxswv")]
+position = Vector2(72, 294)
+
+[node name="ShootingFlower" parent="." instance=ExtResource("5_ixwpg")]
+position = Vector2(784, 229)
+
+[node name="MeleePlant" parent="." instance=ExtResource("5_eljt0")]
+position = Vector2(-128, 464)

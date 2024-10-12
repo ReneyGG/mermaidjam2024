@@ -3,8 +3,9 @@ extends Node2D
 @export var type : String
 @export var health : int = 5
 @export var color : Color
-
 @export var selected := false
+
+var current_health = health
 
 func _ready():
 	$Sprite2D.modulate = color
@@ -30,6 +31,9 @@ func harvest():
 	hide
 	
 func take_damage(damage):
-	health = max(0, health - damage)
-	if health == 0:
+	current_health = max(0, current_health - damage)
+	if current_health == 0:
 		queue_free()
+		
+func take_heal(heal):
+	current_health = min(health, current_health + heal)

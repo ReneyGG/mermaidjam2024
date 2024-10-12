@@ -1,12 +1,16 @@
 extends Control
 
+var person_1 = "res://icon.svg"
+var person_2 = "res://assets/bee.png"
+
 # Tablica przechowująca dialogi
 var dialog_lines = [
-	"Hello! How are you?",
-	"This is a simple visual novel system.",
-	"Click to advance to the next line!"
+	"?Hello! How are you?",
+	"!This is a simple visual novel system.",
+	"?Click to advance to the next line!"
 ]
 @onready var display_label = $NinePatchRect/TextLabel
+@onready var texture_rect = $NinePatchRect/TextureRect
 
 # Przechowywanie aktualnej linii dialogu i indeksu litery
 var current_line_index = 0
@@ -33,15 +37,21 @@ func _process(delta):
 func show_next_line():
 	if current_line_index < dialog_lines.size():
 		full_line = dialog_lines[current_line_index]
+		if full_line[0] == "?":
+			texture_rect.texture = load(person_1)
+		elif full_line[0] == "!":
+			texture_rect.texture = load(person_2)
+		full_line[0] = ""
 		current_char_index = 0
 		display_label.text = ""
 		is_text_scrolling = true
 		typing_active = true
 		# Rozpoczynamy animację liter
 		start_typing_text()
-	else:
+
+	#else:
 		# Koniec dialogu, np. zamknij scenę dialogu
-		print("Koniec dialogów.")
+		#print("Koniec dialogów.")
 
 # Funkcja stopniowo wyświetlająca tekst
 func start_typing_text():
@@ -57,6 +67,8 @@ func start_typing_text():
 			# Cała linia została wyświetlona
 			is_text_scrolling = false
 			typing_active = false
+			#display_label.text = full_line
+			current_line_index += 1
 
 # Funkcja natychmiastowego wyświetlenia całego tekstu
 func skip_text_animation():
@@ -65,4 +77,4 @@ func skip_text_animation():
 	display_label.text = full_line
 
 	# Zwiększ indeks dialogu na następny
-	current_line_index += 1
+	#current_line_index += 1

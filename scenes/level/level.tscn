@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d11qa8vw8txpx"]
+[gd_scene load_steps=10 format=3 uid="uid://d11qa8vw8txpx"]
 
 [ext_resource type="PackedScene" uid="uid://blor77xon5pyw" path="res://scenes/enemy_spawner/EnemySpawner.tscn" id="1_7ogwc"]
 [ext_resource type="Script" path="res://scenes/level/level.gd" id="1_ptr4r"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ck505600pjj44" path="res://scenes/plants/shooting_flower.tscn" id="6_jwsia"]
 [ext_resource type="PackedScene" uid="uid://c31tt5lluqkyu" path="res://scenes/plants/multi_shoot_plant.tscn" id="7_nwar6"]
 [ext_resource type="PackedScene" uid="uid://c33074g0o5thl" path="res://scenes/plants/explosive_plant.tscn" id="8_g7jhe"]
+[ext_resource type="PackedScene" uid="uid://bg4rxpbeg8auw" path="res://scenes/plants/catapult_plant.tscn" id="9_trxae"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_ptr4r")
@@ -43,3 +44,6 @@ position = Vector2(-445, 195)
 
 [node name="MultiShootPlant" parent="TileMapLayer" instance=ExtResource("7_nwar6")]
 position = Vector2(-109, 307)
+
+[node name="CatapultPlant" parent="TileMapLayer" instance=ExtResource("9_trxae")]
+position = Vector2(-253, 630)

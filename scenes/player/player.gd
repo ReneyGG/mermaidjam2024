@@ -178,7 +178,18 @@ func craft():
 	else:
 		storage[1].adopt_by(storage[0])
 		storage[0].adopted_children.append(storage[1])
-	
+		var color0_hue = storage[0].color.h
+		var color1_hue = storage[1].color.h
+		color0_hue += (color1_hue/3)
+		if color0_hue >= 359:
+			color0_hue -= 359
+		var new_color = storage[0].color
+		var new_sat = storage[0].color.s
+		if new_sat > storage[1].color.s:
+			new_sat = storage[1].color.s
+		new_color.h = color0_hue
+		new_color.s = new_sat
+		storage[0].change_color(new_color)
 	
 	if plant_scene:
 		var plant_inst = plant_scene.instantiate()

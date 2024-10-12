@@ -1,8 +1,81 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0jyp7bwg7lv1"]
+[gd_scene load_steps=16 format=3 uid="uid://c0jyp7bwg7lv1"]
 
 [ext_resource type="Script" path="res://scenes/projectiles/catapult_projectile.gd" id="1_3cmp6"]
-[ext_resource type="Texture2D" uid="uid://1iyslt8qsiki" path="res://assets/catapult_projectile_shadow.png" id="1_wxpl4"]
-[ext_resource type="Texture2D" uid="uid://besqf82dn2pwv" path="res://assets/catapult_projectile.png" id="2_h2bwe"]
+[ext_resource type="Texture2D" uid="uid://bgbaafcrmlpus" path="res://assets/cien.sprite.png" id="2_0mpl0"]
+[ext_resource type="PackedScene" uid="uid://dlp866wrj8jf6" path="res://scenes/effects/explosion_effect.tscn" id="2_l2ulb"]
+[ext_resource type="Texture2D" uid="uid://cecb4b4pxruug" path="res://assets/special.pocisk.sprite.png" id="3_tosp5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ano3l"]
+atlas = ExtResource("2_0mpl0")
+region = Rect2(0, 0, 248, 125)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_viudk"]
+atlas = ExtResource("2_0mpl0")
+region = Rect2(248, 0, 248, 125)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8rb1"]
+atlas = ExtResource("2_0mpl0")
+region = Rect2(496, 0, 248, 125)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chn77"]
+atlas = ExtResource("2_0mpl0")
+region = Rect2(744, 0, 248, 125)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pg3bk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ano3l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_viudk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t8rb1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chn77")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhimn"]
+atlas = ExtResource("3_tosp5")
+region = Rect2(0, 0, 232, 239)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_maecb"]
+atlas = ExtResource("3_tosp5")
+region = Rect2(232, 0, 232, 239)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5rq2i"]
+atlas = ExtResource("3_tosp5")
+region = Rect2(464, 0, 232, 239)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3laek"]
+atlas = ExtResource("3_tosp5")
+region = Rect2(696, 0, 232, 239)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yc58x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yhimn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_maecb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5rq2i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3laek")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7rc81"]
 radius = 241.267
@@ -10,12 +83,17 @@ radius = 241.267
 [node name="CatapultProjectile" type="Node2D"]
 script = ExtResource("1_3cmp6")
 time_mult = 8.0
+explode_effect_scene = ExtResource("2_l2ulb")
 
-[node name="Shadow" type="Sprite2D" parent="."]
-texture = ExtResource("1_wxpl4")
+[node name="Shadow" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_pg3bk")
+autoplay = "default"
 
-[node name="Projectile" type="Sprite2D" parent="."]
-texture = ExtResource("2_h2bwe")
+[node name="Projectile" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.33, 0.33)
+sprite_frames = SubResource("SpriteFrames_yc58x")
+autoplay = "default"
 
 [node name="ExplosionArea" type="Area2D" parent="Projectile"]
 visible = false

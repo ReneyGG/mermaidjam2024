@@ -13,6 +13,7 @@ var is_launch: bool = false
 
 @export var time_mult: float = 6.0
 @export var damage: int = 1.0
+@export var explode_effect_scene: PackedScene
 
 func _process(delta):
 	time += delta * time_mult
@@ -50,4 +51,8 @@ func explode():
 			var direction = global_position.direction_to(enemy.global_position)
 			enemy.knockback(direction, 300)
 			enemy.take_damage(damage)
+	var explode_effect = explode_effect_scene.instantiate()
+	add_sibling(explode_effect)
+	explode_effect.global_position = global_position
+	explode_effect.emitting = true
 	queue_free()

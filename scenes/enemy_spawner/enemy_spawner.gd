@@ -17,7 +17,7 @@ func spawn_enemies():
 		#enemy.scale = Vector2(new_scale, new_scale)
 		#enemy.speed = new_speed
 		#enemy.health += int(new_scale * 5)
-		add_child(enemy)
+		add_sibling(enemy)
 		
 
 

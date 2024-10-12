@@ -53,8 +53,8 @@ func take_damage(damage):
 		die()
 		
 func take_heal(heal):
-	if health == current_health:
-		return
+	#if health == current_health:
+		#return
 	current_health = min(health, current_health + heal)
 	$HealEffect.visible = true
 	$HealEffect.play("default")

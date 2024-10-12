@@ -19,7 +19,7 @@ signal death(points)
 func _ready():
 	$Sprite2D.set_frame(randf_range(0, 23))
 	target = get_tree().get_first_node_in_group("base")
-	connect("death", get_parent().get_parent().get_parent().update_score)
+	connect("death", get_parent().get_parent().update_score)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 @warning_ignore("unused_parameter")

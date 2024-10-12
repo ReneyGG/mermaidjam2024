@@ -142,6 +142,7 @@ collision_mask = 16
 script = ExtResource("1_23wbr")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+light_mask = 0
 material = SubResource("ShaderMaterial_jwihc")
 scale = Vector2(0.6, 0.6)
 

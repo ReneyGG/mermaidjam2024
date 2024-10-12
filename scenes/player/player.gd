@@ -125,46 +125,56 @@ func craft():
 	if storage[0].type == "red" or storage[0].type == "blue" or storage[1].type == "red" or storage[1].type == "blue":
 		if storage[0].type == "red" and storage[1].type == "red":
 			$CanvasLayer/Control/Hold.texture = load(get_icon("explosive"))
-			$CanvasLayer/Control/Hold.modulate = Color(1.0, 1.0, 0.0, 1.0)
+			$CanvasLayer/Control/Hold.modulate = Color("ae595b")
 			plant_scene = load("res://scenes/plants/explosive_plant.tscn")
 			
 		elif storage[0].type == "blue" and storage[1].type == "blue":
 			$CanvasLayer/Control/Hold.texture = load(get_icon("slowing"))
-			$CanvasLayer/Control/Hold.modulate = Color(0.0, 1.0, 1.0, 1.0)
+			$CanvasLayer/Control/Hold.modulate = Color("725d55")
 			plant_scene = load("res://scenes/plants/slowing_plant.tscn")
 			
 		elif (storage[0].type == "red" and storage[1].type == "blue") or (storage[0].type == "blue" and storage[1].type == "red"):
 			$CanvasLayer/Control/Hold.texture = load(get_icon("shooting"))
-			$CanvasLayer/Control/Hold.modulate = Color(1.0, 0.0, 1.0, 1.0)
+			$CanvasLayer/Control/Hold.modulate = Color("e5bf79")
 			plant_scene = load("res://scenes/plants/shooting_flower.tscn")
 		
 		elif (storage[0].type == "red" and storage[1].type == "shooting") or (storage[0].type == "shooting" and storage[1].type == "red"):
 			$CanvasLayer/Control/Hold.texture = load(get_icon("multishoot"))
-			$CanvasLayer/Control/Hold.modulate = Color(1.0, 0.0, 1.0, 1.0)
+			$CanvasLayer/Control/Hold.modulate = Color("4f3e6d")
 			plant_scene = load("res://scenes/plants/multi_shoot_plant.tscn")
 		
 		elif (storage[0].type == "red" and storage[1].type == "slowing") or (storage[0].type == "slowing" and storage[1].type == "red"):
 			$CanvasLayer/Control/Hold.texture = load(get_icon("aggro"))
-			$CanvasLayer/Control/Hold.modulate = Color(1.0, 0.0, 1.0, 1.0)
+			$CanvasLayer/Control/Hold.modulate = Color("f67c3e")
 			plant_scene = load("res://scenes/plants/aggro_plant.tscn")
 		
 		elif (storage[0].type == "red" and storage[1].type == "explosive") or (storage[0].type == "explosive" and storage[1].type == "red"):
 			$CanvasLayer/Control/Hold.texture = load(get_icon("catapult"))
-			$CanvasLayer/Control/Hold.modulate = Color(1.0, 0.0, 1.0, 1.0)
+			$CanvasLayer/Control/Hold.modulate = Color("9d6a89")
 			plant_scene = load("res://scenes/plants/catapult_plant.tscn")
 		
 		elif (storage[0].type == "blue" and storage[1].type == "shooting") or (storage[0].type == "shooting" and storage[1].type == "blue"):
 			$CanvasLayer/Control/Hold.texture = load(get_icon("melee"))
-			$CanvasLayer/Control/Hold.modulate = Color(1.0, 0.0, 1.0, 1.0)
+			$CanvasLayer/Control/Hold.modulate = Color("e2c044")
 			plant_scene = load("res://scenes/plants/mele_plant.tscn")
 		
 		elif (storage[0].type == "blue" and storage[1].type == "slowing") or (storage[0].type == "slowing" and storage[1].type == "blue"):
 			$CanvasLayer/Control/Hold.texture = load(get_icon("healing"))
-			$CanvasLayer/Control/Hold.modulate = Color(1.0, 0.0, 1.0, 1.0)
+			$CanvasLayer/Control/Hold.modulate = Color("698f91")
 			plant_scene = load("res://scenes/plants/healing_plant.tscn")
 		
-		elif (storage[0].type == "blue" and storage[1].type == "explosive") or (storage[0].type == "explosive" and storage[1].type == "blue"):
-			pass #ściana???
+		#elif (storage[0].type == "blue" and storage[1].type == "explosive") or (storage[0].type == "explosive" and storage[1].type == "blue"):
+			#pass #ściana???
+		else:
+			print("invalid recipe")
+			storage.clear()
+			$CanvasLayer/Control/Hold.texture = null
+			$CanvasLayer/Control/Slot1.texture = null
+			$CanvasLayer/Control/Slot2.texture = null
+			hold = null
+			$PlantArea.monitoring = true
+			plant_in_range = null
+			return
 	else:
 		storage[1].adopt_by(storage[0])
 		storage[0].adopted_children.append(storage[1])
@@ -183,6 +193,8 @@ func craft():
 		storage[0].show()
 		$PlantArea.monitoring = false
 		plant_in_range = null
+		storage[0].available = true
+		storage[1].available = true
 
 func get_icon(type):
 	match type:
@@ -222,11 +234,11 @@ func die(screen):
 
 func _on_plant_area_area_entered(area):
 	if plant_in_range:
-		plant_in_range.switch_select()
-	area.switch_select()
+		plant_in_range.switch_select(false)
+	area.switch_select(true)
 	plant_in_range = area
 
 func _on_plant_area_area_exited(area):
 	if area == plant_in_range:
-		plant_in_range.switch_select()
+		plant_in_range.switch_select(false)
 		plant_in_range = null

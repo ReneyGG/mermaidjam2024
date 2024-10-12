@@ -56,7 +56,25 @@ func take_heal(heal):
 
 #gdzie są te dzieci
 func die():
+	get_to_parent()
+
+func get_to_parent():
+	if parent:
+		parent.get_to_parent()
+	else:
+		kill_children()
+
+func kill_children():
+	if type == "explosive":
+		explode()
 	for i in adopted_children:
 		i.adopted = false
-		i.die()
+		i.kill_children()
 	queue_free()
+
+func explode():
+	for enemy in $ExplodeArea.get_overlapping_bodies():
+		if enemy.is_in_group("enemy"):
+			enemy.take_damage(2)
+			var direction = global_position.direction_to(enemy.global_position)
+			enemy.knockback(direction, 750)

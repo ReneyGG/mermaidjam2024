@@ -13,9 +13,10 @@ shader_parameter/inside = false
 shader_parameter/add_margins = true
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6yntm"]
+
 radius = 60.0333
 
-[node name="PlantBase" type="Area2D"]
+[node name="PlantBase" type="Area2D" groups=["plant"]]
 collision_layer = 16
 collision_mask = 16
 script = ExtResource("1_23wbr")

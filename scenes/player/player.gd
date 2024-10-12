@@ -138,7 +138,11 @@ func get_icon(type):
 			return "res://assets/icons/purple.png"
 		"aggro":
 			return "res://assets/icons/rose.png"
-		"black":
+		"melee":
+			return "res://assets/icons/black.png"
+		"catapult":
+			return "res://assets/icons/black.png"
+		"multishoot":
 			return "res://assets/icons/black.png"
 
 func die(screen):

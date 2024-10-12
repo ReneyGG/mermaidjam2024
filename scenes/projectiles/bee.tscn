@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://byq11hmbb5pvq"]
+
+[ext_resource type="Texture2D" uid="uid://bd6vhgcsw3va8" path="res://assets/bee.png" id="1_c7gfr"]
+[ext_resource type="Script" path="res://scenes/projectiles/bee.gd" id="1_g5277"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ayaqu"]
+radius = 111.005
+
+[node name="Bee" type="Node2D"]
+script = ExtResource("1_g5277")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -200)
+scale = Vector2(0.32, 0.32)
+texture = ExtResource("1_c7gfr")
+
+[node name="AttackArea" type="Area2D" parent="Sprite2D"]
+scale = Vector2(2.08333, 2.08333)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/AttackArea"]
+shape = SubResource("CircleShape2D_ayaqu")
+
+[connection signal="body_entered" from="Sprite2D/AttackArea" to="." method="_on_attack_area_body_entered"]

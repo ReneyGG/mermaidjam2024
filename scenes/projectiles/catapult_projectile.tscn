@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0jyp7bwg7lv1"]
+
+[ext_resource type="Script" path="res://scenes/projectiles/catapult_projectile.gd" id="1_3cmp6"]
+[ext_resource type="Texture2D" uid="uid://1iyslt8qsiki" path="res://assets/catapult_projectile_shadow.png" id="1_wxpl4"]
+[ext_resource type="Texture2D" uid="uid://besqf82dn2pwv" path="res://assets/catapult_projectile.png" id="2_h2bwe"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7rc81"]
+radius = 241.267
+
+[node name="CatapultProjectile" type="Node2D"]
+script = ExtResource("1_3cmp6")
+time_mult = 8.0
+
+[node name="Shadow" type="Sprite2D" parent="."]
+texture = ExtResource("1_wxpl4")
+
+[node name="Projectile" type="Sprite2D" parent="."]
+texture = ExtResource("2_h2bwe")
+
+[node name="ExplosionArea" type="Area2D" parent="Projectile"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Projectile/ExplosionArea"]
+shape = SubResource("CircleShape2D_7rc81")

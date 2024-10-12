@@ -9,11 +9,15 @@ func take_damage(damage):
 		queue_free()
 
 func _on_aggro_area_body_entered(body):
+	if not available:
+		return
 	if body.is_in_group("enemy"):
 		body.target = self
 		print(body)
 
 func _on_aggro_area_body_exited(body):
+	if not available:
+		return
 	if body.is_in_group("enemy"):
 		body.target = get_tree().get_first_node_in_group("base")
 		print(body)

@@ -201,6 +201,7 @@ type = "shooting"
 color = Color(0.898039, 0.74902, 0.47451, 1)
 
 [node name="ShootingTimer" type="Timer" parent="." index="0"]
+wait_time = 0.8
 autostart = true
 
 [node name="Sprite2D" parent="." index="1"]

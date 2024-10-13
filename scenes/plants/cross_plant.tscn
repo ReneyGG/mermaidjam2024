@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bspjxhy0xyhba"]
+
+[ext_resource type="PackedScene" uid="uid://d4hia2tutqsev" path="res://scenes/plant_base/plant_base.tscn" id="1_21w3k"]
+[ext_resource type="Script" path="res://scenes/plants/croos_plant.gd" id="2_oe8oc"]
+[ext_resource type="PackedScene" uid="uid://kevxggnqglel" path="res://scenes/projectiles/basic_projectile.tscn" id="3_hpsu5"]
+
+[node name="CrossPlant" instance=ExtResource("1_21w3k")]
+script = ExtResource("2_oe8oc")
+projectile_scene = ExtResource("3_hpsu5")
+type = "cross"
+color = Color(0.694118, 0.721569, 0.690196, 1)
+
+[node name="ShootTimer" type="Timer" parent="." index="0"]
+wait_time = 1.5
+autostart = true
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

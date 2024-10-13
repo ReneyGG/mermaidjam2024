@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://cwjkkylcnob2b"]
+
+[node name="Ambient" type="AudioStreamPlayer2D"]

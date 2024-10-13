@@ -22,6 +22,9 @@ func format_time(seconds: float) -> String:
 	return str(minutes).pad_zeros(2) + ":" + str(remaining_seconds).pad_zeros(2) + ":" + str(centiseconds).pad_zeros(2)
 
 func lose():
+	get_tree().paused = true
+	$Interface.add_child(load("res://scenes/visual_novel/visual_novel.tscn").instantiate())
+func after_dialog():
 	game_over_menu.time_to_print = format_time(elapsed_time)
 	game_over_menu.ponits_to_print = score
 	game_over_menu.update()

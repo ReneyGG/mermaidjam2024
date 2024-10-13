@@ -1,16 +1,20 @@
 extends Control
 
-var person_1 = "res://icon.svg"
-var person_2 = "res://assets/bee.png"
-
-# Tablica przechowująca dialogi
+# ? - Duch
+# ! - Burmistrz
 var dialog_lines = [
-	"?Hello! How are you?",
-	"!This is a simple visual novel system.",
-	"?Click to advance to the next line!"
+	"?Zaraz, kto to... Pan Burmistrz?",
+	"!Czołem, duszku. Niezły tu masz bałagan.",
+	"?Ech, nic nowego. Czy mogę Panu pomóc?",
+	"!Szukam Dziewicy Moru, czy widziałeś ją może?",
+	"?Niestety nie...",
+	"!Nie szkodzi, prędzej czy później ją znajdę.",
+	"?Powodzenia, Burmistrzu.",
+	"!Tobie również, duszku."
 ]
 @onready var display_label = $NinePatchRect/TextLabel
 @onready var texture_rect = $NinePatchRect/TextureRect
+@onready var animation_player = $AnimationPlayer
 
 # Przechowywanie aktualnej linii dialogu i indeksu litery
 var current_line_index = 0
@@ -38,9 +42,9 @@ func show_next_line():
 	if current_line_index < dialog_lines.size():
 		full_line = dialog_lines[current_line_index]
 		if full_line[0] == "?":
-			texture_rect.texture = load(person_1)
+			animation_player.play("ghost_talk")
 		elif full_line[0] == "!":
-			texture_rect.texture = load(person_2)
+			animation_player.play("burgmaster_talk")
 		full_line[0] = ""
 		current_char_index = 0
 		display_label.text = ""
@@ -49,7 +53,9 @@ func show_next_line():
 		# Rozpoczynamy animację liter
 		start_typing_text()
 
-	#else:
+	else:
+		get_parent().get_parent().after_dialog()
+		queue_free()
 		# Koniec dialogu, np. zamknij scenę dialogu
 		#print("Koniec dialogów.")
 

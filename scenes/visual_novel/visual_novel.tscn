@@ -1,8 +1,77 @@
-[gd_scene load_steps=4 format=3 uid="uid://dcix2stiu1aeb"]
+[gd_scene load_steps=9 format=3 uid="uid://dcix2stiu1aeb"]
 
-[ext_resource type="Texture2D" uid="uid://bqj1yyrqfsuu5" path="res://icon.svg" id="1_8bpcu"]
 [ext_resource type="Script" path="res://scenes/visual_novel/visual_novel.gd" id="1_cecue"]
 [ext_resource type="Texture2D" uid="uid://b0m1pfllma5oo" path="res://assets/ramkadialogi.png" id="2_o4iaq"]
+[ext_resource type="Texture2D" uid="uid://hyl6xrv5gsxu" path="res://assets/characters/duch duzy.png" id="3_0pttr"]
+[ext_resource type="Texture2D" uid="uid://cd8a4xy2hfg3c" path="res://assets/characters/burmistrz.png" id="4_jdl7m"]
+
+[sub_resource type="Animation" id="Animation_2eio2"]
+resource_name = "ghost_talk"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NinePatchRect/ghost:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(471, -589), Vector2(471, -619.59), Vector2(471, -589)]
+}
+
+[sub_resource type="Animation" id="Animation_a8j2i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NinePatchRect/ghost:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(471, -589)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NinePatchRect/burgmaster:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-725, -521)]
+}
+
+[sub_resource type="Animation" id="Animation_wlxd3"]
+resource_name = "burgmaster_talk"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NinePatchRect/burgmaster:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-725, -521), Vector2(-725, -471), Vector2(-725, -521)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tq5o2"]
+_data = {
+"RESET": SubResource("Animation_a8j2i"),
+"burgmaster_talk": SubResource("Animation_wlxd3"),
+"ghost_talk": SubResource("Animation_2eio2")
+}
 
 [node name="VisualNovel" type="Control"]
 layout_mode = 3
@@ -19,6 +88,7 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 794.0
 offset_top = -392.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -35,20 +105,33 @@ anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 90.0
-offset_top = -123.0
-offset_right = 1830.0
-offset_bottom = 110.0
+offset_top = -145.0
+offset_right = 1051.0
+offset_bottom = 132.0
 grow_vertical = 2
 theme_override_font_sizes/font_size = 48
 text = "orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"
 autowrap_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="NinePatchRect"]
+[node name="ghost" type="TextureRect" parent="NinePatchRect"]
 layout_mode = 0
-offset_left = 1297.0
-offset_top = -460.0
-offset_right = 1809.0
-offset_bottom = 52.0
-texture = ExtResource("1_8bpcu")
+offset_left = 471.0
+offset_top = -589.0
+offset_right = 1125.0
+offset_bottom = 65.0
+texture = ExtResource("3_0pttr")
+
+[node name="burgmaster" type="TextureRect" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = -725.0
+offset_top = -521.0
+offset_right = -31.0
+offset_bottom = 455.0
+texture = ExtResource("4_jdl7m")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tq5o2")
+}

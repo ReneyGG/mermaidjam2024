@@ -247,7 +247,9 @@ scale = Vector2(1, 0.5)
 shape = SubResource("CircleShape2D_efe22")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="ExplodeArea" index="1"]
-visible = false
 z_index = -1
 sprite_frames = SubResource("SpriteFrames_7mf8x")
 autoplay = "default"
+
+[node name="RangeHint" parent="." index="5"]
+scale = Vector2(1e-05, 1e-05)

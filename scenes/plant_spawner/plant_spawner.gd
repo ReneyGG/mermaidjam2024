@@ -15,7 +15,7 @@ preload("res://scenes/plants/red_plant.tscn")]
 func _on_spawn_timer_timeout():
 	if get_tree().get_node_count_in_group("plant") > plant_limit:
 		return
-	var random_position = Vector2(randf_range(0, WIDTH), randf_range(0, HEIGHT))
+	var random_position = Vector2(randf_range(-1750, 1750), randf_range(-900, 900))
 	var random_plant = plants.pick_random()
 	var plant_inst = random_plant.instantiate()
 	add_sibling(plant_inst)

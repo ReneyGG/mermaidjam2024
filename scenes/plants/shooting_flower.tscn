@@ -1,10 +1,11 @@
-[gd_scene load_steps=33 format=3 uid="uid://ck505600pjj44"]
+[gd_scene load_steps=35 format=3 uid="uid://ck505600pjj44"]
 
 [ext_resource type="PackedScene" uid="uid://d4hia2tutqsev" path="res://scenes/plant_base/plant_base.tscn" id="1_dncpy"]
 [ext_resource type="Script" path="res://scenes/plants/shooting_flower.gd" id="2_1cpvh"]
 [ext_resource type="PackedScene" uid="uid://kevxggnqglel" path="res://scenes/projectiles/basic_projectile.tscn" id="3_3nfon"]
 [ext_resource type="Shader" path="res://scenes/plant_base/plant_base.gdshader" id="5_2rppo"]
 [ext_resource type="Texture2D" uid="uid://cnpa4mf26t0av" path="res://assets/Kwiat.Sprite.png" id="5_a5pxf"]
+[ext_resource type="Texture2D" uid="uid://1te6wurc4hne" path="res://assets/small_range.png" id="6_43w8c"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fse8f"]
 resource_local_to_scene = true
@@ -194,6 +195,17 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_wvryq"]
 radius = 335.121
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_wgusq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_43w8c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="ShootingFlower" instance=ExtResource("1_dncpy")]
 script = ExtResource("2_1cpvh")
 projectile_scene = ExtResource("3_3nfon")
@@ -216,6 +228,6 @@ shape = SubResource("CircleShape2D_wvryq")
 
 [node name="RangeHint" parent="." index="6"]
 position = Vector2(1.00001, -3.00001)
-scale = Vector2(1.12667, 2.27333)
+sprite_frames = SubResource("SpriteFrames_wgusq")
 
 [connection signal="timeout" from="ShootingTimer" to="." method="shoot"]

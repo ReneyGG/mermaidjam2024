@@ -256,9 +256,5 @@ z_index = -1
 sprite_frames = SubResource("SpriteFrames_4j5nt")
 autoplay = "default"
 
-[node name="Line2D" type="Line2D" parent="." index="6"]
-visible = false
-points = PackedVector2Array(217, -186, -44, -211)
-
 [connection signal="timeout" from="HealTimer" to="." method="_on_heal_timer_timeout"]
 [connection signal="area_entered" from="HealingArea" to="." method="_on_healing_area_area_entered"]

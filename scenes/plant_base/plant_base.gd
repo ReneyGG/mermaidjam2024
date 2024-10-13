@@ -90,6 +90,10 @@ func kill_children():
 	queue_free()
 
 func explode():
+	var explode_effect = load("res://scenes/effects/explosion_effect.tscn").instantiate()
+	add_sibling(explode_effect)
+	explode_effect.global_position = global_position
+	explode_effect.emitting = true
 	for enemy in $ExplodeArea.get_overlapping_bodies():
 		if enemy.is_in_group("enemy"):
 			enemy.take_damage(2)

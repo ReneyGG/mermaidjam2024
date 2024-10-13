@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d11qa8vw8txpx"]
+[gd_scene load_steps=20 format=3 uid="uid://d11qa8vw8txpx"]
 
 [ext_resource type="PackedScene" uid="uid://blor77xon5pyw" path="res://scenes/enemy_spawner/EnemySpawner.tscn" id="1_7ogwc"]
 [ext_resource type="Script" path="res://scenes/level/level.gd" id="1_ptr4r"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c5uiiy7ebuvvo" path="res://scenes/plant_spawner/PlantSpawner.tscn" id="4_eo7tn"]
 [ext_resource type="Texture2D" uid="uid://c4q887qjh3i6k" path="res://assets/bg.png" id="5_6uyqu"]
 [ext_resource type="PackedScene" uid="uid://cq5kexi1t0rcl" path="res://scenes/game_over_menu/GameOverMenu.tscn" id="7_y0ikq"]
+[ext_resource type="PackedScene" uid="uid://b85otjktkkdrn" path="res://scenes/enemy/enemy_big.tscn" id="9_uq0nf"]
 [ext_resource type="PackedScene" uid="uid://cnu7m21as7q3p" path="res://scenes/props/flora1.tscn" id="10_r6iao"]
 [ext_resource type="PackedScene" uid="uid://dkoh1sntcfyde" path="res://scenes/props/flora2.tscn" id="11_55vkt"]
 [ext_resource type="PackedScene" uid="uid://1ec44t1h2rsd" path="res://scenes/props/chalice.tscn" id="11_aassw"]
@@ -112,6 +113,7 @@ position = Vector2(1508, -707)
 position = Vector2(1508, -707)
 
 [node name="Flora3" parent="TileMapLayer" instance=ExtResource("10_r6iao")]
+position = Vector2(620, -466)
 
 [node name="Flora4" parent="TileMapLayer" instance=ExtResource("11_55vkt")]
 position = Vector2(-1378, -347)
@@ -157,6 +159,9 @@ position = Vector2(-2, -677)
 
 [node name="Rail8" parent="TileMapLayer" instance=ExtResource("15_cv14s")]
 position = Vector2(1339, -4)
+
+[node name="Enemy" parent="TileMapLayer" instance=ExtResource("9_uq0nf")]
+position = Vector2(-280, 87)
 
 [node name="Interface" type="CanvasLayer" parent="."]
 process_mode = 3

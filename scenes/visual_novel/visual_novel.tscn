@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dcix2stiu1aeb"]
+[gd_scene load_steps=11 format=3 uid="uid://dcix2stiu1aeb"]
 
 [ext_resource type="Script" path="res://scenes/visual_novel/visual_novel.gd" id="1_cecue"]
 [ext_resource type="Texture2D" uid="uid://b0m1pfllma5oo" path="res://assets/ramkadialogi.png" id="2_o4iaq"]
@@ -10,26 +10,50 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("NinePatchRect/ghost:position")
+tracks/0/path = NodePath("ghost:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(471, -589)]
+"values": [Vector2(1082, 60)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("NinePatchRect/burgmaster:position")
+tracks/1/path = NodePath("burgmaster:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-725, -521)]
+"values": [Vector2(23, 163)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:can_click")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_wlxd3"]
@@ -39,14 +63,14 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("NinePatchRect/burgmaster:position")
+tracks/0/path = NodePath("burgmaster:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(-725, -521), Vector2(-725, -471), Vector2(-725, -521)]
+"values": [Vector2(23, 163), Vector2(23, 112.68), Vector2(23, 163)]
 }
 
 [sub_resource type="Animation" id="Animation_2eio2"]
@@ -56,21 +80,95 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("NinePatchRect/ghost:position")
+tracks/0/path = NodePath("ghost:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(471, -589), Vector2(471, -619.59), Vector2(471, -589)]
+"values": [Vector2(1082, 60), Vector2(1082, -8.11), Vector2(1082, 60)]
+}
+
+[sub_resource type="Animation" id="Animation_d3u1r"]
+resource_name = "popup"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 1000), Vector2(0, -100), Vector2(0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"show_next_line"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:can_click")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_sc4nw"]
+resource_name = "popout"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -100), Vector2(0, 1000)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tq5o2"]
 _data = {
 "RESET": SubResource("Animation_a8j2i"),
 "burgmaster_talk": SubResource("Animation_wlxd3"),
-"ghost_talk": SubResource("Animation_2eio2")
+"ghost_talk": SubResource("Animation_2eio2"),
+"popout": SubResource("Animation_sc4nw"),
+"popup": SubResource("Animation_d3u1r")
 }
 
 [node name="VisualNovel" type="Control"]
@@ -82,14 +180,41 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cecue")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.458824)
+
+[node name="ghost" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1082.0
+offset_top = 60.0
+offset_right = 1736.0
+offset_bottom = 714.0
+texture = ExtResource("3_0pttr")
+
+[node name="burgmaster" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 163.0
+offset_right = 717.0
+offset_bottom = 1139.0
+texture = ExtResource("4_jdl7m")
+
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 794.0
-offset_top = -392.0
+offset_left = 750.0
+offset_top = -405.0
+offset_right = -44.0
+offset_bottom = -13.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("2_o4iaq")
@@ -109,25 +234,8 @@ offset_top = -145.0
 offset_right = 1051.0
 offset_bottom = 132.0
 grow_vertical = 2
-theme_override_font_sizes/font_size = 48
-text = "orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"
+theme_override_font_sizes/font_size = 52
 autowrap_mode = 2
-
-[node name="ghost" type="TextureRect" parent="NinePatchRect"]
-layout_mode = 0
-offset_left = 471.0
-offset_top = -589.0
-offset_right = 1125.0
-offset_bottom = 65.0
-texture = ExtResource("3_0pttr")
-
-[node name="burgmaster" type="TextureRect" parent="NinePatchRect"]
-layout_mode = 0
-offset_left = -725.0
-offset_top = -521.0
-offset_right = -31.0
-offset_bottom = 455.0
-texture = ExtResource("4_jdl7m")
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -135,3 +243,4 @@ texture = ExtResource("4_jdl7m")
 libraries = {
 "": SubResource("AnimationLibrary_tq5o2")
 }
+autoplay = "popup"

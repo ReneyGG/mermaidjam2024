@@ -40,10 +40,10 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3ckvi"]
-radius = 148.862
+radius = 169.83
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w0e0g"]
-size = Vector2(302.89, 212.265)
+size = Vector2(281.04, 196.635)
 
 [node name="Base" type="Area2D" groups=["base"]]
 script = ExtResource("2_h72af")

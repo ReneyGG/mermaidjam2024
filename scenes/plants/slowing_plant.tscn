@@ -1,9 +1,10 @@
-[gd_scene load_steps=32 format=3 uid="uid://dgshx1ob7jky5"]
+[gd_scene load_steps=38 format=3 uid="uid://dgshx1ob7jky5"]
 
 [ext_resource type="PackedScene" uid="uid://d4hia2tutqsev" path="res://scenes/plant_base/plant_base.tscn" id="1_ojbsy"]
 [ext_resource type="Script" path="res://scenes/plants/slowing_plant.gd" id="2_c0bw0"]
 [ext_resource type="Shader" path="res://scenes/plant_base/plant_base.gdshader" id="3_s8g4a"]
 [ext_resource type="Texture2D" uid="uid://cnpa4mf26t0av" path="res://assets/Kwiat.Sprite.png" id="4_61o66"]
+[ext_resource type="Texture2D" uid="uid://dkwp64ni5af7d" path="res://assets/okrag.sprite.png" id="5_p67gl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iuq4r"]
 resource_local_to_scene = true
@@ -191,7 +192,43 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_44235"]
-radius = 373.936
+radius = 300.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ax4t3"]
+atlas = ExtResource("5_p67gl")
+region = Rect2(0, 0, 600, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqjb4"]
+atlas = ExtResource("5_p67gl")
+region = Rect2(600, 0, 600, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ichqw"]
+atlas = ExtResource("5_p67gl")
+region = Rect2(1200, 0, 600, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7i14"]
+atlas = ExtResource("5_p67gl")
+region = Rect2(1800, 0, 600, 300)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j8pjd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ax4t3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eqjb4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ichqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7i14")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
 
 [node name="SlowingPlant" instance=ExtResource("1_ojbsy")]
 script = ExtResource("2_c0bw0")
@@ -205,7 +242,13 @@ sprite_frames = SubResource("SpriteFrames_yt1a7")
 [node name="SlowingArea" type="Area2D" parent="." index="2"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SlowingArea" index="0"]
+scale = Vector2(1, 0.5)
 shape = SubResource("CircleShape2D_44235")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="SlowingArea" index="1"]
+z_index = -1
+sprite_frames = SubResource("SpriteFrames_j8pjd")
+autoplay = "default"
 
 [connection signal="body_entered" from="SlowingArea" to="." method="_on_slowing_area_body_entered"]
 [connection signal="body_exited" from="SlowingArea" to="." method="_on_slowing_area_body_exited"]

@@ -13,7 +13,7 @@ var dialog_lines = [
 	"!Tobie również, duszku."
 ]
 @onready var display_label = $NinePatchRect/TextLabel
-@onready var texture_rect = $NinePatchRect/TextureRect
+#@onready var texture_rect = $NinePatchRect/TextureRect
 @onready var animation_player = $AnimationPlayer
 
 # Przechowywanie aktualnej linii dialogu i indeksu litery
@@ -24,12 +24,13 @@ var full_line = ""
 var typing_speed = 0.05  # Czas (w sekundach) między literami
 var typing_active = false  # Flaga kontrolująca, czy animacja jest aktywna
 
-func _ready():
-	show_next_line()
+@export var can_click: bool = false
+#func _ready():
+	#show_next_line()
 
 func _process(delta):
 	# Sprawdzenie kliknięcia w trakcie wyświetlania tekstu
-	if Input.is_action_just_pressed("pick"):
+	if Input.is_action_just_pressed("pick") and can_click:
 		if is_text_scrolling:
 			# Jeśli tekst jest w trakcie przewijania, wyświetl go od razu
 			skip_text_animation()
@@ -55,7 +56,8 @@ func show_next_line():
 
 	else:
 		get_parent().get_parent().after_dialog()
-		queue_free()
+		animation_player.play("popout")
+		#queue_free()
 		# Koniec dialogu, np. zamknij scenę dialogu
 		#print("Koniec dialogów.")
 

@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var enemy_scene: PackedScene
-@export var cooldown := 5.0
+@export var cooldown := 9.0
 
 @onready var level = get_parent().get_parent()
 
@@ -25,7 +25,7 @@ func spawn_enemies():
 		#enemy.speed = new_speed
 		#enemy.health += int(new_scale * 5)
 		add_sibling(enemy)
-		cooldown = clamp((-0.04 * float(level.score)) + 5.0, 1.0, 5.0)
+		cooldown = clamp((-0.08 * level.score) + 9, 1.0, 9.0)
 		$SpawnTimer.start(cooldown)
 
 func pick_random_position(center, distance):	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://d11qa8vw8txpx"]
+[gd_scene load_steps=22 format=3 uid="uid://d11qa8vw8txpx"]
 
 [ext_resource type="PackedScene" uid="uid://blor77xon5pyw" path="res://scenes/enemy_spawner/EnemySpawner.tscn" id="1_7ogwc"]
 [ext_resource type="Script" path="res://scenes/level/level.gd" id="1_ptr4r"]
@@ -13,12 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://n3j6c0jfak7a" path="res://scenes/props/flora3.tscn" id="12_jy6xr"]
 [ext_resource type="PackedScene" uid="uid://dc2fhvfm3w1a2" path="res://scenes/props/flora4.tscn" id="13_dogww"]
 [ext_resource type="PackedScene" uid="uid://bjpxt5sx6mx83" path="res://scenes/props/pillar.tscn" id="14_1qq0u"]
-[ext_resource type="PackedScene" uid="uid://bspjxhy0xyhba" path="res://scenes/plants/cross_plant.tscn" id="15_3pfmd"]
 [ext_resource type="PackedScene" uid="uid://b0ky53aspxb8d" path="res://scenes/props/rail1.tscn" id="15_cv14s"]
-[ext_resource type="PackedScene" uid="uid://ca7yclfrohu88" path="res://scenes/plants/mele_plant.tscn" id="16_ajg0t"]
 [ext_resource type="PackedScene" uid="uid://d3ft7irgwjuvx" path="res://scenes/props/rail2.tscn" id="16_w1syi"]
-[ext_resource type="PackedScene" uid="uid://b85otjktkkdrn" path="res://scenes/enemy/enemy_big.tscn" id="17_2hhvy"]
-[ext_resource type="PackedScene" uid="uid://bg4rxpbeg8auw" path="res://scenes/plants/catapult_plant.tscn" id="18_mmyx0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n8i4a"]
 size = Vector2(226, 2523)
@@ -203,18 +199,6 @@ position = Vector2(-473, 450)
 
 [node name="Chalice2" parent="TileMapLayer" instance=ExtResource("11_aassw")]
 position = Vector2(467, -305)
-
-[node name="CroosPlant" parent="TileMapLayer" instance=ExtResource("15_3pfmd")]
-position = Vector2(-585, 55)
-
-[node name="MeleePlant" parent="TileMapLayer" instance=ExtResource("16_ajg0t")]
-position = Vector2(413, 159)
-
-[node name="Enemy" parent="TileMapLayer" instance=ExtResource("17_2hhvy")]
-position = Vector2(-381, 573)
-
-[node name="CatapultPlant" parent="TileMapLayer" instance=ExtResource("18_mmyx0")]
-position = Vector2(-160, 294)
 
 [node name="Interface" type="CanvasLayer" parent="."]
 process_mode = 3

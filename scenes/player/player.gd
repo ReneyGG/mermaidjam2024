@@ -39,6 +39,7 @@ func get_input():
 	if Input.is_action_just_pressed("pick"):
 		$Sprite2D.scale.y = 0.7
 		if plant_in_range and not hold:
+			GlobalSound.play_sound("res://assets/audio/Pick_up.mp3")
 			plant_in_range.pick()
 			hold = plant_in_range
 			if $Sprite2D.scale.x == -1:
@@ -50,6 +51,7 @@ func get_input():
 			$CanvasLayer/Control/Hold.show()
 			$CanvasLayer/Control/Hold.self_modulate = hold.color
 		elif hold:
+			GlobalSound.play_sound("res://assets/audio/Pick_up.mp3")
 			if storage.size() == 2:
 				storage.clear()
 				$CanvasLayer/Control/Slot1.hide()
@@ -61,6 +63,7 @@ func get_input():
 	if Input.is_action_just_pressed("harvest"):
 		$Sprite2D.scale.y = 0.7
 		if plant_in_range and not hold:
+			GlobalSound.play_sound("res://assets/audio/Put_out.mp3")
 			plant_in_range.harvest()
 			add_storage(plant_in_range)
 			plant_in_range = null
@@ -68,6 +71,7 @@ func get_input():
 			await get_tree().physics_frame
 			$PlantArea.monitoring = true
 		elif hold:
+			GlobalSound.play_sound("res://assets/audio/Put_out.mp3")
 			if storage.size() == 2:
 				storage.clear()
 				$CanvasLayer/Control/Slot1.hide()

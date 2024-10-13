@@ -19,20 +19,19 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.458824)
 
-[node name="BestScores" type="VBoxContainer" parent="ColorRect"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -160.5
-offset_right = 160.5
-offset_bottom = 115.0
+anchor_bottom = 0.5
+offset_left = -660.0
+offset_top = -304.0
+offset_right = 660.0
+offset_bottom = 304.0
 grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/separation = 51
 alignment = 1
 
@@ -42,12 +41,14 @@ texture = ExtResource("2_y73xo")
 
 [node name="TimeLabel" type="Label" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.92549, 0.792157, 1)
 theme_override_font_sizes/font_size = 64
 text = "Czas: 00:00:00"
 horizontal_alignment = 1
 
 [node name="Pointslabel" type="Label" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.92549, 0.792157, 1)
 theme_override_font_sizes/font_size = 64
 text = "Punkty: 00:00:00"
 horizontal_alignment = 1

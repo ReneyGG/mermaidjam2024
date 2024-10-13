@@ -38,6 +38,25 @@ var baba_2 = [
 	"!Ma, w końcu się uda, mały stróżu."
 ]
 
+var krol_1 = [
+	"?Znowu obcy? ",
+	"!Żaden obcy, zjawo. Tak mówisz do Króla?",
+	"?Dworska etykieta nie jest moją mocną stroną...",
+	"!Mości starościna mówiła, że próbujesz sił w walce z łotrami.",
+	"?Tak, bezskutecznie, jest ich za dużo i są zbyt silni.",
+	"!Siła upiora to nie szabla, a jego upartość. Przyjdzie czas figle będą budzić w tych łobuzach zgrozę.",
+	"!Oby się Król nie mylił.",
+	"?Nie myli. Miej się na baczności, zjawo."
+]
+
+var syrenka_1 = [
+	"!Cześć zuchu-duchu!",
+	"?Syrenka, ty tutaj?",
+	"!Coś tak zbladł, co cię gryzie?",
+	"?Znowu zawiodłem, to chyba mnie przerasta.",
+	"!Daj spokój, młody. W końcu się uda."
+]
+
 
 @onready var display_label = $NinePatchRect/TextLabel
 #@onready var texture_rect = $NinePatchRect/TextureRect
@@ -56,13 +75,16 @@ var random_dialog = null
 @export var can_click: bool = false
 
 func _ready():
-	random_dialog = [burmistrz_1, burmistrz_2, baba_1, baba_2].pick_random()
+	random_dialog = [burmistrz_1, burmistrz_2, baba_1, baba_2, krol_1, syrenka_1].pick_random()
 	match random_dialog:
 		burmistrz_1, burmistrz_2:
 			burgmaster.texture = load("res://assets/characters/burmistrz.png")
 		baba_1, baba_2:
 			burgmaster.texture = load("res://assets/characters/baba.png")
-
+		krol_1:
+			burgmaster.texture = load("res://assets/characters/krol.png")
+		syrenka_1:
+			burgmaster.texture = load("res://assets/characters/syrenka.png")
 
 func _process(delta):
 	# Sprawdzenie kliknięcia w trakcie wyświetlania tekstu

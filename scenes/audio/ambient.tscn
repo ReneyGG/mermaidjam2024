@@ -1,3 +1,8 @@
-[gd_scene format=3 uid="uid://cwjkkylcnob2b"]
+[gd_scene load_steps=2 format=3 uid="uid://cwjkkylcnob2b"]
+
+[ext_resource type="AudioStream" uid="uid://ctxhi35i3114i" path="res://assets/audio/My_Song_13.mp3" id="1_qmgdk"]
 
 [node name="Ambient" type="AudioStreamPlayer2D"]
+process_mode = 3
+stream = ExtResource("1_qmgdk")
+autoplay = true

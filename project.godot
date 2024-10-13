@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Fade="*res://scenes/fade/fade.tscn"
 Pause="*res://scenes/pause/pause.tscn"
+Ambient="*res://scenes/audio/ambient.tscn"
 
 [display]
 

@@ -1,6 +1,9 @@
 extends Node2D
 
 @export var enemy_scene: PackedScene
+@export var cooldown := 5.0
+
+@onready var level = get_parent().get_parent()
 
 var enemies = {
 	"res://scenes/enemy/enemy.tscn": 70,
@@ -9,6 +12,7 @@ var enemies = {
 
 func _ready():
 	randomize()
+	$SpawnTimer.start(cooldown)
 
 func spawn_enemies():
 	var group_spawn_position = pick_random_position(global_position, 2255)
@@ -21,6 +25,8 @@ func spawn_enemies():
 		#enemy.speed = new_speed
 		#enemy.health += int(new_scale * 5)
 		add_sibling(enemy)
+		cooldown = clamp((-0.04 * float(level.score)) + 5.0, 1.0, 5.0)
+		$SpawnTimer.start(cooldown)
 
 func pick_random_position(center, distance):	
 	# Losujemy kąt w radianach (od 0 do 2 * PI)

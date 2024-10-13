@@ -1,10 +1,11 @@
-[gd_scene load_steps=33 format=3 uid="uid://bg4rxpbeg8auw"]
+[gd_scene load_steps=35 format=3 uid="uid://bg4rxpbeg8auw"]
 
 [ext_resource type="PackedScene" uid="uid://d4hia2tutqsev" path="res://scenes/plant_base/plant_base.tscn" id="1_d16aa"]
 [ext_resource type="Script" path="res://scenes/plants/catapult_plant.gd" id="2_rsdhh"]
 [ext_resource type="PackedScene" uid="uid://c0jyp7bwg7lv1" path="res://scenes/projectiles/catapult_projectile.tscn" id="3_xwnt3"]
 [ext_resource type="Shader" path="res://scenes/plant_base/plant_base.gdshader" id="4_xulnp"]
 [ext_resource type="Texture2D" uid="uid://cnpa4mf26t0av" path="res://assets/Kwiat.Sprite.png" id="5_4fr1q"]
+[ext_resource type="Texture2D" uid="uid://i4oldyesguvf" path="res://assets/big_range.png" id="6_ope6n"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qhhl6"]
 resource_local_to_scene = true
@@ -194,6 +195,17 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_k026c"]
 radius = 787.966
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_ojy8e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_ope6n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="CatapultPlant" instance=ExtResource("1_d16aa")]
 script = ExtResource("2_rsdhh")
 projectile_scene = ExtResource("3_xwnt3")
@@ -213,9 +225,9 @@ sprite_frames = SubResource("SpriteFrames_yt1a7")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RangeArea" index="0"]
 shape = SubResource("CircleShape2D_k026c")
 
-[node name="RangeHint" parent="." index="7"]
+[node name="RangeHint" parent="." index="6"]
 position = Vector2(-2.50003, 11)
-scale = Vector2(2.63167, 5.34)
+sprite_frames = SubResource("SpriteFrames_ojy8e")
 
 [connection signal="timeout" from="ShootingTimer" to="." method="_on_shooting_timer_timeout"]
 [connection signal="body_entered" from="RangeArea" to="." method="_on_range_area_body_entered"]

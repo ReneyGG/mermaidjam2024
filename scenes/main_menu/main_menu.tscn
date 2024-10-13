@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cs4jvkemrjtg6"]
+[gd_scene load_steps=10 format=3 uid="uid://cs4jvkemrjtg6"]
 
 [ext_resource type="Script" path="res://scenes/main_menu/main_menu.gd" id="1_ncn4x"]
 [ext_resource type="Texture2D" uid="uid://l7d806xkjnmo" path="res://assets/menu/kaltka0000.png" id="2_0weu8"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ctsplaaslo1qu" path="res://assets/menu/Kwiaty wilanowa].png" id="5_d5kob"]
 [ext_resource type="Texture2D" uid="uid://cviaqvk5tox18" path="res://assets/menu/start.png" id="5_yxn0d"]
 [ext_resource type="Texture2D" uid="uid://dnpl1csh1s0ye" path="res://assets/menu/wyjscie.png" id="6_ri4u6"]
+[ext_resource type="Script" path="res://scenes/pause/button.gd" id="7_pkje8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bbdcc"]
 animations = [{
@@ -40,30 +41,41 @@ sprite_frames = SubResource("SpriteFrames_bbdcc")
 autoplay = "default"
 flip_h = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
 offset_left = 1059.0
 offset_top = 105.0
 offset_right = 1848.0
-offset_bottom = 833.0
-theme_override_constants/separation = 44
-alignment = 2
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
-layout_mode = 2
+offset_bottom = 479.0
 texture = ExtResource("5_d5kob")
 
-[node name="PlayButton" type="TextureButton" parent="VBoxContainer"]
+[node name="PlayButton" type="TextureButton" parent="."]
 layout_mode = 2
+offset_left = 1248.0
+offset_top = 523.0
+offset_right = 1658.0
+offset_bottom = 655.0
+pivot_offset = Vector2(205, 67)
 size_flags_horizontal = 4
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("5_yxn0d")
+script = ExtResource("7_pkje8")
 
-[node name="QuitButton" type="TextureButton" parent="VBoxContainer"]
+[node name="QuitButton" type="TextureButton" parent="."]
 layout_mode = 2
+offset_left = 1249.0
+offset_top = 699.0
+offset_right = 1657.0
+offset_bottom = 833.0
+pivot_offset = Vector2(205, 67)
 size_flags_horizontal = 4
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("6_ri4u6")
+script = ExtResource("7_pkje8")
 
-[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="mouse_entered" from="PlayButton" to="PlayButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PlayButton" to="PlayButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="mouse_entered" from="QuitButton" to="QuitButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="QuitButton" to="QuitButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

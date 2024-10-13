@@ -252,5 +252,8 @@ z_index = -1
 sprite_frames = SubResource("SpriteFrames_hykqu")
 autoplay = "default"
 
+[node name="RangeHint" parent="." index="5"]
+scale = Vector2(1e-05, 1e-05)
+
 [connection signal="body_entered" from="AggroArea" to="." method="_on_aggro_area_body_entered"]
 [connection signal="body_exited" from="AggroArea" to="." method="_on_aggro_area_body_exited"]

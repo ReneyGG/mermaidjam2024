@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://c74sdmdh35v7x"]
+[gd_scene load_steps=8 format=3 uid="uid://c74sdmdh35v7x"]
 
 [ext_resource type="Script" path="res://scenes/pause/pause.gd" id="1_8yqqh"]
 [ext_resource type="Texture2D" uid="uid://knvqysnxbq0w" path="res://assets/pause/Group 56.png" id="2_20wob"]
+[ext_resource type="Script" path="res://scenes/pause/button.gd" id="3_04pxr"]
 [ext_resource type="Texture2D" uid="uid://ch5nbefuf0nbw" path="res://assets/pause/Group 57.png" id="3_dwcmn"]
 [ext_resource type="Texture2D" uid="uid://dcit5f3gqsocr" path="res://assets/pause/przyciskdoencyklo.png" id="4_uymfc"]
 [ext_resource type="Texture2D" uid="uid://c1gh8skshv7a2" path="res://assets/pause/Groupr.png" id="5_4obil"]
@@ -43,8 +44,10 @@ offset_right = -38.0
 offset_bottom = 398.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(200, 65)
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("2_20wob")
+script = ExtResource("3_04pxr")
 
 [node name="MenuButton" type="TextureButton" parent="Control"]
 layout_mode = 1
@@ -59,8 +62,10 @@ offset_right = 440.0
 offset_bottom = 401.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(200, 65)
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("3_dwcmn")
+script = ExtResource("3_04pxr")
 
 [node name="EncRight" type="TextureButton" parent="Control"]
 layout_mode = 1
@@ -75,8 +80,10 @@ offset_right = 776.0
 offset_bottom = -35.5
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(51, 45)
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("4_uymfc")
+script = ExtResource("3_04pxr")
 
 [node name="EncLeft" type="TextureButton" parent="Control"]
 layout_mode = 1
@@ -85,15 +92,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -677.0
+offset_left = -790.0
 offset_top = -126.5
-offset_right = -573.0
+offset_right = -686.0
 offset_bottom = -35.5
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(-1, 1)
+rotation = 3.14159
+pivot_offset = Vector2(51, 45)
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("4_uymfc")
+script = ExtResource("3_04pxr")
 
 [node name="TextureRectB" type="TextureRect" parent="Control"]
 layout_mode = 1
@@ -125,7 +134,15 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_me5lu")
 
+[connection signal="mouse_entered" from="Control/ResumeButton" to="Control/ResumeButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Control/ResumeButton" to="Control/ResumeButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="Control/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="mouse_entered" from="Control/MenuButton" to="Control/MenuButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Control/MenuButton" to="Control/MenuButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="Control/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="mouse_entered" from="Control/EncRight" to="Control/EncRight" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Control/EncRight" to="Control/EncRight" method="_on_mouse_exited"]
 [connection signal="pressed" from="Control/EncRight" to="." method="_on_enc_right_pressed"]
+[connection signal="mouse_entered" from="Control/EncLeft" to="Control/EncLeft" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Control/EncLeft" to="Control/EncLeft" method="_on_mouse_exited"]
 [connection signal="pressed" from="Control/EncLeft" to="." method="_on_enc_left_pressed"]

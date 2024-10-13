@@ -82,7 +82,7 @@ radius = 241.267
 
 [node name="CatapultProjectile" type="Node2D"]
 script = ExtResource("1_3cmp6")
-time_mult = 8.0
+time_mult = 16.0
 explode_effect_scene = ExtResource("2_l2ulb")
 
 [node name="Shadow" type="AnimatedSprite2D" parent="."]

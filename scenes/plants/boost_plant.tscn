@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cg7drv7x7ttqt"]
+
+[ext_resource type="PackedScene" uid="uid://d4hia2tutqsev" path="res://scenes/plant_base/plant_base.tscn" id="1_8882p"]
+
+[node name="BoostPlant" instance=ExtResource("1_8882p")]
+type = "boosting"
+color = Color(0.694118, 0.721569, 0.815686, 1)
+current_health = 0

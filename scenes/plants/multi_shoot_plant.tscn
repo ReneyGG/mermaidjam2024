@@ -206,4 +206,7 @@ autostart = true
 material = SubResource("ShaderMaterial_ye5m0")
 sprite_frames = SubResource("SpriteFrames_yt1a7")
 
+[node name="RangeHint" parent="." index="6"]
+scale = Vector2(1e-05, 1e-05)
+
 [connection signal="timeout" from="ShootingTimer" to="." method="_on_shooting_timer_timeout"]

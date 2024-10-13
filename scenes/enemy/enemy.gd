@@ -6,8 +6,10 @@ var target
 @export var speed: float = 60.0
 @export var attack_cooldown: float = 1.0
 @export var attack_damage: int = 2 
-@onready var attack_timer = $AttackCooldown
 @export var points_amount: int = 1
+
+@onready var attack_timer = $AttackCooldown
+@onready var nav = $NavigationAgent2D
 
 var death_effect_scene = preload("res://scenes/effects/death_effect.tscn")
 
@@ -23,15 +25,18 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 @warning_ignore("unused_parameter")
-func _process(delta):
+func _physics_process(delta):
 	if velocity.x < 0 and velocity.length() > 5:
 		$Sprite2D.flip_h = true
 	elif velocity.x > 0 and velocity.length() > 5:
 		$Sprite2D.flip_h = false
 	if !target:
 		return
-	var direction = global_position.direction_to(target.global_position)
-	#print(direction)
+	
+	nav.target_position = target.global_position
+	#var direction = global_position.direction_to(target.global_position)
+	var direction = nav.get_next_path_position() - global_position
+	direction = direction.normalized()
 	if can_move and global_position.distance_to(target.global_position) > 10:
 		velocity = direction * speed
 	move_and_slide()

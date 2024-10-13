@@ -206,12 +206,15 @@ autostart = true
 [node name="Sprite2D" parent="." index="1"]
 material = SubResource("ShaderMaterial_fse8f")
 sprite_frames = SubResource("SpriteFrames_yt1a7")
-autoplay = "default"
 
 [node name="Area2D" type="Area2D" parent="." index="3"]
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
 shape = SubResource("CircleShape2D_wvryq")
+
+[node name="RangeHint" parent="." index="7"]
+position = Vector2(1.00001, -3.00001)
+scale = Vector2(1.12667, 2.27333)
 
 [connection signal="timeout" from="ShootingTimer" to="." method="shoot"]

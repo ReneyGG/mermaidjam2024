@@ -202,3 +202,6 @@ material = SubResource("ShaderMaterial_ruj06")
 sprite_frames = SubResource("SpriteFrames_yt1a7")
 
 [node name="Bee" parent="." index="2" instance=ExtResource("2_lverv")]
+
+[node name="RangeHint" parent="." index="6"]
+scale = Vector2(1e-05, 1e-05)

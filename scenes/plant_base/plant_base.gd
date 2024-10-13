@@ -22,7 +22,8 @@ func _ready():
 	$Aurora.hide()
 	$RangeHint.hide()
 
-func _physics_process(_delta):
+func _physics_process(delta):
+	$RangeHint.rotation_degrees += 20 * delta
 	if parent and adopted:
 		self.global_position = parent.global_position
 
@@ -39,9 +40,11 @@ func switch_select(on):
 	if selected:
 		#get_node("Sprite2D").material.set_shader_parameter("width", 6.0)
 		$Aurora.show()
+		$RangeHint.show()
 	else:
 		#get_node("Sprite2D").material.set_shader_parameter("width", 0.0)
 		$Aurora.hide()
+		$RangeHint.hide()
 
 func adopt_by(new_parent):
 	adopted = true
@@ -102,7 +105,9 @@ func explode():
 			enemy.knockback(direction, 750)
 
 func _on_mouse_entered():
-	$RangeHint.show()
+	#$RangeHint.show()
+	pass
 
 func _on_mouse_exited():
-	$RangeHint.hide()
+	#$RangeHint.hide()
+	pass

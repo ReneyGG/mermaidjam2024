@@ -195,10 +195,10 @@ radius = 77.7817
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 collision_mask = 16385
 script = ExtResource("1_x6dc4")
-health = 8
-speed = 40.0
-attack_cooldown = 1.5
-attack_damage = 3
+health = 5
+speed = 50.0
+attack_cooldown = 0.5
+attack_damage = 1
 points_amount = 2
 
 [node name="AttackCooldown" type="Timer" parent="."]

@@ -197,5 +197,5 @@ color = Color(0.396078, 0.407843, 0.223529, 1)
 material = SubResource("ShaderMaterial_liigq")
 sprite_frames = SubResource("SpriteFrames_yt1a7")
 
-[node name="RangeHint" parent="." index="5"]
+[node name="RangeHint" parent="." index="4"]
 scale = Vector2(1e-05, 1e-05)

@@ -129,7 +129,7 @@ func add_storage(plant):
 
 func craft():
 	var plant_scene
-	
+	GlobalSound.play_sound("res://assets/audio/Punkt.mp3")
 	
 	if storage[0].type == "red" or storage[0].type == "blue" or storage[1].type == "red" or storage[1].type == "blue":
 		if storage[0].type == "red" and storage[1].type == "red":

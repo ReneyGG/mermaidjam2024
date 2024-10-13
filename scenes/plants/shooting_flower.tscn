@@ -214,7 +214,7 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
 shape = SubResource("CircleShape2D_wvryq")
 
-[node name="RangeHint" parent="." index="7"]
+[node name="RangeHint" parent="." index="6"]
 position = Vector2(1.00001, -3.00001)
 scale = Vector2(1.12667, 2.27333)
 

@@ -17,7 +17,6 @@ func shoot():
 	projectile.direction = direction
 	add_sibling(projectile)
 	projectile.global_position = global_position
-
 #func _on_area_2d_body_entered(body):
 	#if body.is_in_group("enemy") and !target:
 		#target = body

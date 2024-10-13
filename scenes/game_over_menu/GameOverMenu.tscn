@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cq5kexi1t0rcl"]
+[gd_scene load_steps=5 format=3 uid="uid://cq5kexi1t0rcl"]
 
 [ext_resource type="Script" path="res://scenes/game_over_menu/game_over_menu.gd" id="1_dclo7"]
-[ext_resource type="Texture2D" uid="uid://bqj1yyrqfsuu5" path="res://icon.svg" id="2_b5vhs"]
+[ext_resource type="Texture2D" uid="uid://bc3hyftw8c6gs" path="res://assets/menu/koniecgry.png" id="2_y73xo"]
+[ext_resource type="Texture2D" uid="uid://bgr2c4h7lscnq" path="res://assets/menu/ponówgre.png" id="3_2lpm6"]
+[ext_resource type="Texture2D" uid="uid://dgaad22anq2tg" path="res://assets/menu/menu.png" id="4_tcexw"]
 
 [node name="GameOverMenu" type="Control"]
 layout_mode = 3
@@ -31,33 +33,39 @@ offset_left = -160.5
 offset_right = 160.5
 offset_bottom = 115.0
 grow_horizontal = 2
+theme_override_constants/separation = 51
+alignment = 1
 
-[node name="GameOver" type="Label" parent="ColorRect/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 64
-text = "Koniec gry"
+texture = ExtResource("2_y73xo")
 
 [node name="TimeLabel" type="Label" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 64
 text = "Czas: 00:00:00"
+horizontal_alignment = 1
 
 [node name="Pointslabel" type="Label" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 64
 text = "Punkty: 00:00:00"
+horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 138
+alignment = 1
 
 [node name="RestartButton" type="TextureButton" parent="ColorRect/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("2_b5vhs")
-texture_pressed = ExtResource("2_b5vhs")
+texture_normal = ExtResource("3_2lpm6")
+texture_pressed = ExtResource("3_2lpm6")
 
-[node name="ExitButton" type="TextureButton" parent="ColorRect/VBoxContainer/HBoxContainer"]
+[node name="MenuButton" type="TextureButton" parent="ColorRect/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("2_b5vhs")
-texture_pressed = ExtResource("2_b5vhs")
+texture_normal = ExtResource("4_tcexw")
+texture_pressed = ExtResource("4_tcexw")
 
 [connection signal="pressed" from="ColorRect/VBoxContainer/HBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/HBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]

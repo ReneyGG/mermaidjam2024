@@ -61,7 +61,7 @@ func _ready():
 		burmistrz_1, burmistrz_2:
 			burgmaster.texture = load("res://assets/characters/burmistrz.png")
 		baba_1, baba_2:
-			burgmaster.texture = load("res://assets/bee.png")
+			burgmaster.texture = load("res://assets/characters/baba.png")
 
 
 func _process(delta):

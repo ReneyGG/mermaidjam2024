@@ -193,7 +193,7 @@ animations = [{
 
 [node name="MeleePlant" instance=ExtResource("1_xh2rb")]
 script = ExtResource("2_dpdha")
-bee_speed = 1
+bee_speed = 2
 type = "melee"
 color = Color(0.886275, 0.752941, 0.266667, 1)
 

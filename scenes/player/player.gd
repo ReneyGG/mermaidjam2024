@@ -37,6 +37,7 @@ func get_input():
 		input.y -= 1
 	
 	if Input.is_action_just_pressed("pick"):
+		$Sprite2D.scale.y = 0.7
 		if plant_in_range and not hold:
 			plant_in_range.pick()
 			hold = plant_in_range
@@ -58,6 +59,7 @@ func get_input():
 			$PlantArea.monitoring = true
 			$CanvasLayer/Control/Hold.hide()
 	if Input.is_action_just_pressed("harvest"):
+		$Sprite2D.scale.y = 0.7
 		if plant_in_range and not hold:
 			plant_in_range.harvest()
 			add_storage(plant_in_range)
@@ -105,7 +107,7 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	#$Node2D/AnimatedSprite2D.scale.x = lerp($Node2D/AnimatedSprite2D.scale.x, 1.0, 0.2)
-	#$Node2D/AnimatedSprite2D.scale.y = lerp($Node2D/AnimatedSprite2D.scale.y, 1.0, 0.2)
+	$Sprite2D.scale.y = lerp($Sprite2D.scale.y, 1.0, 0.2)
 
 func frame_freeze(timeScale, duration):
 	Engine.time_scale = timeScale
@@ -210,6 +212,8 @@ func craft():
 	else:
 		storage[0].global_position = self.global_position
 		hold = storage[0]
+		$CanvasLayer/Control/Hold.show()
+		$CanvasLayer/Control/Hold.self_modulate = hold.color
 		storage[0].show()
 		$PlantArea.monitoring = false
 		plant_in_range = null

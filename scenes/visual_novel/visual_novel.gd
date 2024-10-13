@@ -38,6 +38,15 @@ var baba_2 = [
 	"!Ma, w końcu się uda, mały stróżu."
 ]
 
+var krol_1 = [
+	"?Znowu obcy? ",
+	"!Żaden obcy, zjawo. Tak mówisz do Króla?",
+	"?Dworska etykieta nie jest moją mocną stroną...",
+	"!Następnym razem przywitaj się jak na męzczyznę przystało.",
+	"?Ale ja...",
+	"!Czas na mnie. Miej się na baczności, zjawo."
+]
+
 
 @onready var display_label = $NinePatchRect/TextLabel
 #@onready var texture_rect = $NinePatchRect/TextureRect
@@ -56,13 +65,14 @@ var random_dialog = null
 @export var can_click: bool = false
 
 func _ready():
-	random_dialog = [burmistrz_1, burmistrz_2, baba_1, baba_2].pick_random()
+	random_dialog = [burmistrz_1, burmistrz_2, baba_1, baba_2, krol_1].pick_random()
 	match random_dialog:
 		burmistrz_1, burmistrz_2:
 			burgmaster.texture = load("res://assets/characters/burmistrz.png")
 		baba_1, baba_2:
 			burgmaster.texture = load("res://assets/characters/baba.png")
-
+		krol_1:
+			burgmaster.texture = load("res://assets/characters/krol.png")
 
 func _process(delta):
 	# Sprawdzenie kliknięcia w trakcie wyświetlania tekstu

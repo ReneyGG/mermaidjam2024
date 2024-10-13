@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://d4hia2tutqsev"]
+[gd_scene load_steps=61 format=3 uid="uid://d4hia2tutqsev"]
 
 [ext_resource type="Script" path="res://scenes/plant_base/plant_base.gd" id="1_23wbr"]
 [ext_resource type="Texture2D" uid="uid://8cro55absq84" path="res://assets/plants/Kwiat.Sprite.png" id="2_n7xqo"]
@@ -377,6 +377,12 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gm6l8"]
+bg_color = Color(1, 1, 1, 0.509804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b5gb5"]
+bg_color = Color(0, 0, 0, 1)
+
 [node name="PlantBase" type="Area2D" groups=["plant"]]
 collision_layer = 16
 collision_mask = 16
@@ -402,29 +408,32 @@ autoplay = "default"
 position = Vector2(0, -60.76)
 shape = SubResource("CircleShape2D_6yntm")
 
+[node name="RangeHint" type="AnimatedSprite2D" parent="."]
+z_index = -1
+position = Vector2(0, -60.76)
+sprite_frames = SubResource("SpriteFrames_3spa0")
+autoplay = "default"
+
 [node name="ProgressBar" type="ProgressBar" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -41.365
-offset_top = -137.99
-offset_right = 41.365
-offset_bottom = -110.99
+offset_left = -60.64
+offset_top = -171.86
+offset_right = 60.64
+offset_bottom = -158.22
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_gm6l8")
+theme_override_styles/fill = SubResource("StyleBoxFlat_b5gb5")
 max_value = 5.0
 step = 1.0
+value = 3.0
 show_percentage = false
-
-[node name="RangeHint" type="AnimatedSprite2D" parent="."]
-z_index = -1
-position = Vector2(0, -60.76)
-sprite_frames = SubResource("SpriteFrames_3spa0")
-autoplay = "default"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

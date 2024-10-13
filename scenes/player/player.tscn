@@ -1,8 +1,11 @@
-[gd_scene load_steps=56 format=3 uid="uid://drux0gpbnnyue"]
+[gd_scene load_steps=59 format=3 uid="uid://drux0gpbnnyue"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_go15t"]
+[ext_resource type="Texture2D" uid="uid://dpj82tdjkby3c" path="res://assets/plants/nasionko.tlo.png" id="2_llorw"]
 [ext_resource type="Texture2D" uid="uid://c0a6pmv3pkpt5" path="res://assets/characters/FIXEDduch.sprite.png" id="2_tbj7p"]
+[ext_resource type="Texture2D" uid="uid://vmmqaystvl7p" path="res://assets/plants/nasionko.linia.png" id="3_hr3ax"]
 [ext_resource type="Texture2D" uid="uid://bjhkhy1f0oj28" path="res://assets/doniczka.sprite.png" id="3_i05o3"]
+[ext_resource type="Texture2D" uid="uid://bkft7aktm6lmw" path="res://assets/ramkagameplay.png" id="4_4kj3c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g61bd"]
 atlas = ExtResource("2_tbj7p")
@@ -385,14 +388,25 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -303.0
-offset_top = -165.0
-offset_right = -175.0
-offset_bottom = -37.0
+offset_left = -280.0
+offset_top = -154.0
+offset_right = -176.0
+offset_bottom = -50.0
 grow_horizontal = 0
 grow_vertical = 0
 mouse_filter = 2
-stretch_mode = 2
+texture = ExtResource("2_llorw")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/Slot1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_hr3ax")
+expand_mode = 1
 
 [node name="Slot2" type="TextureRect" parent="CanvasLayer/Control"]
 layout_mode = 1
@@ -401,14 +415,25 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -157.0
-offset_top = -162.0
-offset_right = -29.0
-offset_bottom = -34.0
+offset_left = -156.0
+offset_top = -156.0
+offset_right = -52.0
+offset_bottom = -52.0
 grow_horizontal = 0
 grow_vertical = 0
 mouse_filter = 2
-stretch_mode = 2
+texture = ExtResource("2_llorw")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/Slot2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_hr3ax")
+expand_mode = 1
 
 [node name="Hold" type="TextureRect" parent="CanvasLayer/Control"]
 layout_mode = 1
@@ -417,14 +442,33 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -232.0
-offset_top = -313.0
-offset_right = -104.0
-offset_bottom = -185.0
+offset_left = -218.0
+offset_top = -299.0
+offset_right = -114.0
+offset_bottom = -195.0
 grow_horizontal = 0
 grow_vertical = 0
-mouse_filter = 2
-stretch_mode = 2
+texture = ExtResource("2_llorw")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/Hold"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_hr3ax")
+expand_mode = 1
+
+[node name="Ramka" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_4kj3c")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -37)

@@ -14,6 +14,9 @@ var storage : Array
 func _ready():
 	$Sprite2D.play("idle")
 	attacking = false
+	$CanvasLayer/Control/Slot1.hide()
+	$CanvasLayer/Control/Slot2.hide()
+	$CanvasLayer/Control/Hold.hide()
 
 func get_input():
 	var input = Vector2()
@@ -43,17 +46,17 @@ func get_input():
 				hold.get_node("Sprite2D").flip_h = true
 			$PlantArea.monitoring = false
 			plant_in_range = null
-			$CanvasLayer/Control/Hold.texture = load(get_icon(hold.type))
-			$CanvasLayer/Control/Hold.modulate = hold.color
+			$CanvasLayer/Control/Hold.show()
+			$CanvasLayer/Control/Hold.self_modulate = hold.color
 		elif hold:
 			if storage.size() == 2:
 				storage.clear()
-				$CanvasLayer/Control/Slot1.texture = null
-				$CanvasLayer/Control/Slot2.texture = null
+				$CanvasLayer/Control/Slot1.hide()
+				$CanvasLayer/Control/Slot2.hide()
 			hold.drop()
 			hold = null
 			$PlantArea.monitoring = true
-			$CanvasLayer/Control/Hold.texture = null
+			$CanvasLayer/Control/Hold.hide()
 	if Input.is_action_just_pressed("harvest"):
 		if plant_in_range and not hold:
 			plant_in_range.harvest()
@@ -65,14 +68,14 @@ func get_input():
 		elif hold:
 			if storage.size() == 2:
 				storage.clear()
-				$CanvasLayer/Control/Slot1.texture = null
-				$CanvasLayer/Control/Slot2.texture = null
+				$CanvasLayer/Control/Slot1.hide()
+				$CanvasLayer/Control/Slot2.hide()
 			hold.harvest()
 			add_storage(hold)
 			if storage.size() != 2:
 				hold = null
 				plant_in_range = null
-				$CanvasLayer/Control/Hold.texture = null
+				$CanvasLayer/Control/Hold.hide()
 				$PlantArea.monitoring = false
 				await get_tree().physics_frame
 				$PlantArea.monitoring = true
@@ -114,12 +117,12 @@ func _on_freeze_timeout():
 func add_storage(plant):
 	if storage.size() == 0:
 		storage.append(plant)
-		$CanvasLayer/Control/Slot1.texture = load(get_icon(plant.type))
-		$CanvasLayer/Control/Slot1.modulate = plant.color
+		$CanvasLayer/Control/Slot1.show()
+		$CanvasLayer/Control/Slot1.self_modulate = plant.color
 	elif storage.size() == 1:
 		storage.append(plant)
-		$CanvasLayer/Control/Slot2.texture = load(get_icon(plant.type))
-		$CanvasLayer/Control/Slot2.modulate = plant.color
+		$CanvasLayer/Control/Slot2.show()
+		$CanvasLayer/Control/Slot2.self_modulate = plant.color
 		craft()
 
 func craft():
@@ -128,53 +131,55 @@ func craft():
 	
 	if storage[0].type == "red" or storage[0].type == "blue" or storage[1].type == "red" or storage[1].type == "blue":
 		if storage[0].type == "red" and storage[1].type == "red":
-			$CanvasLayer/Control/Hold.texture = load(get_icon("explosive"))
-			$CanvasLayer/Control/Hold.modulate = Color("ae595b")
+			$CanvasLayer/Control/Hold.show()
+			$CanvasLayer/Control/Hold.self_modulate = Color("ae595b")
 			plant_scene = load("res://scenes/plants/explosive_plant.tscn")
 			
 		elif storage[0].type == "blue" and storage[1].type == "blue":
-			$CanvasLayer/Control/Hold.texture = load(get_icon("slowing"))
-			$CanvasLayer/Control/Hold.modulate = Color("725d55")
+			$CanvasLayer/Control/Hold.show()
+			$CanvasLayer/Control/Hold.self_modulate = Color("725d55")
 			plant_scene = load("res://scenes/plants/slowing_plant.tscn")
 			
 		elif (storage[0].type == "red" and storage[1].type == "blue") or (storage[0].type == "blue" and storage[1].type == "red"):
-			$CanvasLayer/Control/Hold.texture = load(get_icon("shooting"))
-			$CanvasLayer/Control/Hold.modulate = Color("e5bf79")
+			$CanvasLayer/Control/Hold.show()
+			$CanvasLayer/Control/Hold.self_modulate = Color("e5bf79")
 			plant_scene = load("res://scenes/plants/shooting_flower.tscn")
 		
 		elif (storage[0].type == "red" and storage[1].type == "shooting") or (storage[0].type == "shooting" and storage[1].type == "red"):
-			$CanvasLayer/Control/Hold.texture = load(get_icon("multishoot"))
-			$CanvasLayer/Control/Hold.modulate = Color("4f3e6d")
+			$CanvasLayer/Control/Hold.show()
+			$CanvasLayer/Control/Hold.self_modulate = Color("4f3e6d")
 			plant_scene = load("res://scenes/plants/multi_shoot_plant.tscn")
 		
 		elif (storage[0].type == "red" and storage[1].type == "slowing") or (storage[0].type == "slowing" and storage[1].type == "red"):
-			$CanvasLayer/Control/Hold.texture = load(get_icon("aggro"))
-			$CanvasLayer/Control/Hold.modulate = Color("f67c3e")
+			$CanvasLayer/Control/Hold.show()
+			$CanvasLayer/Control/Hold.self_modulate = Color("f67c3e")
 			plant_scene = load("res://scenes/plants/aggro_plant.tscn")
 		
 		elif (storage[0].type == "red" and storage[1].type == "explosive") or (storage[0].type == "explosive" and storage[1].type == "red"):
-			$CanvasLayer/Control/Hold.texture = load(get_icon("catapult"))
-			$CanvasLayer/Control/Hold.modulate = Color("9d6a89")
+			$CanvasLayer/Control/Hold.show()
+			$CanvasLayer/Control/Hold.self_modulate = Color("9d6a89")
 			plant_scene = load("res://scenes/plants/catapult_plant.tscn")
 		
 		elif (storage[0].type == "blue" and storage[1].type == "shooting") or (storage[0].type == "shooting" and storage[1].type == "blue"):
-			$CanvasLayer/Control/Hold.texture = load(get_icon("melee"))
-			$CanvasLayer/Control/Hold.modulate = Color("e2c044")
+			$CanvasLayer/Control/Hold.show()
+			$CanvasLayer/Control/Hold.self_modulate = Color("e2c044")
 			plant_scene = load("res://scenes/plants/mele_plant.tscn")
 		
 		elif (storage[0].type == "blue" and storage[1].type == "slowing") or (storage[0].type == "slowing" and storage[1].type == "blue"):
-			$CanvasLayer/Control/Hold.texture = load(get_icon("healing"))
-			$CanvasLayer/Control/Hold.modulate = Color("698f91")
+			$CanvasLayer/Control/Hold.show()
+			$CanvasLayer/Control/Hold.self_modulate = Color("698f91")
 			plant_scene = load("res://scenes/plants/healing_plant.tscn")
 		
-		#elif (storage[0].type == "blue" and storage[1].type == "explosive") or (storage[0].type == "explosive" and storage[1].type == "blue"):
-			#pass #ściana???
+		elif (storage[0].type == "blue" and storage[1].type == "explosive") or (storage[0].type == "explosive" and storage[1].type == "blue"):
+			$CanvasLayer/Control/Hold.show()
+			$CanvasLayer/Control/Hold.self_modulate = Color("b1b8d0")
+			plant_scene = load("res://scenes/plants/croos_plant.tscn")
 		else:
 			print("invalid recipe")
 			storage.clear()
-			$CanvasLayer/Control/Hold.texture = null
-			$CanvasLayer/Control/Slot1.texture = null
-			$CanvasLayer/Control/Slot2.texture = null
+			$CanvasLayer/Control/Hold.hide()
+			$CanvasLayer/Control/Slot1.hide()
+			$CanvasLayer/Control/Slot2.hide()
 			hold = null
 			$PlantArea.monitoring = true
 			plant_in_range = null
@@ -234,7 +239,7 @@ func get_icon(type):
 		"healing":
 			return "res://assets/icons/healing.png"
 		"cross":
-			return "res://assets/icons/healing.png"
+			return "res://assets/icons/cross.png"
 
 func die(screen):
 	if dead:

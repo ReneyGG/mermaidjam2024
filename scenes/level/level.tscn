@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://d11qa8vw8txpx"]
+[gd_scene load_steps=26 format=3 uid="uid://d11qa8vw8txpx"]
 
 [ext_resource type="PackedScene" uid="uid://blor77xon5pyw" path="res://scenes/enemy_spawner/EnemySpawner.tscn" id="1_7ogwc"]
 [ext_resource type="Script" path="res://scenes/level/level.gd" id="1_ptr4r"]
@@ -13,8 +13,12 @@
 [ext_resource type="PackedScene" uid="uid://n3j6c0jfak7a" path="res://scenes/props/flora3.tscn" id="12_jy6xr"]
 [ext_resource type="PackedScene" uid="uid://dc2fhvfm3w1a2" path="res://scenes/props/flora4.tscn" id="13_dogww"]
 [ext_resource type="PackedScene" uid="uid://bjpxt5sx6mx83" path="res://scenes/props/pillar.tscn" id="14_1qq0u"]
+[ext_resource type="PackedScene" uid="uid://bspjxhy0xyhba" path="res://scenes/plants/cross_plant.tscn" id="15_3pfmd"]
 [ext_resource type="PackedScene" uid="uid://b0ky53aspxb8d" path="res://scenes/props/rail1.tscn" id="15_cv14s"]
+[ext_resource type="PackedScene" uid="uid://ca7yclfrohu88" path="res://scenes/plants/mele_plant.tscn" id="16_ajg0t"]
 [ext_resource type="PackedScene" uid="uid://d3ft7irgwjuvx" path="res://scenes/props/rail2.tscn" id="16_w1syi"]
+[ext_resource type="PackedScene" uid="uid://b85otjktkkdrn" path="res://scenes/enemy/enemy_big.tscn" id="17_2hhvy"]
+[ext_resource type="PackedScene" uid="uid://bg4rxpbeg8auw" path="res://scenes/plants/catapult_plant.tscn" id="18_mmyx0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n8i4a"]
 size = Vector2(226, 2523)
@@ -27,10 +31,8 @@ vertices = PackedVector2Array(1017.71, 400.789, -1215.16, 41.9922, 1234.79, 40.9
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7), PackedInt32Array(8, 9, 10, 11), PackedInt32Array(12, 13, 14), PackedInt32Array(15, 7, 16, 17, 18, 19, 20, 21), PackedInt32Array(1, 22, 23, 24, 25, 26), PackedInt32Array(27, 28, 11, 29, 30, 31, 32), PackedInt32Array(33, 34, 35, 36, 8), PackedInt32Array(37, 38, 39, 40, 41, 42, 43, 44), PackedInt32Array(45, 18, 17, 46), PackedInt32Array(47, 48, 36, 35, 49, 50), PackedInt32Array(51, 42, 41, 52), PackedInt32Array(18, 45, 53), PackedInt32Array(54, 55, 56, 57, 58, 59), PackedInt32Array(24, 23, 60, 61), PackedInt32Array(62, 18, 53, 63), PackedInt32Array(64, 65, 66, 15), PackedInt32Array(67, 68, 69, 70, 71), PackedInt32Array(72, 21, 73, 22), PackedInt32Array(74, 0, 7), PackedInt32Array(1, 0, 65), PackedInt32Array(1, 65, 64, 22), PackedInt32Array(56, 49, 35, 44, 75), PackedInt32Array(76, 4, 3, 37, 44), PackedInt32Array(55, 54, 77, 50), PackedInt32Array(78, 79, 80, 81), PackedInt32Array(57, 42, 51, 58), PackedInt32Array(28, 82, 33, 8, 11), PackedInt32Array(16, 7, 71, 83), PackedInt32Array(19, 18, 84), PackedInt32Array(85, 52, 41, 86), PackedInt32Array(86, 41, 87, 88), PackedInt32Array(83, 71, 70, 46), PackedInt32Array(89, 84, 90, 91), PackedInt32Array(19, 84, 89, 92), PackedInt32Array(45, 46, 70, 93), PackedInt32Array(63, 93, 70, 94), PackedInt32Array(90, 62, 63, 94, 91), PackedInt32Array(32, 95, 27), PackedInt32Array(96, 30, 29, 97, 98, 99), PackedInt32Array(99, 100, 101, 96), PackedInt32Array(47, 50, 77, 102), PackedInt32Array(103, 104, 105, 106), PackedInt32Array(107, 108, 109, 79, 78, 110), PackedInt32Array(39, 38, 2, 111), PackedInt32Array(112, 91, 94), PackedInt32Array(10, 9, 48, 47, 98, 97), PackedInt32Array(113, 114, 115, 39), PackedInt32Array(2, 1, 111), PackedInt32Array(39, 111, 113), PackedInt32Array(39, 115, 116, 117), PackedInt32Array(44, 43, 75), PackedInt32Array(56, 75, 57), PackedInt32Array(118, 54, 59, 119), PackedInt32Array(117, 116, 26), PackedInt32Array(120, 32, 31), PackedInt32Array(109, 121, 122, 120, 31, 105, 123), PackedInt32Array(124, 40, 39, 125), PackedInt32Array(105, 104, 123), PackedInt32Array(109, 123, 79), PackedInt32Array(126, 19, 92, 112, 94, 127), PackedInt32Array(107, 110, 128, 129, 130), PackedInt32Array(47, 102, 118, 119, 87, 129, 131), PackedInt32Array(96, 101, 131, 129, 106), PackedInt32Array(103, 106, 129, 80), PackedInt32Array(81, 80, 129, 128), PackedInt32Array(61, 60, 132, 20), PackedInt32Array(132, 73, 21, 20), PackedInt32Array(64, 72, 22), PackedInt32Array(133, 117, 26, 25, 134, 20, 12, 14), PackedInt32Array(14, 126, 127, 133), PackedInt32Array(15, 66, 74, 7), PackedInt32Array(135, 107, 130, 136, 39), PackedInt32Array(134, 61, 20), PackedInt32Array(133, 127, 107), PackedInt32Array(135, 133, 107), PackedInt32Array(39, 136, 125), PackedInt32Array(124, 125, 129), PackedInt32Array(119, 88, 87), PackedInt32Array(124, 129, 87)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-1182, -224, -1194, -878, -1127, -877, -1125.18, -928.244, -1192, -929, -1189, -872, -1141, -15, -1357, -13, -1356.54, -361.382, -1423.8, -363.16, -1423.5, -314.677, -1351, -316, -1346, -10, -1427.37, -7.61248, -1768, 4, -1750.66, -68.874, -1833.38, -68.4393, -1836.23, -30.3336, -1427, -32, -1429.2, 31.9408, -1205, 32, -1080, 579, -1404.46, 584.005, -1515.61, 585.719, -1515.26, 625.605, -1399.88, 624.226, -1404, 562, -1042, 564, -1002.84, 916.395, -939.748, 916.634, -937, 814, 1253, 1098, -1511, 1107, -1921, 1104, -1920, -1076, -738, -1081, -738, -947, -831.669, -953.214, -830, -871, -738.18, -871.203, -739.237, -946.069, -745, -1080, -220, -1081, -220, -862, -301.046, -861.939, -300, -824, -223.455, -822.846, -223.235, -861.944, -222, -1081, -102, -1078, 113, -1079, 112, -743, -105.874, -747.959, -107, -652, -372, -340, -865.082, -348.983, -862.672, -223.598, -395.349, -223.01, -397.524, -346.106, -403, -656, -107.739, -652.309, 115.176, -649.523, 104, -1083, 383, -1083, 485, -1082, 480, -834, 425, -834, 425.189, -795.439, 481.321, -795.636, 462, -1092, 2079, -1091, 2085, -645, 1558, -642, 1556.82, -734.255, 1462.04, -736.479, 1466, -540, 1159.29, -533.204, 1159, -473, 590, -476, 594, -437, 654, -440, 654, -493, 1216.36, -486.286, 1220, -682, 2063, -675, 2070, -185, 1706, -184, 1704.88, -289.522, 524, -288, 503.226, -323.557, 427.509, -322.083, 427.75, -273.016, 525, -273, 527, -251, 848, -252, 846, -298, 1618, -301, 1620.02, -219.674, 2085, -211, 2083, 60, 1448, 62, 1448.77, -19.8781, 1246, -16, 1245, 31, 2096, 32, 2098, 539, 1007, 539, 1007.67, 410.727, 361, 407, -423, 530, -419, 415, -875, 411, -873, 497.63, -160, 466, -176, 802, -281.528, 805.135, -281.27, 862.105, -201.428, 863.387, -201, 459, 483, 331, 482, 415, 416.688, 416.236, 393.198, 448.776, 475, 444, 471, 285, 531, 288, 947, 276, 949.987, 453.733, 1016, 454, 1020, 515, 868, 513, 869.85, 460.061, 533.843, 455.972, 534.502, 494.871, 1982, 510, 1985, 878, 870, 862, 870.884, 808.995, 787, 810, 787, 843.611, 2016, 849, 2019, 1154, 47, 1135, 108.312, 828.963, -103.308, 828.944, -103.851, 868.135, 107, 872, 112, 984, -863, 863, -1163, 877, -1176, 353, -1225, 54, -1226, -22)])
 
-[sub_resource type="Animation" id="Animation_ko45g"]
-resource_name = "new_score"
-length = 0.2
-step = 0.05
+[sub_resource type="Animation" id="Animation_3clrl"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -38,26 +40,31 @@ tracks/0/path = NodePath("ScoreLabel:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ko45g"]
+resource_name = "new_score"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ScoreLabel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(2, 2), Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ScoreLabel:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.15, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.349066, -0.349066, 0.0]
+"values": [Vector2(1, 1), Vector2(1.3, 1.3), Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_aoojh"]
 _data = {
+"RESET": SubResource("Animation_3clrl"),
 "new_score": SubResource("Animation_ko45g")
 }
 
@@ -108,10 +115,10 @@ navigation_polygon = SubResource("NavigationPolygon_0556b")
 [node name="PlantSpawner" parent="TileMapLayer" instance=ExtResource("4_eo7tn")]
 
 [node name="Base" parent="TileMapLayer" instance=ExtResource("2_f6grg")]
-health = 100
 
 [node name="Player" parent="TileMapLayer" instance=ExtResource("1_tq124")]
 position = Vector2(6, -257)
+speed = 500
 
 [node name="Rail2" parent="TileMapLayer" instance=ExtResource("16_w1syi")]
 position = Vector2(684, -281)
@@ -196,6 +203,18 @@ position = Vector2(-473, 450)
 
 [node name="Chalice2" parent="TileMapLayer" instance=ExtResource("11_aassw")]
 position = Vector2(467, -305)
+
+[node name="CroosPlant" parent="TileMapLayer" instance=ExtResource("15_3pfmd")]
+position = Vector2(-585, 55)
+
+[node name="MeleePlant" parent="TileMapLayer" instance=ExtResource("16_ajg0t")]
+position = Vector2(413, 159)
+
+[node name="Enemy" parent="TileMapLayer" instance=ExtResource("17_2hhvy")]
+position = Vector2(-381, 573)
+
+[node name="CatapultPlant" parent="TileMapLayer" instance=ExtResource("18_mmyx0")]
+position = Vector2(-160, 294)
 
 [node name="Interface" type="CanvasLayer" parent="."]
 process_mode = 3

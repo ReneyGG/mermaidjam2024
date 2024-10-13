@@ -4,6 +4,8 @@ extends Node2D
 @export var damage: int = 1
 var direction
 
+func _ready():
+	GlobalSound.play_sound("res://assets/audio/Pocisk.mp3")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if direction:

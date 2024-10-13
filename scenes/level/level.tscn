@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d11qa8vw8txpx"]
+[gd_scene load_steps=19 format=3 uid="uid://d11qa8vw8txpx"]
 
 [ext_resource type="PackedScene" uid="uid://blor77xon5pyw" path="res://scenes/enemy_spawner/EnemySpawner.tscn" id="1_7ogwc"]
 [ext_resource type="Script" path="res://scenes/level/level.gd" id="1_ptr4r"]
@@ -7,6 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://c5uiiy7ebuvvo" path="res://scenes/plant_spawner/PlantSpawner.tscn" id="4_eo7tn"]
 [ext_resource type="Texture2D" uid="uid://c4q887qjh3i6k" path="res://assets/bg.png" id="5_6uyqu"]
 [ext_resource type="PackedScene" uid="uid://cq5kexi1t0rcl" path="res://scenes/game_over_menu/GameOverMenu.tscn" id="7_y0ikq"]
+[ext_resource type="PackedScene" uid="uid://cnu7m21as7q3p" path="res://scenes/props/flora1.tscn" id="10_r6iao"]
+[ext_resource type="PackedScene" uid="uid://dkoh1sntcfyde" path="res://scenes/props/flora2.tscn" id="11_55vkt"]
+[ext_resource type="PackedScene" uid="uid://1ec44t1h2rsd" path="res://scenes/props/chalice.tscn" id="11_aassw"]
+[ext_resource type="PackedScene" uid="uid://n3j6c0jfak7a" path="res://scenes/props/flora3.tscn" id="12_jy6xr"]
+[ext_resource type="PackedScene" uid="uid://dc2fhvfm3w1a2" path="res://scenes/props/flora4.tscn" id="13_dogww"]
+[ext_resource type="PackedScene" uid="uid://bjpxt5sx6mx83" path="res://scenes/props/pillar.tscn" id="14_1qq0u"]
+[ext_resource type="PackedScene" uid="uid://b0ky53aspxb8d" path="res://scenes/props/rail1.tscn" id="15_cv14s"]
+[ext_resource type="PackedScene" uid="uid://d3ft7irgwjuvx" path="res://scenes/props/rail2.tscn" id="16_w1syi"]
 
 [sub_resource type="Animation" id="Animation_3clrl"]
 length = 0.001
@@ -73,6 +81,83 @@ offset_bottom = 1241.0
 position = Vector2(6, -257)
 speed = 500
 
+[node name="Rail2" parent="TileMapLayer" instance=ExtResource("16_w1syi")]
+position = Vector2(684, -281)
+
+[node name="Rail3" parent="TileMapLayer" instance=ExtResource("16_w1syi")]
+position = Vector2(-692, -269)
+
+[node name="Rail4" parent="TileMapLayer" instance=ExtResource("16_w1syi")]
+position = Vector2(-696, 460)
+
+[node name="Rail5" parent="TileMapLayer" instance=ExtResource("16_w1syi")]
+position = Vector2(703, 465)
+
+[node name="Flora1" parent="TileMapLayer" instance=ExtResource("10_r6iao")]
+position = Vector2(-454, -297)
+
+[node name="Flora2" parent="TileMapLayer" instance=ExtResource("10_r6iao")]
+position = Vector2(444, 425)
+
+[node name="Pillar" parent="TileMapLayer" instance=ExtResource("14_1qq0u")]
+position = Vector2(-243, 830)
+
+[node name="Pillar2" parent="TileMapLayer" instance=ExtResource("14_1qq0u")]
+position = Vector2(-785, -909)
+
+[node name="Pillar3" parent="TileMapLayer" instance=ExtResource("14_1qq0u")]
+position = Vector2(1508, -707)
+
+[node name="Pillar4" parent="TileMapLayer" instance=ExtResource("14_1qq0u")]
+position = Vector2(1508, -707)
+
+[node name="Flora3" parent="TileMapLayer" instance=ExtResource("10_r6iao")]
+
+[node name="Flora4" parent="TileMapLayer" instance=ExtResource("11_55vkt")]
+position = Vector2(-1378, -347)
+
+[node name="Flora5" parent="TileMapLayer" instance=ExtResource("11_55vkt")]
+position = Vector2(467, -823)
+
+[node name="Flora6" parent="TileMapLayer" instance=ExtResource("11_55vkt")]
+position = Vector2(-1160, -911)
+
+[node name="Flora7" parent="TileMapLayer" instance=ExtResource("12_jy6xr")]
+position = Vector2(970, 435)
+
+[node name="Flora8" parent="TileMapLayer" instance=ExtResource("12_jy6xr")]
+position = Vector2(1179, -509)
+
+[node name="Flora9" parent="TileMapLayer" instance=ExtResource("12_jy6xr")]
+position = Vector2(-985, 894)
+
+[node name="Flora10" parent="TileMapLayer" instance=ExtResource("13_dogww")]
+position = Vector2(-1460, 595)
+
+[node name="Flora11" parent="TileMapLayer" instance=ExtResource("13_dogww")]
+position = Vector2(-1802, -64)
+
+[node name="Flora12" parent="TileMapLayer" instance=ExtResource("13_dogww")]
+position = Vector2(-270, -858)
+
+[node name="Flora13" parent="TileMapLayer" instance=ExtResource("13_dogww")]
+position = Vector2(1652, -247)
+
+[node name="Flora14" parent="TileMapLayer" instance=ExtResource("13_dogww")]
+position = Vector2(824, 816)
+
+[node name="Rail1" parent="TileMapLayer" instance=ExtResource("15_cv14s")]
+position = Vector2(-1329, 2)
+
+[node name="Rail6" parent="TileMapLayer" instance=ExtResource("15_cv14s")]
+position = Vector2(-2, 841)
+
+[node name="Rail7" parent="TileMapLayer" instance=ExtResource("15_cv14s")]
+position = Vector2(-2, -677)
+
+[node name="Rail8" parent="TileMapLayer" instance=ExtResource("15_cv14s")]
+position = Vector2(1339, -4)
+
 [node name="Interface" type="CanvasLayer" parent="."]
 process_mode = 3
 
@@ -85,6 +170,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Score" type="Control" parent="Interface"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -112,3 +198,9 @@ vertical_alignment = 1
 libraries = {
 "": SubResource("AnimationLibrary_aoojh")
 }
+
+[node name="Chalice" parent="." instance=ExtResource("11_aassw")]
+position = Vector2(-473, 450)
+
+[node name="Chalice2" parent="." instance=ExtResource("11_aassw")]
+position = Vector2(467, -305)

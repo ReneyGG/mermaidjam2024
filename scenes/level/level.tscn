@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d11qa8vw8txpx"]
+[gd_scene load_steps=11 format=3 uid="uid://d11qa8vw8txpx"]
 
 [ext_resource type="PackedScene" uid="uid://blor77xon5pyw" path="res://scenes/enemy_spawner/EnemySpawner.tscn" id="1_7ogwc"]
 [ext_resource type="Script" path="res://scenes/level/level.gd" id="1_ptr4r"]
@@ -6,10 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dqu6nj5klwbg8" path="res://scenes/base/base.tscn" id="2_f6grg"]
 [ext_resource type="PackedScene" uid="uid://c5uiiy7ebuvvo" path="res://scenes/plant_spawner/PlantSpawner.tscn" id="4_eo7tn"]
 [ext_resource type="Texture2D" uid="uid://c4q887qjh3i6k" path="res://assets/bg.png" id="5_6uyqu"]
-[ext_resource type="PackedScene" uid="uid://ds6km1jjcctwl" path="res://scenes/plants/healing_plant.tscn" id="7_dfdhe"]
 [ext_resource type="PackedScene" uid="uid://cq5kexi1t0rcl" path="res://scenes/game_over_menu/GameOverMenu.tscn" id="7_y0ikq"]
-[ext_resource type="PackedScene" uid="uid://bg4rxpbeg8auw" path="res://scenes/plants/catapult_plant.tscn" id="9_onywc"]
-[ext_resource type="PackedScene" uid="uid://b85otjktkkdrn" path="res://scenes/enemy/enemy_big.tscn" id="9_uq0nf"]
 
 [sub_resource type="Animation" id="Animation_3clrl"]
 length = 0.001
@@ -71,26 +68,10 @@ offset_bottom = 1241.0
 [node name="PlantSpawner" parent="TileMapLayer" instance=ExtResource("4_eo7tn")]
 
 [node name="Base" parent="TileMapLayer" instance=ExtResource("2_f6grg")]
-position = Vector2(307, 373)
 
 [node name="Player" parent="TileMapLayer" instance=ExtResource("1_tq124")]
-position = Vector2(619, 468)
+position = Vector2(6, -257)
 speed = 500
-
-[node name="CatapultPlant" parent="TileMapLayer" instance=ExtResource("9_onywc")]
-position = Vector2(110, 150)
-
-[node name="HealingPlant" parent="TileMapLayer" instance=ExtResource("7_dfdhe")]
-position = Vector2(555, -157)
-
-[node name="Enemy" parent="TileMapLayer" instance=ExtResource("9_uq0nf")]
-position = Vector2(362, 659)
-
-[node name="Enemy2" parent="TileMapLayer" instance=ExtResource("9_uq0nf")]
-position = Vector2(22, 435)
-
-[node name="Enemy3" parent="TileMapLayer" instance=ExtResource("9_uq0nf")]
-position = Vector2(518, 225)
 
 [node name="Interface" type="CanvasLayer" parent="."]
 process_mode = 3

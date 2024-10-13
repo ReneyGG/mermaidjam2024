@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://n3j6c0jfak7a"]
+
+[ext_resource type="Texture2D" uid="uid://bg5vuk5m3a62g" path="res://assets/items/Flora3.png" id="1_ind8y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8kwur"]
+radius = 53.0162
+
+[node name="Flora3" type="StaticBody2D"]
+collision_layer = 16384
+collision_mask = 16384
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ind8y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 40.69)
+shape = SubResource("CircleShape2D_8kwur")
+disabled = true

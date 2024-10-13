@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0ky53aspxb8d"]
+
+[ext_resource type="Texture2D" uid="uid://r7p0me0fvpfk" path="res://assets/items/Rail S.png" id="1_l5e2f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tpesx"]
+size = Vector2(178, 65)
+
+[node name="Rail1" type="StaticBody2D"]
+collision_layer = 16384
+collision_mask = 16384
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_l5e2f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 16.5)
+shape = SubResource("RectangleShape2D_tpesx")
+disabled = true

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c0a6pmv3pkpt5" path="res://assets/characters/FIXEDduch.sprite.png" id="2_tbj7p"]
 [ext_resource type="Texture2D" uid="uid://vmmqaystvl7p" path="res://assets/plants/nasionko.linia.png" id="3_hr3ax"]
 [ext_resource type="Texture2D" uid="uid://bjhkhy1f0oj28" path="res://assets/doniczka.sprite.png" id="3_i05o3"]
-[ext_resource type="Texture2D" uid="uid://bkft7aktm6lmw" path="res://assets/ramkagameplay.png" id="4_4kj3c"]
+[ext_resource type="Texture2D" uid="uid://clghcoujols2q" path="res://assets/ramkawhite.png" id="4_nwuw5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g61bd"]
 atlas = ExtResource("2_tbj7p")
@@ -470,7 +470,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_4kj3c")
+texture = ExtResource("4_nwuw5")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -37)

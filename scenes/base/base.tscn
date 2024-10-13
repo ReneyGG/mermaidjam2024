@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dqu6nj5klwbg8"]
+[gd_scene load_steps=13 format=3 uid="uid://dqu6nj5klwbg8"]
 
 [ext_resource type="Script" path="res://scenes/base/base.gd" id="2_h72af"]
 [ext_resource type="Shader" path="res://shaders/hit_flash.gdshader" id="2_wuc8y"]
@@ -42,6 +42,12 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_3ckvi"]
 radius = 169.83
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gm6l8"]
+bg_color = Color(1, 1, 1, 0.509804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b5gb5"]
+bg_color = Color(0, 0, 0, 1)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w0e0g"]
 size = Vector2(281.04, 196.635)
 
@@ -61,20 +67,29 @@ shape = SubResource("CircleShape2D_3ckvi")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
-anchors_preset = 15
+anchors_preset = 12
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -46.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 size_flags_vertical = 8
 
 [node name="Label" type="Label" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Base health:"
+theme_override_font_sizes/font_size = 64
+text = "Chron syrenkę!"
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(1000, 48.02)
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_gm6l8")
+theme_override_styles/fill = SubResource("StyleBoxFlat_b5gb5")
+value = 27.07
+show_percentage = false
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 16384

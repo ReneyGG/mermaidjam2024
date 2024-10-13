@@ -6,6 +6,11 @@ extends Node2D
 var score = 0
 var elapsed_time: float = 0.0
 	
+func _ready():
+	await get_tree().create_timer(1).timeout
+	get_tree().paused = true
+	$Interface.add_child(load("res://scenes/visual_novel/tutorial_dialog.tscn").instantiate())
+	
 func _process(delta):
 	elapsed_time += delta
 	
@@ -24,6 +29,7 @@ func format_time(seconds: float) -> String:
 func lose():
 	get_tree().paused = true
 	$Interface.add_child(load("res://scenes/visual_novel/visual_novel.tscn").instantiate())
+	
 func after_dialog():
 	game_over_menu.time_to_print = format_time(elapsed_time)
 	game_over_menu.ponits_to_print = score

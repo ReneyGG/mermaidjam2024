@@ -220,7 +220,6 @@ collision_mask = 17
 shape = SubResource("CircleShape2D_5uw3s")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_enabled = true
 
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_timer_timeout"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]

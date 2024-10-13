@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://b61rfc4wnmv5t"]
+[gd_scene load_steps=12 format=3 uid="uid://b61rfc4wnmv5t"]
 
 [ext_resource type="Script" path="res://scenes/visual_novel/tutorial_dialog.gd" id="1_54fr5"]
 [ext_resource type="Texture2D" uid="uid://hyl6xrv5gsxu" path="res://assets/characters/duch duzy.png" id="1_bsxsu"]
-[ext_resource type="Texture2D" uid="uid://cd8a4xy2hfg3c" path="res://assets/characters/burmistrz.png" id="2_5jq01"]
 [ext_resource type="Texture2D" uid="uid://b0m1pfllma5oo" path="res://assets/ramkadialogi.png" id="3_7geaf"]
+[ext_resource type="Texture2D" uid="uid://db8jfho5vcgq2" path="res://assets/characters/baba.png" id="3_qqm1h"]
+[ext_resource type="Texture2D" uid="uid://dk14ub0m4tmbh" path="res://assets/menu/karta1.png" id="5_insqk"]
 
 [sub_resource type="Animation" id="Animation_a8j2i"]
 length = 0.001
@@ -198,8 +199,8 @@ layout_mode = 0
 offset_left = 23.0
 offset_top = 163.0
 offset_right = 717.0
-offset_bottom = 1139.0
-texture = ExtResource("2_5jq01")
+offset_bottom = 1140.0
+texture = ExtResource("3_qqm1h")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 1
@@ -231,7 +232,30 @@ offset_right = 1051.0
 offset_bottom = 132.0
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 0.92549, 0.792157, 1)
-theme_override_font_sizes/font_size = 52
+theme_override_font_sizes/font_size = 64
+autowrap_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 894.0
+offset_top = -76.0
+offset_right = 1304.0
+offset_bottom = 56.0
+scale = Vector2(0.66, 0.66)
+texture_normal = ExtResource("5_insqk")
+
+[node name="skip" type="Label" parent="NinePatchRect/TextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.92549, 0.792157, 1)
+theme_override_font_sizes/font_size = 64
+text = "Pomin"
+horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="Timer" type="Timer" parent="."]
@@ -241,3 +265,5 @@ libraries = {
 "": SubResource("AnimationLibrary_tq5o2")
 }
 autoplay = "popup"
+
+[connection signal="pressed" from="NinePatchRect/TextureButton" to="." method="_on_texture_button_pressed"]

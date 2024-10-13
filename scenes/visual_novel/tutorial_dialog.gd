@@ -16,9 +16,21 @@ var full_line = ""
 var typing_speed = 0.05  # Czas (w sekundach) między literami
 var typing_active = false  # Flaga kontrolująca, czy animacja jest aktywna
 var current_dialog = [
-	"?1",
-	"!2",
-	"?3"
+	"?Starościno! Do ogrodów wdarli się intruzi!",
+	"!A więc pora stawić im czoła, mały stróżu.",
+	"?Ale jak? Jestem tylko duszkiem, nie mam jak ich zatrzymać.",
+	"!Zdziwisz się ile masz możliwości, mały stróżu.",
+	"!Widzisz te barwne kwiaty? Są równie skore do walki co ty, ale potrzebują twojej pomocy.",
+	"!Podejdź do jednego i kliknij [LPM] żeby go podnieść.",
+	"!Nawet będąc w doniczce kwiat nie przestanie atakować napastników.",
+	"!Kliknij ponownie [LPM] żeby przesadzić go w inne miejsce.",
+	"!Znajdujac kwiat mozesz zebrać jego nasiona [PPM].",
+	"!Jeśli znajdziesz dwa, wnet wyrośnie nowy kwiat, gotowy do posadzenia.",
+	"!Każdy kwiat ma swojego ulubieńca, kiedy współpracują znacznie rosną w siłę.",
+	"!Kiedy odkryjesz nową parę, będziesz mógł ją podejrzeć w encyklopedii, nie zgubiłeś jej, prawda?",
+	"?Skądże! Mam ją tutaj, pod [Esc]",
+	"!Dobrze, zaglądaj do niej jeśli potrzebujesz sobie odświeżyć pamięć.",
+	"!Czas na ciebie, mały stróżu, powodzenia!"
 ]
 
 @export var can_click: bool = false
@@ -81,3 +93,8 @@ func skip_text_animation():
 
 	# Zwiększ indeks dialogu na następny
 	#current_line_index += 1
+
+
+func _on_texture_button_pressed():
+	get_tree().paused = false
+	animation_player.play("popout")

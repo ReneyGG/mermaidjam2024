@@ -1,8 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://cg7drv7x7ttqt"]
+[gd_scene load_steps=4 format=3 uid="uid://cg7drv7x7ttqt"]
 
 [ext_resource type="PackedScene" uid="uid://d4hia2tutqsev" path="res://scenes/plant_base/plant_base.tscn" id="1_8882p"]
+[ext_resource type="Script" path="res://scenes/plants/boost_plant.gd" id="2_oxgmn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yh8xd"]
+radius = 307.163
 
 [node name="BoostPlant" instance=ExtResource("1_8882p")]
+script = ExtResource("2_oxgmn")
 type = "boosting"
 color = Color(0.694118, 0.721569, 0.815686, 1)
-current_health = 0
+
+[node name="BoostArea" type="Area2D" parent="." index="5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoostArea" index="0"]
+scale = Vector2(1, 0.5)
+shape = SubResource("CircleShape2D_yh8xd")

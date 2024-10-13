@@ -2,18 +2,17 @@
 
 [ext_resource type="Texture2D" uid="uid://bieoljfvyept" path="res://assets/items/Flora4.png" id="1_u3v3b"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xqayt"]
-radius = 31.0
-height = 104.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vr87q"]
+size = Vector2(62, 16)
 
 [node name="Flora4" type="StaticBody2D"]
 collision_layer = 16384
 collision_mask = 16384
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -126)
 texture = ExtResource("1_u3v3b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(10, 103)
-shape = SubResource("CapsuleShape2D_xqayt")
-disabled = true
+position = Vector2(8, 11)
+shape = SubResource("RectangleShape2D_vr87q")

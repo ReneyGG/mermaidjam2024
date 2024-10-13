@@ -20,6 +20,7 @@ func _ready():
 	$Sprite2D.frame = randi_range(0,3)
 	$Sprite2D.play("default")
 	$Aurora.hide()
+	$RangeHint.hide()
 
 func _physics_process(_delta):
 	if parent and adopted:
@@ -99,3 +100,9 @@ func explode():
 			enemy.take_damage(2)
 			var direction = global_position.direction_to(enemy.global_position)
 			enemy.knockback(direction, 750)
+
+func _on_mouse_entered():
+	$RangeHint.show()
+
+func _on_mouse_exited():
+	$RangeHint.hide()

@@ -86,7 +86,7 @@ func _physics_process(delta):
 	
 	if hold:
 		$Sprite2D/pot.visible = true
-		hold.global_position = $Sprite2D/pot.global_position + Vector2(11*sign($Sprite2D.scale.x),-100)
+		hold.global_position = $Sprite2D/pot.global_position + Vector2(11*sign($Sprite2D.scale.x),-40)
 	else:
 		$Sprite2D/pot.visible = false
 		

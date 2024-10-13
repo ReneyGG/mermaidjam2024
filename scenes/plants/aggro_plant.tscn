@@ -247,6 +247,7 @@ scale = Vector2(1, 0.5)
 shape = SubResource("CircleShape2D_c3i2s")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="AggroArea" index="1"]
+visible = false
 z_index = -1
 sprite_frames = SubResource("SpriteFrames_hykqu")
 autoplay = "default"

@@ -1,9 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dcix2stiu1aeb"]
+[gd_scene load_steps=11 format=3 uid="uid://b61rfc4wnmv5t"]
 
-[ext_resource type="Script" path="res://scenes/visual_novel/visual_novel.gd" id="1_cecue"]
-[ext_resource type="Texture2D" uid="uid://b0m1pfllma5oo" path="res://assets/ramkadialogi.png" id="2_o4iaq"]
-[ext_resource type="Texture2D" uid="uid://hyl6xrv5gsxu" path="res://assets/characters/duch duzy.png" id="3_0pttr"]
-[ext_resource type="Texture2D" uid="uid://cd8a4xy2hfg3c" path="res://assets/characters/burmistrz.png" id="4_jdl7m"]
+[ext_resource type="Script" path="res://scenes/visual_novel/tutorial_dialog.gd" id="1_54fr5"]
+[ext_resource type="Texture2D" uid="uid://hyl6xrv5gsxu" path="res://assets/characters/duch duzy.png" id="1_bsxsu"]
+[ext_resource type="Texture2D" uid="uid://cd8a4xy2hfg3c" path="res://assets/characters/burmistrz.png" id="2_5jq01"]
+[ext_resource type="Texture2D" uid="uid://b0m1pfllma5oo" path="res://assets/ramkadialogi.png" id="3_7geaf"]
 
 [sub_resource type="Animation" id="Animation_a8j2i"]
 length = 0.001
@@ -171,14 +171,10 @@ _data = {
 "popup": SubResource("Animation_d3u1r")
 }
 
-[node name="VisualNovel" type="Control"]
+[node name="TutorialDialog" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_cecue")
+anchors_preset = 0
+script = ExtResource("1_54fr5")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -195,7 +191,7 @@ offset_left = 1082.0
 offset_top = 60.0
 offset_right = 1736.0
 offset_bottom = 714.0
-texture = ExtResource("3_0pttr")
+texture = ExtResource("1_bsxsu")
 
 [node name="burgmaster" type="TextureRect" parent="."]
 layout_mode = 0
@@ -203,7 +199,7 @@ offset_left = 23.0
 offset_top = 163.0
 offset_right = 717.0
 offset_bottom = 1139.0
-texture = ExtResource("4_jdl7m")
+texture = ExtResource("2_5jq01")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 1
@@ -211,13 +207,13 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 750.0
-offset_top = -405.0
-offset_right = -44.0
-offset_bottom = -13.0
+offset_left = 678.0
+offset_top = 653.0
+offset_right = 1886.0
+offset_bottom = 1045.0
 grow_horizontal = 2
 grow_vertical = 0
-texture = ExtResource("2_o4iaq")
+texture = ExtResource("3_7geaf")
 region_rect = Rect2(0, 0, 1328, 616)
 patch_margin_left = 95
 patch_margin_top = 64
@@ -229,10 +225,10 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 109.0
-offset_top = -121.0
-offset_right = 1008.0
-offset_bottom = 121.0
+offset_left = 90.0
+offset_top = -145.0
+offset_right = 1051.0
+offset_bottom = 132.0
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 0.92549, 0.792157, 1)
 theme_override_font_sizes/font_size = 52

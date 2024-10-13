@@ -224,13 +224,16 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Score" type="Control" parent="Interface"]
-visible = false
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
+offset_top = -239.06
+offset_bottom = -239.06
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 
 [node name="ScoreLabel" type="Label" parent="Interface/Score"]
 layout_mode = 1
@@ -238,12 +241,15 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -108.0
-offset_top = 56.67
+offset_top = 45.17
 offset_right = 108.0
-offset_bottom = 123.67
+offset_bottom = 120.17
 grow_horizontal = 2
 pivot_offset = Vector2(107.89, 34)
-theme_override_font_sizes/font_size = 48
+theme_override_colors/font_color = Color(1, 0.92549, 0.792157, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 18
+theme_override_font_sizes/font_size = 64
 text = "Punkty: 0"
 horizontal_alignment = 1
 vertical_alignment = 1

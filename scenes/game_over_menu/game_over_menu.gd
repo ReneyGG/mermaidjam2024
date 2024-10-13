@@ -17,3 +17,7 @@ func _process(delta):
 
 func _on_restart_button_pressed():
 	Fade.fade_out("res://scenes/level/level.tscn")
+
+
+func _on_menu_button_pressed():
+	Fade.fade_out("res://scenes/main_menu/main_menu.tscn")

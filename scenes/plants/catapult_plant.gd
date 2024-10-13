@@ -11,7 +11,7 @@ func shoot(target_position):
 	var desired_distance = global_position.distance_to(target_position)
 	var desired_angle_deg = 45
 	projectile.LaunchProjectile(global_position, direction, desired_distance, desired_angle_deg)
-
+	GlobalSound.play_sound("res://assets/audio/Katapulta.mp3")
 
 func _on_shooting_timer_timeout():
 	if not available:

@@ -28,6 +28,7 @@ func format_time(seconds: float) -> String:
 
 func lose():
 	get_tree().paused = true
+	GlobalSound.play_sound("res://assets/audio/Poraĺka .mp3")
 	$Interface.add_child(load("res://scenes/visual_novel/visual_novel.tscn").instantiate())
 	
 func after_dialog():

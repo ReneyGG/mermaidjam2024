@@ -44,12 +44,14 @@ func _physics_process(delta):
 func take_damage(damage):
 	health = max(0, health - damage)
 	if health == 0:
+		GlobalSound.play_sound("res://assets/audio/Death.mp3")
 		var death_effect = death_effect_scene.instantiate()
 		add_sibling(death_effect)
 		death_effect.global_position = global_position
 		death_effect.emitting = true
 		death.emit(points_amount)
 		queue_free()
+	GlobalSound.play_sound("res://assets/audio/Guzik.mp3")
 	$Sprite2D.material.set_shader_parameter("active",true)
 	await get_tree().create_timer(.1).timeout
 	$Sprite2D.material.set_shader_parameter("active",false)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dlp866wrj8jf6"]
+[gd_scene load_steps=7 format=3 uid="uid://dlp866wrj8jf6"]
 
 [ext_resource type="Texture2D" uid="uid://cmwa2au0g7u28" path="res://assets/wybuch.sprite.png" id="1_v0ogp"]
+[ext_resource type="Script" path="res://scenes/effects/explosion_effect.gd" id="2_n8ol5"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_d6ydn"]
 particles_animation = true
@@ -35,3 +36,6 @@ texture = ExtResource("1_v0ogp")
 lifetime = 0.75
 one_shot = true
 explosiveness = 1.0
+script = ExtResource("2_n8ol5")
+
+[connection signal="finished" from="." to="." method="_on_finished"]
